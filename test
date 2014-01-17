@@ -1,0 +1,3 @@
+#!/bin/bash
+manifests=$(dirname $0)
+puppet apply --noop --confdir=$manifests $manifests/site.pp
