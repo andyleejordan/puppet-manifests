@@ -44,7 +44,8 @@ node "slartibartfast.schwartzmeyer.us" inherits default {
     fstype    => 'vboxsf',
     device    => 'backup',
     options   => [ 'rw', 'uid=andrew', 'gid=andrew' ],
-    subscribe => File[$path],
+    subscribe => File[$backup_path],
+    require   => User['andrew'],
   }
 }
 
