@@ -1,0 +1,42 @@
+---
+classes:
+  - denyhosts
+  - ntp
+  - person
+  - ssh
+  - sudo
+
+denyhosts::use_sync: true
+
+person::person: 'andrew'
+person::fullname: 'Andrew Schwartzmeyer'
+person::home: '/home/andrew'
+person::password: '$6$apUYoGwf$Quhc7S6zCBF8LG1i6mY751duYEAthdijSJFkNe1PCSvD3SZXzUxHVlZqc0tm9ygCIvgYr4IejvssevtRMAmKJ0'
+person::groups:
+  - 'andrew'
+  - 'adm'
+  - 'sudo'
+person::directories:
+  - '/home/andrew/bin'
+  - '/home/andrew/.ssh'
+person::dotfiles_repo: 'https://github.com/andschwa/dotfiles.git'
+person::fresh_repo: 'https://github.com/andschwa/fresh.git'
+person::fresh_path: '.fresh/source/andschwa/fresh'
+person::emacs_d_repo: 'https://github.com/andschwa/emacs.d.git'
+
+ssh::serveroptions:
+  PasswordAuthentication: 'no'
+  PermitRootLogin: 'no'
+  PubkeyAuthentication: 'yes'
+
+sudo::manage_sudoersd: true
+sudo::sudoers:
+  nopassword:
+    comment: 'Users without sudo password prompt'
+    users:
+      - 'andrew'
+      - 'adm'
+      - 'sudo'
+    tags:
+      - 'NOPASSWD'
+      - 'SETENV'

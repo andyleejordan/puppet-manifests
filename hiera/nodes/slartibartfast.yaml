@@ -1,0 +1,14 @@
+---
+classes:
+  - minecraft
+
+minecraft::source: 'bukkit'
+minecraft::bukkit_build: 'dev'
+minecraft::heap_size: 2048
+minecraft::white_list: true
+minecraft::difficulty: 2
+minecraft::pvp: false
+minecraft::motd: 'Managed by Puppet, with Hiera!'
+minecraft::ops: 
+  - 'aerosabre'
+  - 'datescreepers'

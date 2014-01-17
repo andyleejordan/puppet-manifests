@@ -1,0 +1,17 @@
+---
+classes:
+  - ghost
+  - mumble
+  - prosody
+  - nginx
+  - minecraft
+
+mumble::snapshot: true
+
+sudo::sudoers:
+  nopassword:
+    comment: 'Users without sudo password prompt'
+    users: 'vagrant'
+    tags:
+      - 'NOPASSWD'
+      - 'SETENV'

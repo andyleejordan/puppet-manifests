@@ -1,0 +1,11 @@
+---
+:backends:
+  - yaml
+:yaml:
+  :datadir: "%{settings::confdir}/hiera"
+:hierarchy:
+  - "nodes/%{::hostname}"
+  - "os/%{::operatingsystem}"
+  - "virtual_%{::is_virtual}"
+  - common
+:logger: console

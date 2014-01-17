@@ -1,0 +1,12 @@
+---
+classes:
+  - mumble
+  - prosody
+  - nginx
+
+apt::backports::location: 'http://mirrors.digitalocean.com/ubuntu/'
+
+mumble::snapshot: true
+
+ubuntu::release_location: 'http://mirrors.digitalocean.com/ubuntu/'
+ubuntu::security_location: 'http://mirrors.digitalocean.com/ubuntu/'
