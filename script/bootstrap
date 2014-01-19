@@ -7,9 +7,8 @@ set -e
 
 # FIX: only sudo if gem home isn't writable
 
-(/usr/bin/gem list -i bundler -v '~> 1.3.0' > /dev/null) || {
-  /usr/bin/sudo -E -p "Need to install Bundler for system ruby, password for sudo: " \
-  /usr/bin/gem install bundler -v '~> 1.3.0' --no-rdoc --no-ri
+(gem list -i bundler -v '~> 1.3.0' > /dev/null) || {
+    gem install bundler -v '~> 1.3.0' --no-rdoc --no-ri
 }
 
 # We don't want old config hanging around.
@@ -18,4 +17,4 @@ rm -rf .bundle/config
 rm -rf .librarian/puppet/config
 
 # Bundle install unless we're already up to date.
-/usr/bin/bundle install --binstubs bin --path .bundle --quiet "$@"
+bundle install --binstubs bin --path .bundle --quiet "$@"
