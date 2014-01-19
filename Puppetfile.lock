@@ -11,6 +11,8 @@ FORGE
     andschwa/mumble (0.0.2)
       puppetlabs/apt (>= 1.4.0)
     arnoudj/sudo (1.1.1)
+    attachmentgenie/ssh (1.2.1)
+      puppetlabs/stdlib (>= 2.2.1)
     attachmentgenie/ufw (1.4.6)
       puppetlabs/stdlib (>= 2.2.1)
     jfryman/nginx (0.0.7)
@@ -29,10 +31,6 @@ FORGE
       puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/stdlib (4.1.0)
     puppetlabs/vcsrepo (0.2.0)
-    ripienaar/concat (0.2.0)
-    spiette/ssh (0.3.1)
-      puppetlabs/stdlib (>= 3.0.0)
-      ripienaar/concat (>= 0.2.0)
 
 GIT
   remote: git://github.com/andschwa/puppet-dotfiles.git
@@ -74,6 +72,7 @@ DEPENDENCIES
   andschwa/minecraft (= 2.1.4)
   andschwa/mumble (= 0.0.2)
   arnoudj/sudo (= 1.1.1)
+  attachmentgenie/ssh (= 1.2.1)
   attachmentgenie/ufw (= 1.4.6)
   dotfiles (>= 0)
   jfryman/nginx (= 0.0.7)
@@ -88,6 +87,5 @@ DEPENDENCIES
   puppetlabs/ntp (= 3.0.1)
   puppetlabs/stdlib (= 4.1.0)
   puppetlabs/vcsrepo (= 0.2.0)
-  spiette/ssh (= 0.3.1)
   ubuntu (>= 0)
 
