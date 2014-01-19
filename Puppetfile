@@ -4,20 +4,20 @@
 # default. This ensures at least the ability to construct a basic
 # environment.
 
-# Shortcut for a module from GitHub's boxen organization
-def github(name, *args)
-  options ||= if args.last.is_a? Hash
-    args.last
-  else
-    {}
-  end
+forge "http://forge.puppetlabs.com"
 
+# Shortcut for a module from GitHub's boxen organization
+def andschwa(name, *args)
+  options ||= if args.last.is_a? Hash
+                args.last
+              else
+                {}
+              end
   if path = options.delete(:path)
     mod name, :path => path
   else
-    version = args.first
-    options[:repo] ||= "#{name}"
-    mod name, version, :github_tarball => options[:repo]
+    options[:repo] ||= "git://github.com/andschwa/puppet-#{name}.git"
+    mod name, :git => options[:repo]
   end
 end
 
@@ -26,23 +26,26 @@ def dev(name, *args)
   mod name, :path => "#{ENV['HOME']}/src/puppet/puppet-#{name}"
 end
 
-github "andschwa/puppet-dotfiles",		"0.0.1" tag
-github "andschwa/puppet-ghost",			"0.0.2" tag
-github "andschwa/puppet-latex",			"0.0.1" tag
-github "andschwa/puppet-minecraft",		"2.1.4"
-github "andschwa/puppet-mumble",		"0.0.2"
-github "andschwa/puppet-person",		"0.0.2"
-github "andschwa/puppet-ubuntu",		"0.0.2"
-github "arnoudj/puppet-sudo",			"v1.0"
-github "attachmentgenie/puppet-module-ufw"
-github "jfryman/puppet-nginx",			"v0.0.7"
-github "maestrodev/puppet-wget",		"v1.3.1"
-github "plainprogrammer/puppet-denyhosts",	"v0.2.0"
-github "puppetlabs/puppetlabs-apt",,		"1.4.0"
-github "puppetlabs/puppetlabs-concat",		"1.1.0-rc1"
-github "puppetlabs/puppetlabs-java",		"1.1.0"
-github "puppetlabs/puppetlabs-ntp",		"3.3.0"
-github "puppetlabs/puppetlabs-sdtlib",		"4.1.0"
-github "puppetlabs/puppetlabs-vcsrepo",		"0.2.0"
-github "rtyler/puppet-prosody"
-github "spiette/puppet-ssh",			"v0.3.1"
+# GitHub andschwa/modules
+andschwa "dotfiles"
+andschwa "latex"
+andschwa "person"
+andschwa "prosody"
+andschwa "ubuntu"
+
+# Forge modules
+mod "andschwa/ghost",            "0.0.2"
+mod "andschwa/minecraft",        "2.1.4"
+mod "andschwa/mumble",           "0.0.2"
+mod "arnoudj/sudo",              "1.1.1"
+mod "attachmentgenie/ufw",       "1.4.6"
+mod "jfryman/nginx",             "0.0.7"
+mod "maestrodev/wget",           "1.3.1"
+mod "plainprogrammer/denyhosts", "0.4.0"
+mod "puppetlabs/apt",            "1.4.0"
+mod "puppetlabs/concat",         "1.1.0"
+mod "puppetlabs/java",           "1.0.1"
+mod "puppetlabs/ntp",            "3.0.1"
+mod "puppetlabs/stdlib",         "4.1.0"
+mod "puppetlabs/vcsrepo",        "0.2.0"
+mod "spiette/ssh",               "0.3.1"
