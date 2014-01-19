@@ -3,7 +3,7 @@ classes:
   - denyhosts
   - ntp
   - person
-  - ssh
+  - ssh::server
   - sudo
 
 denyhosts::use_sync: true
@@ -23,11 +23,6 @@ person::dotfiles_repo: 'https://github.com/andschwa/dotfiles.git'
 person::fresh_repo: 'https://github.com/andschwa/fresh.git'
 person::fresh_path: '.fresh/source/andschwa/fresh'
 person::emacs_d_repo: 'https://github.com/andschwa/emacs.d.git'
-
-ssh::serveroptions:
-  PasswordAuthentication: 'no'
-  PermitRootLogin: 'no'
-  PubkeyAuthentication: 'yes'
 
 sudo::manage_sudoersd: true
 sudo::sudoers:
