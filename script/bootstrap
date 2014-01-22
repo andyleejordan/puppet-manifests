@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Shamelessly borrowed from boxen
 
 # Make sure all our local dependencies are available.
