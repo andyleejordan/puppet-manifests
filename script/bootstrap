@@ -18,3 +18,4 @@ rm -rf .librarian/puppet/config
 
 # Bundle install unless we're already up to date.
 bundle install --binstubs bin --path .bundle --quiet "$@"
+bundle exec librarian-puppet install
