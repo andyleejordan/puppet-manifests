@@ -1,0 +1,8 @@
+#!/bin/bash
+[[ -e script/push ]] || { echo >&2 "Please cd into manifests"; exit 1; }
+echo "Pushing manifests and modules"
+./script/push
+echo "Provisioning krikkit"
+ssh krikkit.schwartzmeyer.com 'cd manifests && ./script/apply'
+echo "Provisioning slartibartfast"
+ssh slartibartfast.schwartzmeyer.us 'cd manifests && ./script/apply'
