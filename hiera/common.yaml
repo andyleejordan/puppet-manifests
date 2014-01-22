@@ -7,6 +7,7 @@ classes:
   - sudo
 
 denyhosts::use_sync: true
+denyhosts::notification_email: 'andrew@localhost'
 
 person::person: 'andrew'
 person::fullname: 'Andrew Schwartzmeyer'
