@@ -1,1 +1,1 @@
-bundle exec puppet-catalog-test -m modules -M site.pp -H test/hiera.yaml
+bundle exec puppet-catalog-test -m modules -M site.pp -H test/hiera.yaml -s test/scenarios.yml

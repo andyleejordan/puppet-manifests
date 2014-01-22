@@ -1,0 +1,29 @@
+__default_facts: &default_facts
+  architecture: amd64
+  disable_asserts: true
+  interfaces: eth0
+  ipaddress: 127.0.0.1
+  is_virtual: true
+  kernel: Linux
+  kernelmajversion: 3.8
+  kernelversion: 3.8.0
+  local_run: true
+  lsbdistcodename: Precise
+  lsbdistid: Ubuntu
+  lsbdistrelease: 12.04
+  lsbmajdistrelease: 12
+  operatingsystem: Ubuntu
+  operatingsystemrelease: 12.04
+  osfamily: Debian
+
+krikkit:
+  <<: *default_facts
+  domain: schwartzmeyer.com
+  fqdn: krikkit.schwartzmeyer.com
+  hostname: krikkit
+
+slartibartfast:
+  <<: *default_facts
+  domain: schwartzmeyer.us
+  fqdn: slartibartfast.schwartzmeyer.us
+  hostname: slartibartfast
