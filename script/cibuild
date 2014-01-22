@@ -1,1 +1,3 @@
-bundle exec puppet-catalog-test -m modules -M site.pp -H test/hiera.yaml -s test/scenarios.yml
+#!/bin/bash
+manifests=$(dirname $(dirname $0))
+bundle exec puppet-catalog-test -m $manifests/modules -M $manifests/site.pp -H $manifests/test/hiera.yaml -s $manifests/test/scenarios.yml

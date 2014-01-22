@@ -18,6 +18,7 @@ __default_facts: &default_facts
 
 krikkit:
   <<: *default_facts
+  concat_basedir: /tmp/concat_dir # Fix for testing concat
   domain: schwartzmeyer.com
   fqdn: krikkit.schwartzmeyer.com
   hostname: krikkit
