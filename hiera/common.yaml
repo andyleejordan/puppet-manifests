@@ -5,6 +5,7 @@ classes:
   - person
   - ssh::server
   - sudo
+  - ufw
 
 denyhosts::use_sync: true
 denyhosts::notification_email: 'andrew@localhost'
