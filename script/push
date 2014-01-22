@@ -1,3 +1,4 @@
 #!/bin/bash
 manifests="/Users/andrew/Documents/projects/puppet/manifests"
-parallel -j 4 rsync -rl --executability --exclude '.git*' --exclude 'ssl' --delete-excluded $manifests ::: krikkit.schwartzmeyer.com: slartibartfast.schwartzmeyer.us:
+puppets="krikkit.schwartzmeyer.com: slartibartfast.schwartzmeyer.us:"
+parallel -j 4 rsync -rl --executability --exclude '.git*' $manifests ::: $puppets
