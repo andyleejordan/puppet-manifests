@@ -4,7 +4,7 @@ FORGE
     andschwa/ghost (0.0.2)
       puppetlabs/apt (>= 1.4.0)
       puppetlabs/stdlib (>= 4.1.0)
-    andschwa/minecraft (2.1.4)
+    andschwa/minecraft (2.1.5)
       maestrodev/wget (>= 1.1.0)
       puppetlabs/java (>= 0.1.6)
       puppetlabs/stdlib (>= 4.1.0)
@@ -12,8 +12,6 @@ FORGE
       puppetlabs/apt (>= 1.4.0)
     arnoudj/sudo (1.1.1)
     attachmentgenie/ssh (1.2.1)
-      puppetlabs/stdlib (>= 2.2.1)
-    attachmentgenie/ufw (1.4.6)
       puppetlabs/stdlib (>= 2.2.1)
     jfryman/nginx (0.0.7)
       puppetlabs/apt (>= 1.0.0)
@@ -49,7 +47,7 @@ GIT
 GIT
   remote: git://github.com/andschwa/puppet-person.git
   ref: master
-  sha: 9423f734928f8e5ff48c50ac9b10fa154b0c8098
+  sha: 23fda209b59f0935d8744c5bc507c5578094abd9
   specs:
     person (0.0.1)
 
@@ -67,13 +65,20 @@ GIT
   specs:
     ubuntu (0.0.1)
 
+GIT
+  remote: git://github.com/andschwa/puppet-ufw.git
+  ref: master
+  sha: cea2f0ecd922f52194ab3d822dbea6e3748efbb6
+  specs:
+    ufw (1.4.6)
+      puppetlabs/stdlib (>= 2.2.1)
+
 DEPENDENCIES
   andschwa/ghost (= 0.0.2)
-  andschwa/minecraft (= 2.1.4)
+  andschwa/minecraft (= 2.1.5)
   andschwa/mumble (= 0.0.2)
   arnoudj/sudo (= 1.1.1)
   attachmentgenie/ssh (= 1.2.1)
-  attachmentgenie/ufw (= 1.4.6)
   dotfiles (>= 0)
   jfryman/nginx (= 0.0.7)
   latex (>= 0)
@@ -88,4 +93,5 @@ DEPENDENCIES
   puppetlabs/stdlib (= 4.1.0)
   puppetlabs/vcsrepo (= 0.2.0)
   ubuntu (>= 0)
+  ufw (>= 0)
 
