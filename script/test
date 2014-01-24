@@ -1,4 +1,3 @@
 #!/bin/bash
-manifests=$(dirname $0)
 [[ -e script/test ]] || { echo >&2 "Please cd into manifests"; exit 1; }
-sudo puppet apply --noop --confdir=$manifests $manifests/site.pp
+sudo puppet apply --noop --verbose --confdir=. site.pp
