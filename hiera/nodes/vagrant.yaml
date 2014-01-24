@@ -1,17 +1,34 @@
 ---
 classes:
   - ghost
-  - mumble
-  - prosody
   - nginx
   - minecraft
+
+minecraft::source: dev
+minecraft::heap_size: 2048
+minecraft::white_list: true
+minecraft::difficulty: 2
+minecraft::pvp: false
+minecraft::motd: Managed by Puppet, with Hiera!
+minecraft::ops: 
+  - aerosabre
 
 mumble::snapshot: true
 
 sudo::sudoers:
   nopassword:
-    comment: 'Users without sudo password prompt'
-    users: 'vagrant'
+    comment: Users without sudo password prompt
+    users: vagrant
     tags:
-      - 'NOPASSWD'
-      - 'SETENV'
+      - NOPASSWD
+      - SETENV
+
+ufw::ufw_allows:
+  allow-ssh-from-all:
+    port: 22
+  allow-mosh-from-all:
+    proto: udp
+    port: 60000:61000
+  allow-vagrant-ssh-from-local:
+    from: 192.168.0.0/16
+    port: 2222

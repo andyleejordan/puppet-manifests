@@ -1,14 +1,40 @@
 ---
 classes:
   - minecraft
+  - nginx
 
-minecraft::source: 'bukkit'
-minecraft::bukkit_build: 'dev'
+minecraft::source: dev
 minecraft::heap_size: 2048
 minecraft::white_list: true
 minecraft::difficulty: 2
 minecraft::pvp: false
-minecraft::motd: 'Managed by Puppet, with Hiera!'
+minecraft::motd: Managed by Puppet, with Hiera!
 minecraft::ops: 
-  - 'aerosabre'
-  - 'datescreepers'
+  - aerosabre
+  - datescreepers
+minecraft::plugins:
+  dynmap:
+    source: http://dev.bukkit.org/media/files/757/982/dynmap-1.9.1.jar
+
+nginx::nginx_vhosts:
+  minecraft.schwartzmeyer.us:
+    use_default_location: false
+
+nginx::nginx_locations:
+  minecraft.schwartzmeyer.us:
+    vhost: minecraft.schwartzmeyer.us
+    location: '/'
+    proxy: http://localhost:8123
+    location_cfg_append:
+      proxy_set_header: Host $host
+
+ufw::ufw_allows:
+  allow-ssh-from-all:
+    port: 22
+  allow-mosh-from-all:
+    proto: udp
+    port: 60000:61000
+  allow-http-from-all:
+    port: 80
+  allow-minecraft-from-all:
+    port: 25565

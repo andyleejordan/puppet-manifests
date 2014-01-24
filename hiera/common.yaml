@@ -8,32 +8,67 @@ classes:
   - ufw
 
 denyhosts::use_sync: true
-denyhosts::notification_email: 'andrew@localhost'
+denyhosts::notification_email: andrew@localhost
 
-person::person: 'andrew'
-person::fullname: 'Andrew Schwartzmeyer'
+packages:
+  - ack-grep
+  - aptitude
+  - curl
+  - gnupg2
+  - mg
+  - mailutils
+  - mosh
+  - wget
+  - unzip
+
+person::person: andrew
+person::fullname: Andrew Schwartzmeyer
 person::home: '/home/andrew'
 person::password: '$6$apUYoGwf$Quhc7S6zCBF8LG1i6mY751duYEAthdijSJFkNe1PCSvD3SZXzUxHVlZqc0tm9ygCIvgYr4IejvssevtRMAmKJ0'
 person::groups:
-  - 'andrew'
-  - 'adm'
-  - 'sudo'
+  - andrew
+  - adm
+  - sudo
 person::directories:
   - '/home/andrew/bin'
   - '/home/andrew/.ssh'
-person::dotfiles_repo: 'https://github.com/andschwa/dotfiles.git'
-person::fresh_repo: 'https://github.com/andschwa/fresh.git'
+person::dotfiles_repo: https://github.com/andschwa/dotfiles.git
+person::fresh_repo: https://github.com/andschwa/fresh.git
 person::fresh_path: '.fresh/source/andschwa/fresh'
-person::emacs_d_repo: 'https://github.com/andschwa/emacs.d.git'
+person::emacs_d_repo: https://github.com/andschwa/emacs.d.git
+
+ssh_key_defaults:
+  ensure: present
+  type: rsa
+  user: andrew
+
+ssh_keys:
+  marvin_andrew:
+    name: andrew@marvin.local
+    key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDFigIuiNpFkXtkQzsS1pSIEEVdVoCGyQFo3tWrcPmaZ9nmwz4YeYL7yzMIrrn7omsEoggxDPlswkZq4quantaH9kVHh3rDWTMQQiYpcV1xeoBhlghNqaHRSt2FdE417ljlyYMBrJq1gJJJyDVAdBYSxPgxSE2hMUNEGdm0BHym7b7tXyk7VeRPSxcmZYH2nvELIZWJT55RufWHvGs3bKyPY4hH+wpQzpoTRTT468LHAKk1o/Jykv0XdH0lm5YCgTHjMSZGiFmXjWMxOfG7UKXG8VfTlmgEI9NlRXBc8Peqa8r46S+cQ1SlqqhkttZkkGAiypYNy6+3c30GaoGa0G8b
+  marvin_root:
+    name: root@marvin.local
+    key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDXZrn8SQav0ZhS3gvaznUe4QNdV/LsrGbEXcHf6bT7wUao9//jBaPMY+QEq/ltRng6eZ8rU7jRAL+hCXqFORGsPsWbwpXlHIni8oldZmxx2Ujjvp/8ojaO54ZfQg2W/8BL8xTTKRs9KJaw4Rz7NVqFrGhWCcdkpuheAkDnV6TPZgkmZyXJyhqysD5JWDMxH1YGs2jF/dGLVvB+3/TfqBUZQzmeSJEJ2PkssgkIexwEU0IZYW3N0qzAvcyGTkD/xedH7ABvXdqBZ/VADfN6y2SDLrWwsi/a6CZZwBr+jWb8q9FoaSh0Ff6qPiPH99ao9PJtojZcwMHPSpb8vwWc/kIX
 
 sudo::manage_sudoersd: true
 sudo::sudoers:
   nopassword:
-    comment: 'Users without sudo password prompt'
+    comment: Users without sudo password prompt
     users:
-      - 'andrew'
-      - 'adm'
-      - 'sudo'
+      - andrew
+      - adm
+      - sudo
     tags:
-      - 'NOPASSWD'
-      - 'SETENV'
+      - NOPASSWD
+      - SETENV
+
+ufw::ufw_allows:
+  allow-ssh-from-all:
+    port: 22
+  allow-mosh-from-all:
+    proto: udp
+    port: 60000:61000
+
+ufw::ufw_limits:
+  limit-ssh-from-all:
+    name: 22

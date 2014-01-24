@@ -1,5 +1,5 @@
 # site.pp
 
-import "nodes"
+import 'nodes'
 
 hiera_include('classes')
