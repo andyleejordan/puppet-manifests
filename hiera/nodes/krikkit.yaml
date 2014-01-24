@@ -28,3 +28,7 @@ ufw::ufw_allows:
     port: 25565
   allow-mumble-from-all:
     port: 64738
+  allow-mumble-udp-from-all:
+    proto: udp
+    port: 64738
+
