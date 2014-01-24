@@ -25,6 +25,7 @@ krikkit:
 
 slartibartfast:
   <<: *default_facts
+  concat_basedir: /tmp/concat_dir # Fix for testing concat
   domain: schwartzmeyer.us
   fqdn: slartibartfast.schwartzmeyer.us
   hostname: slartibartfast
