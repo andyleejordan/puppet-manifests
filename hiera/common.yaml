@@ -14,10 +14,12 @@ packages:
   - ack-grep
   - aptitude
   - curl
+  - duply
   - gnupg2
   - mg
   - mailutils
   - mosh
+  - sqlite
   - wget
   - unzip
 
