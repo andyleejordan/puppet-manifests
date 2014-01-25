@@ -62,13 +62,13 @@ sudo::sudoers:
       - NOPASSWD
       - SETENV
 
-ufw::ufw_allows:
+ufw::allows:
   allow-ssh-from-all:
     port: 22
   allow-mosh-from-all:
     proto: udp
     port: 60000:61000
 
-ufw::ufw_limits:
+ufw::limits:
   limit-ssh-from-all:
     name: 22

@@ -28,7 +28,7 @@ nginx::nginx_locations:
     location_cfg_append:
       proxy_set_header: Host $host
 
-ufw::ufw_allows:
+ufw::allows:
   allow-ssh-from-all:
     port: 22
   allow-mosh-from-all:

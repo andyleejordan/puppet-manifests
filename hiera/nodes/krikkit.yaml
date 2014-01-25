@@ -16,7 +16,7 @@ nginx::vhosts:
 ubuntu::release_location: http://mirrors.digitalocean.com/ubuntu/
 ubuntu::security_location: http://mirrors.digitalocean.com/ubuntu/
 
-ufw::ufw_allows:
+ufw::allows:
   allow-ssh-from-all:
     port: 22
   allow-mosh-from-all:
