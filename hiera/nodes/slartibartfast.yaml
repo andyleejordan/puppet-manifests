@@ -18,15 +18,9 @@ minecraft::plugins:
 
 nginx::nginx_vhosts:
   minecraft.schwartzmeyer.us:
-    use_default_location: false
-
-nginx::nginx_locations:
-  minecraft.schwartzmeyer.us:
-    vhost: minecraft.schwartzmeyer.us
-    location: '/'
     proxy: http://localhost:8123
-    location_cfg_append:
-      proxy_set_header: Host $host
+    proxy_set_header:
+      - Host $host
 
 ufw::allows:
   allow-ssh-from-all:
