@@ -1,7 +1,7 @@
 FORGE
   remote: http://forge.puppetlabs.com
   specs:
-    andschwa/ghost (0.0.2)
+    andschwa/ghost (0.0.4)
       puppetlabs/apt (>= 1.4.0)
       puppetlabs/stdlib (>= 4.1.0)
     andschwa/minecraft (2.1.5)
@@ -68,30 +68,30 @@ GIT
 GIT
   remote: git://github.com/andschwa/puppet-ufw.git
   ref: master
-  sha: cea2f0ecd922f52194ab3d822dbea6e3748efbb6
+  sha: cecbcb4f4d9ab66d1ddbcb3a30890e43a1d8517d
   specs:
     ufw (1.4.6)
       puppetlabs/stdlib (>= 2.2.1)
 
 DEPENDENCIES
-  andschwa/ghost (= 0.0.2)
-  andschwa/minecraft (= 2.1.5)
-  andschwa/mumble (= 0.0.2)
-  arnoudj/sudo (= 1.1.1)
-  attachmentgenie/ssh (= 1.2.1)
+  andschwa/ghost (~> 0.0.4)
+  andschwa/minecraft (~> 2.1.5)
+  andschwa/mumble (~> 0.0.2)
+  arnoudj/sudo (~> 1.1.1)
+  attachmentgenie/ssh (~> 1.2.1)
   dotfiles (>= 0)
-  jfryman/nginx (= 0.0.7)
+  jfryman/nginx (~> 0.0.7)
   latex (>= 0)
-  maestrodev/wget (= 1.3.1)
+  maestrodev/wget (~> 1.3.1)
   person (>= 0)
-  plainprogrammer/denyhosts (= 0.4.0)
+  plainprogrammer/denyhosts (~> 0.4.0)
   prosody (>= 0)
-  puppetlabs/apt (= 1.4.0)
-  puppetlabs/concat (= 1.1.0)
-  puppetlabs/java (= 1.0.1)
-  puppetlabs/ntp (= 3.0.1)
-  puppetlabs/stdlib (= 4.1.0)
-  puppetlabs/vcsrepo (= 0.2.0)
+  puppetlabs/apt (~> 1.4.0)
+  puppetlabs/concat (~> 1.1.0)
+  puppetlabs/java (~> 1.0.1)
+  puppetlabs/ntp (~> 3.0.1)
+  puppetlabs/stdlib (~> 4.1.0)
+  puppetlabs/vcsrepo (~> 0.2.0)
   ubuntu (>= 0)
   ufw (>= 0)
 
