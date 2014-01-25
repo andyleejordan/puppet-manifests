@@ -1,17 +1,33 @@
 ---
 classes:
+  - ghost
   - mumble
   - prosody
   - nginx
 
 apt::backports::location: http://mirrors.digitalocean.com/ubuntu/
 
+ghost::environment: production
+ghost::production_url: https://schwartzmeyer.com
+
 mumble::snapshot: true
 
-nginx::vhosts:
+nginx::nginx_vhosts:
   idahothegoodlife.com:
     www_root: '/var/www/idahothegoodlife.com'
     rewrite_www_to_non_www: true
+  schwartzmeyer.com:
+    proxy: http://127.0.0.1:2368
+    proxy_set_header:
+      - Host $http_host
+      - X-Forwarded-Proto $scheme
+      - X-Forwarded-For $proxy_add_x_forwarded_for
+      - X-Real-IP $remote_addr
+    ssl: true
+    ssl_key: '/etc/nginx/ssl/server.key'
+    ssl_cert: '/etc/nginx/ssl/server.crt'
+    rewrite_www_to_non_www: true
+    rewrite_to_https: true
 
 ubuntu::release_location: http://mirrors.digitalocean.com/ubuntu/
 ubuntu::security_location: http://mirrors.digitalocean.com/ubuntu/
@@ -24,6 +40,8 @@ ufw::allows:
     port: 60000:61000
   allow-http-from-all:
     port: 80
+  allow-https-from-all:
+    port: 443
   allow-minecraft-from-all:
     port: 25565
   allow-mumble-from-all:
