@@ -11,7 +11,9 @@ FORGE
     andschwa/mumble (0.0.2)
       puppetlabs/apt (>= 1.4.0)
     arnoudj/sudo (1.1.1)
-    attachmentgenie/ssh (1.2.1)
+    attachmentgenie/ssh (1.2.2)
+      puppetlabs/stdlib (>= 2.2.1)
+    attachmentgenie/ufw (1.4.7)
       puppetlabs/stdlib (>= 2.2.1)
     jfryman/nginx (0.0.7)
       puppetlabs/apt (>= 1.0.0)
@@ -65,20 +67,13 @@ GIT
   specs:
     ubuntu (0.0.1)
 
-GIT
-  remote: git://github.com/andschwa/puppet-ufw.git
-  ref: master
-  sha: cecbcb4f4d9ab66d1ddbcb3a30890e43a1d8517d
-  specs:
-    ufw (1.4.6)
-      puppetlabs/stdlib (>= 2.2.1)
-
 DEPENDENCIES
   andschwa/ghost (~> 0.0.4)
   andschwa/minecraft (~> 2.1.5)
   andschwa/mumble (~> 0.0.2)
   arnoudj/sudo (~> 1.1.1)
   attachmentgenie/ssh (~> 1.2.1)
+  attachmentgenie/ufw (~> 1.4.7)
   dotfiles (>= 0)
   jfryman/nginx (~> 0.0.7)
   latex (>= 0)
@@ -93,5 +88,4 @@ DEPENDENCIES
   puppetlabs/stdlib (~> 4.1.0)
   puppetlabs/vcsrepo (~> 0.2.0)
   ubuntu (>= 0)
-  ufw (>= 0)
 
