@@ -29,6 +29,7 @@ person::groups:
   - andrew
   - adm
   - sudo
+person::password: 'default_password_for_ci_tests'
 person::directories:
   - '/home/andrew/bin'
   - '/home/andrew/.ssh'
