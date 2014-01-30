@@ -3,7 +3,7 @@ classes:
   - minecraft
   - nginx
 
-minecraft::source: dev
+minecraft::source: beta
 minecraft::heap_size: 2048
 minecraft::white_list: true
 minecraft::difficulty: 2
@@ -12,9 +12,12 @@ minecraft::motd: Managed by Puppet, with Hiera!
 minecraft::ops: 
   - aerosabre
   - datescreepers
+  - ianwestrope
 minecraft::plugins:
   dynmap:
     source: http://dev.bukkit.org/media/files/757/982/dynmap-1.9.1.jar
+  myultrawarps:
+    source: http://dev.bukkit.org/media/files/769/247/myUltraWarps.jar
 
 nginx::nginx_vhosts:
   minecraft.schwartzmeyer.us:

@@ -49,4 +49,3 @@ ufw::allows:
   allow-mumble-udp-from-all:
     proto: udp
     port: 64738
-
