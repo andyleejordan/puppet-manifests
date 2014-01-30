@@ -6,7 +6,7 @@ node 'vagrant' inherits default {
 node 'krikkit.schwartzmeyer.com' inherits default {
 
   prosody::virtualhost { 'schwartzmeyer.com':
-      ensure => present;
+    ensure   => present,
   }
 
   vcsrepo { '/var/www/idahothegoodlife.com':
