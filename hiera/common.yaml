@@ -8,7 +8,6 @@ classes:
   - ufw
 
 denyhosts::use_sync: true
-denyhosts::notification_email: andrew@localhost
 
 packages:
   - ack-grep
