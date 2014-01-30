@@ -25,7 +25,6 @@ packages:
 person::person: andrew
 person::fullname: Andrew Schwartzmeyer
 person::home: '/home/andrew'
-person::password: '$6$apUYoGwf$Quhc7S6zCBF8LG1i6mY751duYEAthdijSJFkNe1PCSvD3SZXzUxHVlZqc0tm9ygCIvgYr4IejvssevtRMAmKJ0'
 person::groups:
   - andrew
   - adm
