@@ -29,3 +29,9 @@ slartibartfast:
   domain: schwartzmeyer.us
   fqdn: slartibartfast.schwartzmeyer.us
   hostname: slartibartfast
+
+vagrant:
+  <<: *default_facts
+  concat_basedir: /tmp/concat_dir # Fix for testing concat
+  fqdn: vagrant.schwartzmeyer.us
+  hostname: vagrant
