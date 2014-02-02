@@ -1,19 +1,22 @@
 ---
 classes:
-  - ghost
+  - gitlab
+  - postgresql
+  - postgresql::server
   - nginx
-  - minecraft
+  - redis
 
-minecraft::source: dev
-minecraft::heap_size: 2048
-minecraft::white_list: true
-minecraft::difficulty: 2
-minecraft::pvp: false
-minecraft::motd: Managed by Puppet, with Hiera!
-minecraft::ops: 
-  - aerosabre
+gitlab::git_email: git@localhost.dev
+gitlab::gitlab_dbtype: pgsql
+gitlab::gitlab_dbname: git
+gitlab::gitlab_dbuser: git
+gitlab::gitlab_dbpwd: git
+gitlab::gitlab_domain: vagrant
 
-mumble::snapshot: true
+postgresql::dbs:
+  git:
+    user: git
+    password: git
 
 sudo::sudoers:
   nopassword:
@@ -24,14 +27,13 @@ sudo::sudoers:
       - SETENV
 
 ufw::allows:
-  allow-ssh-from-all:
-    port: 22
-  allow-mosh-from-all:
+  allow-mosh-from-local:
+    from: 192.168.0.0/24
     proto: udp
     port: 60000:61000
   allow-vagrant-ssh-from-local:
-    from: 192.168.0.0/16
+    from: 192.168.0.0/24
     port: 2222
-  allow-http-from-all:
+  allow-http-from-local:
+    from: 192.168.0.0/24
     port: 80
-
