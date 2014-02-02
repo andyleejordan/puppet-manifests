@@ -20,6 +20,7 @@ node 'krikkit.schwartzmeyer.com' inherits default {
 
 node 'slartibartfast.schwartzmeyer.us' inherits default {
 
+  # shared VBox folder backup
   $backup_path = '/mnt/backup'
 
   file { $backup_path:
@@ -38,15 +39,17 @@ node 'slartibartfast.schwartzmeyer.us' inherits default {
 
 node default {
 
+  # hiera ssh keys
   $ssh_keys = {}
   $ssh_key_defaults = {}
   create_resources('ssh_authorized_key', $ssh_keys, $ssh_key_defaults)
 
+  # hiera packages
   $packages = []
-  $dependencies = [ 'python', 'python-pip', 'zsh' ]
-  ensure_resource('package', $packages, { 'ensure' => 'present' })
-  ensure_resource('package', $dependencies, { 'ensure' => 'present' })
-  ensure_resource('package', 'git', { 'ensure' => 'latest' })
+  ensure_packages($packages)
+
+  # dependencies
+  ensure_packages([ 'git', 'python', 'python-pip', 'zsh' ])
 
   package { 'virtualenvwrapper':
     ensure   => latest,

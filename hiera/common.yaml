@@ -13,7 +13,7 @@ packages:
   - ack-grep
   - aptitude
   - curl
-  - duply
+  - duplicity
   - gnupg2
   - mg
   - mailutils

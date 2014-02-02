@@ -1,7 +1,6 @@
 ---
 classes:
   - apt
-  - apt::backports
   - apt::unattended_upgrades
   - ubuntu
 
@@ -9,13 +8,11 @@ apt::always_apt_update: false
 apt::purge_sources_list: true
 apt::purge_sources_list_d: true
 
-apt::backports::location: http://archive.ubuntu.com/ubuntu/
 apt::unattended_upgrades::origins:
   - security
   - updates
-  - backports
 apt::unattended_upgrades::mail_to: andrew@localhost
+apt::mail_on_on_error: true
 
-ubuntu::repos: main universe multiverse restricted
-ubuntu::release_location: http://archive.ubuntu.com/ubuntu/
-ubuntu::security_location: http://security.ubuntu.com/ubuntu
+ubuntu::repos: main universe
+ubuntu::location: http://archive.ubuntu.com/ubuntu/
