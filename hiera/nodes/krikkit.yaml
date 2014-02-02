@@ -16,7 +16,7 @@ gitlab::git_email: git@suchcodemuchlove.com
 gitlab::gitlab_dbtype: pgsql
 gitlab::gitlab_dbname: git
 gitlab::gitlab_dbuser: git
-gitlab::gitlab_dbpwd: git
+gitlab::gitlab_dbpwd: "%{hiera('gitlab_dbpwd')}"
 gitlab::gitlab_domain: suchcodemuchlove.com
 gitlab::gitlab_ssl: true
 gitlab::gitlab_ssl_cert: '/etc/nginx/ssl/suchcodemuchlove.com.crt'
@@ -44,7 +44,7 @@ nginx::nginx_vhosts:
 postgresql::dbs:
   git:
     user: git
-    password: "%{postgresql_password('git', 'git')}"
+    password: "%{hiera('gitlab_dbpwd')}"
 
 ubuntu::location: http://mirrors.digitalocean.com/ubuntu/
 
