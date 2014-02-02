@@ -9,6 +9,8 @@ classes:
 
 denyhosts::use_sync: true
 
+gitlab_dbpwd: password_for_ci_tests
+
 packages:
   - ack-grep
   - aptitude

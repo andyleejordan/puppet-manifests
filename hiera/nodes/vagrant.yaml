@@ -10,13 +10,13 @@ gitlab::git_email: git@localhost.dev
 gitlab::gitlab_dbtype: pgsql
 gitlab::gitlab_dbname: git
 gitlab::gitlab_dbuser: git
-gitlab::gitlab_dbpwd: git
+gitlab::gitlab_dbpwd: "%{hiera('gitlab_dbpwd')}"
 gitlab::gitlab_domain: vagrant
 
 postgresql::dbs:
   git:
     user: git
-    password: git
+    password: "%{hiera('gitlab_dbpwd')}"
 
 sudo::sudoers:
   nopassword:
