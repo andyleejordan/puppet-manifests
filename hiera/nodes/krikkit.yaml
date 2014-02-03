@@ -4,6 +4,7 @@ classes:
   - gitlab
   - mumble
   - postgresql
+  - postgresql::globals
   - postgresql::server
   - prosody
   - nginx
@@ -41,6 +42,8 @@ nginx::nginx_vhosts:
     rewrite_www_to_non_www: true
     rewrite_to_https: true
 
+postgresql::globals::manage_package_repo: true
+postgresql::globals::version: '9.3'
 postgresql::dbs:
   git:
     user: git

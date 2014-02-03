@@ -45,7 +45,7 @@ GIT
 GIT
   remote: git://github.com/andschwa/puppet-gitlab.git
   ref: rbenv
-  sha: 9fbf0108406b5d8b30c17fc7befba60d82113e54
+  sha: 1833dd4f4f70c28000ade558db6313a72298d7c0
   specs:
     gitlab (0.1.1)
       alup/rbenv (>= 1.2.0)
@@ -69,7 +69,7 @@ GIT
 GIT
   remote: git://github.com/andschwa/puppet-postgresql.git
   ref: client-package-hotfix
-  sha: cc677c6e6e5782709b0119f7e06f442b3db60dc2
+  sha: f997447e288cc858f0d5e4a86156a7a46d1d37d4
   specs:
     postgresql (3.3.0)
       puppetlabs/apt (< 2.0.0, >= 1.1.0)
