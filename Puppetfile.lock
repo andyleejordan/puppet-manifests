@@ -45,7 +45,7 @@ GIT
 GIT
   remote: git://github.com/andschwa/puppet-gitlab.git
   ref: rbenv
-  sha: 1833dd4f4f70c28000ade558db6313a72298d7c0
+  sha: 0129a5d427195155dbf9e5bd9c3a2c3930290ca3
   specs:
     gitlab (0.1.1)
       alup/rbenv (>= 1.2.0)
