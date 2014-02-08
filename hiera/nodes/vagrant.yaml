@@ -26,9 +26,6 @@ sudo::sudoers:
       - NOPASSWD
       - SETENV
 
-ubuntu::ppas:
-  ppa:chris-lea/redis-server: {}
-
 ufw::allows:
   allow-mosh:
     from: 192.168.0.0/24

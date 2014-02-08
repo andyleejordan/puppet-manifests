@@ -49,8 +49,6 @@ postgresql::dbs:
     user: git
     password: "%{hiera('gitlab_dbpwd')}"
 
-ubuntu::ppas:
-    ppa:chris-lea/redis-server: {} 
 ubuntu::location: http://mirrors.digitalocean.com/ubuntu/
 
 ufw::allows:

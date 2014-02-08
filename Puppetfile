@@ -34,6 +34,7 @@ andschwa "dotfiles"
 andschwa "latex"
 andschwa "person"
 andschwa "prosody"
+andschwa "redis"
 andschwa "ubuntu"
 andschwa "gitlab", :ref => 'rbenv'
 andschwa "postgresql", :ref => 'client-package-hotfix'
