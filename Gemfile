@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
+gem "deep_merge",             "~> 1.0.1"
 gem "hiera",                  "~> 1.3.0"
 gem "librarian-puppet",       "~> 0.9.10"
 gem "mocha",                  "~> 1.0.0"
