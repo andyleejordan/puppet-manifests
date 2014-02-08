@@ -49,14 +49,11 @@ postgresql::dbs:
     user: git
     password: "%{hiera('gitlab_dbpwd')}"
 
+ubuntu::ppas:
+    ppa:chris-lea/redis-server: {} 
 ubuntu::location: http://mirrors.digitalocean.com/ubuntu/
 
 ufw::allows:
-  allow-ssh-from-all:
-    port: 22
-  allow-mosh-from-all:
-    proto: udp
-    port: 60000:61000
   allow-http-from-all:
     port: 80
   allow-https-from-all:

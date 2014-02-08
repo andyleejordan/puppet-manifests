@@ -26,12 +26,15 @@ sudo::sudoers:
       - NOPASSWD
       - SETENV
 
+ubuntu::ppas:
+  ppa:chris-lea/redis-server: {}
+
 ufw::allows:
-  allow-mosh-from-local:
+  allow-mosh:
     from: 192.168.0.0/24
     proto: udp
     port: 60000:61000
-  allow-vagrant-ssh-from-local:
+  allow-ssh:
     from: 192.168.0.0/24
     port: 2222
   allow-http-from-local:

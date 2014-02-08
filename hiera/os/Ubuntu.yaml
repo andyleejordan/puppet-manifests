@@ -4,7 +4,7 @@ classes:
   - apt::unattended_upgrades
   - ubuntu
 
-apt::always_apt_update: false
+apt::always_apt_update: true
 apt::purge_sources_list: true
 apt::purge_sources_list_d: true
 
@@ -12,7 +12,29 @@ apt::unattended_upgrades::origins:
   - security
   - updates
 apt::unattended_upgrades::mail_to: andrew@localhost
-apt::mail_on_on_error: true
+apt::unattended_upgrades::minimal_steps: true
+apt::mail_on_on_error: false
 
+ubuntu::sources:
+  precise:
+    release: precise
+  updates:
+    release: precise-updates
+  security:
+    release: precise-security
+  proposed:
+    release: precise-proposed
+    pin: 400
+  backports:
+    release: precise-backports
+    pin: 200
+  puppetlabs:
+    location: http://apt.puppetlabs.com
+    repos: main dependencies
+    key: 4BD6EC30
+ubuntu::ppas:
+  ppa:duplicity-team/ppa: {} 
+  ppa:git-core/ppa: {} 
+  ppa:keithw/mosh: {} 
 ubuntu::repos: main universe
 ubuntu::location: http://archive.ubuntu.com/ubuntu/
