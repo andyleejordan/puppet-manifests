@@ -14,6 +14,7 @@ ghost::environment: production
 ghost::production_url: https://schwartzmeyer.com
 
 gitlab::git_email: git@suchcodemuchlove.com
+gitlab::gitlab_backup: "%{gitlab::git_home}/backups"
 gitlab::gitlab_dbtype: pgsql
 gitlab::gitlab_dbname: git
 gitlab::gitlab_dbuser: git
@@ -48,6 +49,9 @@ postgresql::dbs:
   git:
     user: git
     password: "%{hiera('gitlab_dbpwd')}"
+
+person::groups:
+  - git
 
 ubuntu::location: http://mirrors.digitalocean.com/ubuntu/
 
