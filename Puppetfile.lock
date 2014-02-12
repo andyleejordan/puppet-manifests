@@ -34,6 +34,7 @@ FORGE
       puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/stdlib (4.1.0)
     puppetlabs/vcsrepo (0.2.0)
+    thias/vsftpd (0.2.0)
 
 GIT
   remote: git://github.com/andschwa/puppet-dotfiles.git
@@ -123,5 +124,6 @@ DEPENDENCIES
   puppetlabs/stdlib (~> 4.1.0)
   puppetlabs/vcsrepo (~> 0.2.0)
   redis (>= 0)
+  thias/vsftpd (~> 0.2.0)
   ubuntu (>= 0)
 

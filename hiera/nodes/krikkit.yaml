@@ -9,6 +9,7 @@ classes:
   - prosody
   - nginx
   - redis
+  - vsftpd
 
 ghost::environment: production
 ghost::production_url: https://schwartzmeyer.com
@@ -56,6 +57,10 @@ person::groups:
 ubuntu::location: http://mirrors.digitalocean.com/ubuntu/
 
 ufw::allows:
+  allow-ftp-data-from-all:
+    port: 20
+  allow-ftp-listen-from-all:
+    port: 21
   allow-http-from-all:
     port: 80
   allow-https-from-all:
@@ -67,3 +72,15 @@ ufw::allows:
   allow-mumble-udp-from-all:
     proto: udp
     port: 64738
+
+vsftpd::template: vsftpd/empty.conf.erb
+vsftpd::directives:
+  listen: 'YES'
+  use_localtime: 'YES'
+  max_clients: 10
+  dual_log_enable: 'YES'
+  rsa_cert_file: '/etc/ssl/certs/schwartzmeyer.com.crt'
+  rsa_private_key_file: '/etc/ssl/private/schwartzmeyer.com.key'
+  ssl_enable: 'YES'
+  allow_anon_ssl: 'YES'
+  no_anon_password: 'YES'
