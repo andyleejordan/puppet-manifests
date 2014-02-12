@@ -1,4 +1,4 @@
 ---
-before_script: "./script/bootstrap"
+before_script: "travis_retry ./script/bootstrap"
 script: "./script/cibuild"
 rvm: "2.0.0"
