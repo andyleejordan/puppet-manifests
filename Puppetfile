@@ -36,7 +36,7 @@ andschwa "person"
 andschwa "prosody"
 andschwa "redis"
 andschwa "ubuntu"
-andschwa "gitlab", :ref => 'rbenv'
+andschwa "gitlab", :ref => 'development'
 andschwa "postgresql", :ref => 'client-package-hotfix'
 
 # Forge modules

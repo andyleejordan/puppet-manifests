@@ -27,7 +27,7 @@ FORGE
       puppetlabs/stdlib (>= 2.2.1)
     puppetlabs/concat (1.1.0-rc1)
       puppetlabs/stdlib (>= 3.0.0)
-    puppetlabs/firewall (0.4.2)
+    puppetlabs/firewall (1.0.0)
     puppetlabs/java (1.0.1)
       puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/ntp (3.0.1)
@@ -44,8 +44,8 @@ GIT
 
 GIT
   remote: git://github.com/andschwa/puppet-gitlab.git
-  ref: rbenv
-  sha: 0129a5d427195155dbf9e5bd9c3a2c3930290ca3
+  ref: development
+  sha: 68a30d1bc66a8b09343f3bdcee199c99c6124d04
   specs:
     gitlab (0.1.1)
       alup/rbenv (>= 1.2.0)
