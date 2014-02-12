@@ -3,6 +3,7 @@
   - yaml
 :yaml:
   :datadir: "./hiera"
+:merge_behavior: deeper
 :hierarchy:
   - "nodes/%{::hostname}"
   - "os/%{::operatingsystem}"
