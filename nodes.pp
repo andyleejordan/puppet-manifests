@@ -51,7 +51,7 @@ node default {
   # dependencies
   ensure_packages([ 'git', 'python', 'python-pip', 'zsh' ])
 
-  package { 'virtualenvwrapper':
+  package { [ 'virtualenvwrapper', 'pyrax' ]:
     ensure   => latest,
     provider => pip,
     require  => Package['python-pip']
