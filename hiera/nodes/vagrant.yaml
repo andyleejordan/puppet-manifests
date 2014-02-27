@@ -1,22 +1,31 @@
 ---
 classes:
-  - gitlab
-  - postgresql
-  - postgresql::server
+  - ghost
   - nginx
-  - redis
 
-gitlab::git_email: git@localhost.dev
-gitlab::gitlab_dbtype: pgsql
-gitlab::gitlab_dbname: git
-gitlab::gitlab_dbuser: git
-gitlab::gitlab_dbpwd: "%{hiera('gitlab_dbpwd')}"
-gitlab::gitlab_domain: vagrant
+ghost::blogs:
+  blog_one:
+    production_url: http://first.localhost
+    production_port: 2368
+  blog_two:
+    production_url: http://second.localhost
+    production_port: 2369
 
-postgresql::dbs:
-  git:
-    user: git
-    password: "%{hiera('gitlab_dbpwd')}"
+nginx::nginx_vhosts:
+  first.localhost:
+    proxy: http://127.0.0.1:2368
+    proxy_set_header:
+      - Host $http_host
+      - X-Forwarded-Proto $scheme
+      - X-Forwarded-For $proxy_add_x_forwarded_for
+      - X-Real-IP $remote_addr
+  second.localhost:
+    proxy: http://127.0.0.1:2369
+    proxy_set_header:
+      - Host $http_host
+      - X-Forwarded-Proto $scheme
+      - X-Forwarded-For $proxy_add_x_forwarded_for
+      - X-Real-IP $remote_addr
 
 sudo::sudoers:
   nopassword:
