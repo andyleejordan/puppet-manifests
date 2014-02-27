@@ -11,8 +11,12 @@ classes:
   - redis
   - vsftpd
 
-ghost::environment: production
-ghost::production_url: https://schwartzmeyer.com
+ghost::blogs:
+  andrew:
+    production_url: https://schwartzmeyer.com
+  jackie:
+    production_url: https://jackie.schwartzmeyer.com
+    production_port: 2369
 
 gitlab::git_email: git@suchcodemuchlove.com
 gitlab::gitlab_backup: "%{gitlab::git_home}/backups"
@@ -43,6 +47,16 @@ nginx::nginx_vhosts:
     ssl_key: '/etc/ssl/private/schwartzmeyer.com.key'
     rewrite_www_to_non_www: true
     rewrite_to_https: true
+  jackie.schwartzmeyer.com:
+    proxy: http://127.0.0.1:2369
+    proxy_set_header:
+      - Host $http_host
+      - X-Forwarded-Proto $scheme
+      - X-Forwarded-For $proxy_add_x_forwarded_for
+      - X-Real-IP $remote_addr
+    ssl: true
+    ssl_cert: '/etc/ssl/certs/schwartzmeyer.com.crt'
+    ssl_key: '/etc/ssl/private/schwartzmeyer.com.key'
 
 postgresql::globals::manage_package_repo: true
 postgresql::globals::version: '9.3'
