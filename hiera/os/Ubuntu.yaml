@@ -5,8 +5,6 @@ classes:
   - ubuntu
 
 apt::always_apt_update: true
-apt::purge_sources_list: true
-apt::purge_sources_list_d: true
 
 apt::unattended_upgrades::origins:
   - security
