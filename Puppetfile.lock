@@ -2,7 +2,7 @@ FORGE
   remote: http://forge.puppetlabs.com
   specs:
     alup/rbenv (1.2.0)
-    andschwa/ghost (0.0.5)
+    andschwa/ghost (0.1.0)
       maestrodev/wget (>= 1.1.0)
       puppetlabs/apt (>= 1.4.0)
       puppetlabs/stdlib (>= 4.1.0)
@@ -102,7 +102,7 @@ GIT
 
 DEPENDENCIES
   alup/rbenv (~> 1.2.0)
-  andschwa/ghost (~> 0.0.4)
+  andschwa/ghost (~> 0.1.0)
   andschwa/minecraft (~> 2.1.5)
   andschwa/mumble (~> 0.0.2)
   arnoudj/sudo (~> 1.1.1)
