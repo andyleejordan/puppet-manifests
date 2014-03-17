@@ -2,6 +2,9 @@
 classes:
   - minecraft
 
+denyhosts::always_allow:
+  - 10.0.2.2
+
 minecraft::source: 14w11b
 
 sudo::sudoers:
