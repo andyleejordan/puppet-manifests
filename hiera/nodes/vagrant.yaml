@@ -7,10 +7,19 @@ denyhosts::always_allow:
 
 minecraft::source: 14w11b
 
+ssh_key_defaults:
+  ensure: present
+  type: rsa
+  user:
+    - andrew
+    - vagrant
+
 sudo::sudoers:
   nopassword:
     comment: Users without sudo password prompt
-    users: vagrant
+    users:
+      - vagrant
+      - andrew
     tags:
       - NOPASSWD
       - SETENV
