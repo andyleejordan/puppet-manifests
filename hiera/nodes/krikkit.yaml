@@ -86,8 +86,6 @@ ufw::allows:
     port: 80
   allow-https-from-all:
     port: 443
-  allow-minecraft-from-all:
-    port: 25565
   allow-mumble-from-all:
     port: 64738
   allow-mumble-udp-from-all:
