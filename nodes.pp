@@ -47,11 +47,6 @@ node 'slartibartfast.schwartzmeyer.us' inherits default {
 
 node default {
 
-  # create users
-  $persons = {}
-  $person_defaults = {}
-  create_resources('person', $persons, $person_defaults)
-
   # hiera ssh keys
   $ssh_keys = {}
   $ssh_key_defaults = {}

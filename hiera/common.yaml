@@ -2,6 +2,7 @@
 classes:
   - denyhosts
   - ntp
+  - person
   - ssh::server
   - sudo
   - ufw
@@ -24,25 +25,24 @@ packages:
   - wget
   - unzip
 
-persons:
+person::persons:
   andrew:
     fullname: Andrew Schwartzmeyer
     groups:
       - andrew
       - adm
       - sudo
-    packages: zsh
+    packages:
+      - zsh
     password: 'default_password_for_ci_tests'
-    shell: zsh
-    repo: https://github.com/andschwa/dotfiles
+    shell: '/usr/bin/zsh'
+    repo: git@suchcodemuchlove.com:dotfiles/mr.git
 
 ssh_key_defaults:
   ensure: present
   type: rsa
   user: andrew
 
-ssh_key_defaults:
-  user: andrew
 ssh_keys:
   marvin_andrew:
     name: andrew@marvin.local

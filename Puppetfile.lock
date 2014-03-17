@@ -57,7 +57,7 @@ GIT
 GIT
   remote: git://github.com/andschwa/puppet-person.git
   ref: master
-  sha: 859649040fe55b2b2c9b88b8c39d720f0bcbbe6d
+  sha: 9b1b6a47da81801cc71c8a558db388bdf8f754ef
   specs:
     person (0.0.1)
 
