@@ -32,12 +32,19 @@ gitlab::gitlab_ssl_key: '/etc/ssl/private/suchcodemuchlove.com.key'
 
 mumble::snapshot: true
 
+nginx::nginx_upstreams:
+  schwartzmeyer:
+    members:
+      - localhost:2368
+  jackie:
+    members:
+      - localhost:2369
 nginx::nginx_vhosts:
   idahothegoodlife.com:
     www_root: '/var/www/idahothegoodlife.com'
     rewrite_www_to_non_www: true
   schwartzmeyer.com:
-    proxy: http://127.0.0.1:2368
+    proxy: http://schwartzmeyer
     proxy_set_header:
       - Host $http_host
       - X-Forwarded-Proto $scheme
@@ -49,7 +56,7 @@ nginx::nginx_vhosts:
     rewrite_www_to_non_www: true
     rewrite_to_https: true
   jackie.schwartzmeyer.com:
-    proxy: http://127.0.0.1:2369
+    proxy: http://jackie
     proxy_set_header:
       - Host $http_host
       - X-Forwarded-Proto $scheme
@@ -60,10 +67,12 @@ nginx::nginx_vhosts:
     ssl_key: '/etc/ssl/private/schwartzmeyer.com.key'
 nginx::nginx_locations:
   schwartzmeyer_public:
-    location: '/public'
     vhost: schwartzmeyer.com
-    www_root: '/var/www/public.schwartzmeyer.com'
-    autoindex: 'on'
+    location: '/public/'
+    location_alias: '/var/www/public.schwartzmeyer.com/'
+    location_cfg_append:
+      autoindex: 'on'
+    ssl: true
 
 postgresql::globals::manage_package_repo: true
 postgresql::globals::version: '9.3'
