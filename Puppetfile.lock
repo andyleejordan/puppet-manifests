@@ -38,13 +38,6 @@ FORGE
     thias/vsftpd (0.2.1)
 
 GIT
-  remote: git://github.com/andschwa/puppet-dotfiles.git
-  ref: master
-  sha: e411a1c490ec689b1acab8e05e54940105c4020a
-  specs:
-    dotfiles (0.0.1)
-
-GIT
   remote: git://github.com/andschwa/puppet-gitlab.git
   ref: development
   sha: 68a30d1bc66a8b09343f3bdcee199c99c6124d04
@@ -64,7 +57,7 @@ GIT
 GIT
   remote: git://github.com/andschwa/puppet-person.git
   ref: master
-  sha: 62d2b49e0f9c9db914eb47a7eb82e23af8c02ce5
+  sha: 859649040fe55b2b2c9b88b8c39d720f0bcbbe6d
   specs:
     person (0.0.1)
 
@@ -108,7 +101,6 @@ DEPENDENCIES
   arnoudj/sudo (~> 1.1.1)
   attachmentgenie/ssh (~> 1.2.1)
   attachmentgenie/ufw (~> 1.4.7)
-  dotfiles (>= 0)
   fsalum/redis (~> 0.0.9)
   gitlab (>= 0)
   jfryman/nginx (~> 0.0.7)

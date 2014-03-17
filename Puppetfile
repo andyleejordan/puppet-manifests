@@ -30,7 +30,6 @@ def dev(name)
 end
 
 # GitHub andschwa/modules
-andschwa "dotfiles"
 andschwa "latex"
 andschwa "person"
 andschwa "prosody"

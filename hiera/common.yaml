@@ -2,7 +2,6 @@
 classes:
   - denyhosts
   - ntp
-  - person
   - ssh::server
   - sudo
   - ufw
@@ -25,27 +24,25 @@ packages:
   - wget
   - unzip
 
-person::person: andrew
-person::fullname: Andrew Schwartzmeyer
-person::home: '/home/andrew'
-person::groups:
-  - andrew
-  - adm
-  - sudo
-person::password: 'default_password_for_ci_tests'
-person::directories:
-  - '/home/andrew/bin'
-  - '/home/andrew/.ssh'
-person::dotfiles_repo: https://github.com/andschwa/dotfiles.git
-person::fresh_repo: https://github.com/andschwa/fresh.git
-person::fresh_path: '.fresh/source/andschwa/fresh'
-person::emacs_d_repo: https://github.com/andschwa/emacs.d.git
+persons:
+  andrew:
+    fullname: Andrew Schwartzmeyer
+    groups:
+      - andrew
+      - adm
+      - sudo
+    packages: zsh
+    password: 'default_password_for_ci_tests'
+    shell: zsh
+    repo: https://github.com/andschwa/dotfiles
 
 ssh_key_defaults:
   ensure: present
   type: rsa
   user: andrew
 
+ssh_key_defaults:
+  user: andrew
 ssh_keys:
   marvin_andrew:
     name: andrew@marvin.local
