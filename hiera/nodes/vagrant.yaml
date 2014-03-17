@@ -1,31 +1,8 @@
 ---
 classes:
-  - ghost
-  - nginx
+  - minecraft
 
-ghost::blogs:
-  blog_one:
-    production_url: http://first.localhost
-    production_port: 2368
-  blog_two:
-    production_url: http://second.localhost
-    production_port: 2369
-
-nginx::nginx_vhosts:
-  first.localhost:
-    proxy: http://127.0.0.1:2368
-    proxy_set_header:
-      - Host $http_host
-      - X-Forwarded-Proto $scheme
-      - X-Forwarded-For $proxy_add_x_forwarded_for
-      - X-Real-IP $remote_addr
-  second.localhost:
-    proxy: http://127.0.0.1:2369
-    proxy_set_header:
-      - Host $http_host
-      - X-Forwarded-Proto $scheme
-      - X-Forwarded-For $proxy_add_x_forwarded_for
-      - X-Real-IP $remote_addr
+minecraft::source: 14w11b
 
 sudo::sudoers:
   nopassword:
@@ -37,12 +14,12 @@ sudo::sudoers:
 
 ufw::allows:
   allow-mosh:
-    from: 192.168.0.0/24
+    from: 192.168.0.0/16
     proto: udp
     port: 60000:61000
   allow-ssh:
-    from: 192.168.0.0/24
+    from: 192.168.0.0/16
     port: 2222
-  allow-http-from-local:
-    from: 192.168.0.0/24
-    port: 80
+  allow-minecraft-from-all:
+    from: 192.168.0.0/16
+    port: 25565

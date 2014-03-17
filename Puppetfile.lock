@@ -96,7 +96,7 @@ GIT
 DEPENDENCIES
   alup/rbenv (~> 1.2.0)
   andschwa/ghost (~> 0.1.0)
-  andschwa/minecraft (~> 2.1.5)
+  andschwa/minecraft (~> 2.1.6)
   andschwa/mumble (~> 0.0.2)
   arnoudj/sudo (~> 1.1.1)
   attachmentgenie/ssh (~> 1.2.1)
