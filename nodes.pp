@@ -22,18 +22,26 @@ node 'slartibartfast.schwartzmeyer.us' inherits default {
 
   # shared VBox folder backup
   $backup_path = '/mnt/backup'
+  $stuff_path  = '/mnt/stuff'
 
-  file { $backup_path:
+  file { [$backup_path, $stuff_path]:
     ensure  => directory,
   }
 
-  mount { $backup_path:
+  Mount {
     ensure    => mounted,
     fstype    => 'vboxsf',
-    device    => 'backup',
     options   => [ 'rw', 'uid=andrew', 'gid=andrew' ],
+  }
+
+  mount { $backup_path:
+    device    => 'backup',
     subscribe => File[$backup_path],
-    require   => User['andrew'],
+  }
+
+  mount { $stuff_path:
+    device    => 'stuff',
+    subscribe => File[$stuff_path],
   }
 }
 
@@ -54,7 +62,7 @@ node default {
   ensure_packages($packages)
 
   # dependencies
-  ensure_packages([ 'git', 'python', 'python-pip', 'zsh' ])
+  ensure_packages(['git', 'python', 'python-pip', 'zsh'])
 
   package { [ 'virtualenvwrapper', 'pyrax' ]:
     ensure   => latest,
