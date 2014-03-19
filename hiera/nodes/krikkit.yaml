@@ -69,7 +69,7 @@ nginx::nginx_locations:
   schwartzmeyer_public:
     vhost: schwartzmeyer.com
     location: '/public/'
-    location_alias: '/var/www/public.schwartzmeyer.com/'
+    location_alias: '/var/www/public/'
     location_cfg_append:
       autoindex: 'on'
     ssl: true
@@ -103,17 +103,19 @@ ufw::allows:
 
 vsftpd::template: vsftpd/empty.conf.erb
 vsftpd::directives:
-  anonymous_enable: 'NO'
+  allow_anon_ssl: 'YES'
   dual_log_enable: 'YES'
   force_dot_files: 'YES'
   guest_enable: 'YES'
   hide_ids: 'YES'
   listen: 'YES'
   local_enable: 'YES'
+  no_anon_password: 'YES'
   ssl_enable: 'YES'
   use_localtime: 'YES'
   write_enable: 'YES'
   virtual_use_local_privs: 'YES'
+  anon_root: '/var/www/public'
   max_clients: 10
   ftpd_banner: Welcome to this awesome server, friend!
   local_root: '/var/www/virtual/$USER'
