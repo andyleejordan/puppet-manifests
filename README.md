@@ -71,3 +71,19 @@ continuous integration.
         * compile `ruby1.9.3-v484` for `$git_user`
         * `rbenv::gem` for `charlock_holmes` instead of gem package
         * `~git/.rbenv/shims` in front of exec_path
+
+## vsftpd
+
+Manual steps needed to setup virtual users:
+
+* Install `db-util`
+* Create user/pass alternating list at `/etc/vsftpd/virtual_users`
+* `db_load -T -t hash -f virtual_users virtual_users.db`
+* `chmod 600 virtual_users.db`
+* `chown -R ftp:ftp /var/www/virtual`
+* Set `/etc/pam.d/vsftpd` to:
+```
+auth    required        pam_userdb.so db=/etc/vsftpd/virtual_users
+account required        pam_userdb.so db=/etc/vsftpd/virtual_users
+session required        pam_loginuid.so
+```

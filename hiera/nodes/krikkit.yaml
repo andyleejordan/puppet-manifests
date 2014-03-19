@@ -103,12 +103,21 @@ ufw::allows:
 
 vsftpd::template: vsftpd/empty.conf.erb
 vsftpd::directives:
-  listen: 'YES'
-  use_localtime: 'YES'
-  max_clients: 10
+  anonymous_enable: 'NO'
   dual_log_enable: 'YES'
+  force_dot_files: 'YES'
+  guest_enable: 'YES'
+  hide_ids: 'YES'
+  listen: 'YES'
+  local_enable: 'YES'
+  ssl_enable: 'YES'
+  use_localtime: 'YES'
+  write_enable: 'YES'
+  virtual_use_local_privs: 'YES'
+  max_clients: 10
+  ftpd_banner: Welcome to this awesome server, friend!
+  local_root: '/var/www/virtual/$USER'
+  nopriv_user: ftp
   rsa_cert_file: '/etc/ssl/certs/schwartzmeyer.com.crt'
   rsa_private_key_file: '/etc/ssl/private/schwartzmeyer.com.key'
-  ssl_enable: 'YES'
-  allow_anon_ssl: 'YES'
-  no_anon_password: 'YES'
+  user_sub_token: '$USER'
