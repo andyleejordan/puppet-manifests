@@ -91,6 +91,8 @@ ufw::allows:
     port: 20
   allow-ftp-listen-from-all:
     port: 21
+  allow-ftp-passive-from-all:
+    port: 42000:42256
   allow-http-from-all:
     port: 80
   allow-https-from-all:
@@ -104,6 +106,7 @@ ufw::allows:
 vsftpd::template: vsftpd/empty.conf.erb
 vsftpd::directives:
   allow_anon_ssl: 'YES'
+  connect_from_port_20: 'YES'
   dual_log_enable: 'YES'
   force_dot_files: 'YES'
   guest_enable: 'YES'
@@ -117,6 +120,8 @@ vsftpd::directives:
   virtual_use_local_privs: 'YES'
   anon_root: '/var/www/public'
   max_clients: 10
+  pasv_min_port: 42000
+  pasv_max_port: 42256
   ftpd_banner: Welcome to this awesome server, friend!
   local_root: '/var/www/virtual/$USER'
   nopriv_user: ftp
