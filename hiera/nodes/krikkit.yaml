@@ -117,14 +117,14 @@ vsftpd::directives:
   no_anon_password: 'YES'
   ssl_enable: 'YES'
   use_localtime: 'YES'
-  write_enable: 'YES'
+  write_enable: 'NO'
   virtual_use_local_privs: 'YES'
   anon_root: '/var/www/public'
   max_clients: 10
   pasv_min_port: 42000
   pasv_max_port: 42256
   ftpd_banner: Welcome to this awesome server, friend!
-  local_root: '/var/www/virtual/$USER'
+  local_root: '/home/virtual/$USER'
   nopriv_user: ftp
   rsa_cert_file: '/etc/ssl/certs/schwartzmeyer.com.crt'
   rsa_private_key_file: '/etc/ssl/private/schwartzmeyer.com.key'
