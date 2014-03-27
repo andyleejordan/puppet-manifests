@@ -128,4 +128,5 @@ vsftpd::directives:
   nopriv_user: ftp
   rsa_cert_file: '/etc/ssl/certs/schwartzmeyer.com.crt'
   rsa_private_key_file: '/etc/ssl/private/schwartzmeyer.com.key'
+  user_config_dir: '/etc/vsftpd/user_conf'
   user_sub_token: '$USER'
