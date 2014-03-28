@@ -5,10 +5,6 @@ node 'vagrant' inherits default {
 
 node 'krikkit.schwartzmeyer.com' inherits default {
 
-  prosody::virtualhost { 'schwartzmeyer.com':
-    ensure   => present,
-  }
-
   vcsrepo { '/var/www/idahothegoodlife.com':
     ensure   => latest,
     provider => git,
@@ -46,7 +42,6 @@ node 'slartibartfast.schwartzmeyer.us' inherits default {
 }
 
 node default {
-
   # hiera ssh keys
   $ssh_keys = {}
   $ssh_key_defaults = {}

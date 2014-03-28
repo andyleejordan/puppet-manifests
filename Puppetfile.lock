@@ -18,7 +18,7 @@ FORGE
     attachmentgenie/ufw (1.4.7)
       puppetlabs/stdlib (>= 2.2.1)
     fsalum/redis (0.0.9)
-    jfryman/nginx (0.0.7)
+    jfryman/nginx (0.0.9)
       puppetlabs/apt (>= 1.0.0)
       puppetlabs/concat (>= 1.0.0)
       puppetlabs/stdlib (>= 0.1.6)
@@ -75,7 +75,7 @@ GIT
 GIT
   remote: git://github.com/andschwa/puppet-prosody.git
   ref: master
-  sha: 6641f07b83790dd5e32e35d5575892c0cf3bb1a7
+  sha: 267367d69c04cf7ceacd225af64f047b818b9717
   specs:
     prosody (0.0.1)
 

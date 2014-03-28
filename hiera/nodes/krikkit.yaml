@@ -3,11 +3,11 @@ classes:
   - ghost
   - gitlab
   - mumble
+  - nginx
   - postgresql
   - postgresql::globals
   - postgresql::server
   - prosody
-  - nginx
   - redis
   - vsftpd
 
@@ -85,7 +85,31 @@ postgresql::dbs:
 person::groups:
   - git
 
+prosody::admins:
+    - andrew@schwartzmeyer.com
+prosody::ssl_protocol: sslv23
+prosody::ssl_options:
+  - no_sslv2
+  - no_ticket
+  - no_compression
+  - cipher_server_preference
+  - single_dh_use
+  - single_ecdh_use
+prosody::ssl_ciphers: 'HIGH+kEDH:HIGH+kEECDH:HIGH:!PSK:!SRP:!3DES:!aNULL'
+prosody::ssl_curve: secp384r1
+prosody::modules:
+  - offline
+prosody::virtualhosts:
+  schwartzmeyer.com:
+    ssl_cert: '/etc/ssl/certs/schwartzmeyer.com.crt'
+    ssl_key: '/etc/ssl/private/schwartzmeyer.com.key'
+
 ubuntu::location: http://mirrors.digitalocean.com/ubuntu/
+ubuntu::sources:
+  prosody:
+    location: http://packages.prosody.im/debian
+    repos: main
+    key: 74D9DBB5
 
 ufw::allows:
   allow-ftp-data-from-all:
@@ -103,6 +127,8 @@ ufw::allows:
   allow-mumble-udp-from-all:
     proto: udp
     port: 64738
+  allow-prosody-from-all:
+    port: 5222
 
 vsftpd::template: vsftpd/empty.conf.erb
 vsftpd::directives:
