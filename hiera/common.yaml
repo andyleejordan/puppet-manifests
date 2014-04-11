@@ -1,13 +1,10 @@
 ---
 classes:
-  - denyhosts
   - ntp
   - person
   - ssh::server
   - sudo
   - ufw
-
-denyhosts::use_sync: true
 
 gitlab_dbpwd: password_for_ci_tests
 
@@ -22,6 +19,7 @@ packages:
   - mosh
   - silversearcher-ag
   - sqlite
+  - sshguard
   - wget
   - unzip
 
