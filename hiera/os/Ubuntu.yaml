@@ -30,9 +30,9 @@ ubuntu::sources:
     repos: main dependencies
     key: 4BD6EC30
 ubuntu::ppas:
-  ppa:duplicity-team/ppa: {} 
-  ppa:git-core/ppa: {} 
-  ppa:keithw/mosh: {} 
-  ppa:lvillani/silversearcher: {} 
+  ppa:duplicity-team/ppa: {}
+  ppa:git-core/ppa: {}
+  ppa:keithw/mosh: {}
+  ppa:lvillani/silversearcher: {}
 ubuntu::repos: main universe
 ubuntu::location: http://archive.ubuntu.com/ubuntu/
