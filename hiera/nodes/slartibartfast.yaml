@@ -9,13 +9,16 @@ minecraft::white_list: true
 minecraft::difficulty: 2
 minecraft::pvp: false
 minecraft::motd: Managed by Puppet, with Hiera!
-minecraft::ops: 
+minecraft::ops:
   - aerosabre
   - datescreepers
+minecraft::white_list_players:
   - ianwestrope
+  - wyndham
+  - missnyankitty
 minecraft::plugins:
   dynmap:
-    source: http://dev.bukkit.org/media/files/757/982/dynmap-1.9.1.jar
+    source: http://dev.bukkit.org/media/files/777/731/dynmap-1.9.3.jar
   myultrawarps:
     source: http://dev.bukkit.org/media/files/769/247/myUltraWarps.jar
 
