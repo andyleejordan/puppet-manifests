@@ -87,3 +87,20 @@ auth    required        pam_userdb.so db=/etc/vsftpd/virtual_users
 account required        pam_userdb.so db=/etc/vsftpd/virtual_users
 session required        pam_loginuid.so
 ```
+
+## OpenSSL
+
+### Key and Cert Generation
+
+[DigitalOcean Guide](https://www.digitalocean.com/community/articles/how-to-create-a-ssl-certificate-on-nginx-for-ubuntu-12-04)
+
+```
+openssl req -new -newkey rsa:2048 -nodes -keyout domain.key -out domain.csr
+```
+### Certificate Bundle
+
+[Comodo](https://support.comodo.com/index.php?_a=viewarticle&_m=knowledgebase&kbarticleid=1365)
+
+```
+cat www_yourdomain_com.crt ComodoHigh-AssuranceSecureServerCA.crt AddTrustExternalCARoot.crt >> ssl-bundle.crt
+```
