@@ -1,22 +1,6 @@
 ---
 classes:
   - nginx
-  - postgresql
-  - postgresql::globals
-  - postgresql::server
-  - stringer
-
-denyhosts::always_allow:
-  - 10.0.2.2
-
-postgresql::globals::manage_package_repo: true
-postgresql::globals::version: '9.3'
-postgresql::dbs:
-  stringer-live:
-    user: stringer
-    password: test
-
-stringer::db_password: test
 
 ssh_key_defaults:
   ensure: present
