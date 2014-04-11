@@ -43,18 +43,19 @@ node 'slartibartfast.schwartzmeyer.us' inherits default {
 
 node default {
   # hiera ssh keys
-  $ssh_keys = {}
-  $ssh_key_defaults = {}
+  $ssh_keys = hiera('ssh_keys')
+  $ssh_key_defaults = hiera('ssh_key_defaults')
   create_resources('ssh_authorized_key', $ssh_keys, $ssh_key_defaults)
 
   # hiera packages
-  $packages = []
-  ensure_packages($packages)
+  $common_packages = hiera('common_packages')
+  ensure_packages($common_packages)
 
   # dependencies
-  ensure_packages(['git', 'python', 'python-pip', 'zsh'])
+  ensure_packages(['git', 'python', 'python-pip'])
 
-  package { [ 'virtualenvwrapper', 'pyrax' ]:
+  $common_pip_packages = hiera('common_pip_packages')
+  package { $common_pip_packages:
     ensure   => latest,
     provider => pip,
     require  => Package['python-pip']

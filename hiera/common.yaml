@@ -8,7 +8,7 @@ classes:
 
 gitlab_dbpwd: password_for_ci_tests
 
-packages:
+common_packages:
   - aptitude
   - curl
   - duplicity
@@ -22,6 +22,11 @@ packages:
   - sshguard
   - wget
   - unzip
+  - zsh
+
+common_pip_packages:
+  - pyrax
+  - virtualenvwrapper
 
 person::persons:
   andrew:
