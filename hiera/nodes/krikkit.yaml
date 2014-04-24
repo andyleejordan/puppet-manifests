@@ -67,12 +67,14 @@ nginx::nginx_vhosts:
     ssl_cert: '/etc/ssl/certs/schwartzmeyer.com.crt'
     ssl_key: '/etc/ssl/private/schwartzmeyer.com.key'
 nginx::nginx_locations:
-  schwartzmeyer_public:
+  schwartzmeyer_files:
     vhost: schwartzmeyer.com
-    location: '/public/'
-    location_alias: '/var/www/public/'
+    location: '/files/'
+    location_alias: '/var/www/files/'
     location_cfg_append:
       autoindex: 'on'
+      autoindex_exact_size: 'off'
+      autoindex_localtime: 'on'
     ssl: true
 
 postgresql::globals::manage_package_repo: true
