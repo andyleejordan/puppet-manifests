@@ -15,7 +15,7 @@ FORGE
     arnoudj/sudo (1.1.2)
     attachmentgenie/ssh (1.2.2)
       puppetlabs/stdlib (>= 2.2.1)
-    attachmentgenie/ufw (1.4.7)
+    attachmentgenie/ufw (1.4.8)
       puppetlabs/stdlib (>= 2.2.1)
     fsalum/redis (0.0.9)
     jfryman/nginx (0.0.9)
