@@ -19,9 +19,9 @@ ghost::blogs:
     production_port: 2369
 
 gitlab::git_email: git@suchcodemuchlove.com
-gitlab::gitlab_branch: v6.7.2
-gitlab::gitlabshell_branch: v1.9.1
+gitlab::gitlab_branch: v6.8.1
 gitlab::gitlab_manage_nginx: false
+gitlab::gitlabshell_branch: v1.9.3
 gitlab::gitlab_backup: "%{gitlab::git_home}/backups"
 gitlab::gitlab_dbtype: pgsql
 gitlab::gitlab_dbname: git
