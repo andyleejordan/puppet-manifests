@@ -36,3 +36,14 @@ ubuntu::ppas:
   ppa:lvillani/silversearcher: {}
 ubuntu::repos: main universe
 ubuntu::location: http://archive.ubuntu.com/ubuntu/
+
+ufw::allows:
+  allow-mosh:
+    proto: udp
+    port: 60000:61000
+  allow-ssh:
+    port: 22
+
+ufw::limits:
+  limit-ssh-from-all:
+    name: 22

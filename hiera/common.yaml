@@ -4,7 +4,6 @@ classes:
   - person
   - ssh::server
   - sudo
-  - ufw
 
 gitlab_dbpwd: password_for_ci_tests
 
@@ -65,14 +64,3 @@ sudo::sudoers:
     tags:
       - NOPASSWD
       - SETENV
-
-ufw::allows:
-  allow-mosh:
-    proto: udp
-    port: 60000:61000
-  allow-ssh:
-    port: 22
-
-ufw::limits:
-  limit-ssh-from-all:
-    name: 22

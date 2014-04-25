@@ -2,6 +2,7 @@
 classes:
   - minecraft
   - nginx
+  - ufw
 
 minecraft::source: beta
 minecraft::heap_size: 2048

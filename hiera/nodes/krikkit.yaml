@@ -9,6 +9,7 @@ classes:
   - postgresql::server
   - prosody
   - redis
+  - ufw
   - vsftpd
 
 ghost::blogs:
