@@ -46,17 +46,26 @@ nginx::nginx_upstreams:
     members:
       - unix:/home/git/gitlab/tmp/sockets/gitlab.socket
 
+nginx::proxy_cache_path: '/var/www/cache'
+nginx::proxy_cache_keys_zone: STATIC:100m
+nginx::proxy_cache_max_size: 2g
+nginx::proxy_cache_inactive: 24h
+nginx::client_max_body_size: 20m
+nginx::proxy_set_header:
+  - Host $host
+  - X-Real-IP $remote_addr
+  - X-Forwarded-For $proxy_add_x_forwarded_for
+  - X-Forwarded-Proto $scheme
+nginx::http_cfg_append:
+  proxy_cache: STATIC
+nginx::server_tokens: 'off'
+
 nginx::nginx_vhosts:
   idahothegoodlife.com:
     www_root: '/var/www/idahothegoodlife.com'
     rewrite_www_to_non_www: true
   schwartzmeyer.com:
     proxy: http://schwartzmeyer
-    proxy_set_header:
-      - Host $http_host
-      - X-Forwarded-Proto $scheme
-      - X-Forwarded-For $proxy_add_x_forwarded_for
-      - X-Real-IP $remote_addr
     ssl: true
     ssl_cert: '/etc/ssl/certs/schwartzmeyer.com.crt'
     ssl_key: '/etc/ssl/private/schwartzmeyer.com.key'
@@ -64,24 +73,18 @@ nginx::nginx_vhosts:
     rewrite_to_https: true
   jackie.schwartzmeyer.com:
     proxy: http://jackie
-    proxy_set_header:
-      - Host $http_host
-      - X-Forwarded-Proto $scheme
-      - X-Forwarded-For $proxy_add_x_forwarded_for
-      - X-Real-IP $remote_addr
     ssl: true
     ssl_cert: '/etc/ssl/certs/schwartzmeyer.com.crt'
     ssl_key: '/etc/ssl/private/schwartzmeyer.com.key'
   suchcodemuchlove.com:
     www_root: '/home/git/gitlab/public'
-    client_max_body_size: '20m'
+    client_max_body_size: 20m
     try_files:
       - '$uri'
       - '$uri/index.html'
       - '$uri.html'
       - '@gitlab'
     vhost_cfg_append:
-      server_tokens: 'off'
       error_page: '502 /502.html'
     ssl: true
     ssl_cert: '/etc/ssl/certs/suchcodemuchlove.com.crt'
@@ -107,11 +110,6 @@ nginx::nginx_locations:
     location_cfg_append:
       proxy_connect_timeout: '300'
       proxy_redirect: 'off'
-      proxy_set_header:
-        - Host $http_host
-        - X-Forwarded-Proto $scheme
-        - X-Forwarded-For $proxy_add_x_forwarded_for
-        - X-Real-IP $remote_addr
     ssl: true
   suchcodemuchlove_assets:
     vhost: suchcodemuchlove.com
