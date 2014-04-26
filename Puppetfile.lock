@@ -2,7 +2,7 @@ FORGE
   remote: http://forge.puppetlabs.com
   specs:
     alup/rbenv (1.2.0)
-    andschwa/ghost (0.1.0)
+    andschwa/ghost (0.1.1)
       maestrodev/wget (>= 1.1.0)
       puppetlabs/apt (>= 1.4.0)
       puppetlabs/stdlib (>= 4.1.0)
@@ -34,12 +34,13 @@ FORGE
       puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/stdlib (4.1.0)
     puppetlabs/vcsrepo (0.2.0)
+    thias/postfix (0.3.2)
     thias/vsftpd (0.2.1)
 
 GIT
   remote: git://github.com/andschwa/puppet-gitlab.git
   ref: development
-  sha: 0a3a915a461fbf34664ee086532676548a556c60
+  sha: d983507c02f3a13cb2ba3124e4ba3493bbec0ee4
   specs:
     gitlab (0.1.3)
       alup/rbenv (>= 1.2.0)
@@ -94,7 +95,7 @@ GIT
 
 DEPENDENCIES
   alup/rbenv (~> 1.2.0)
-  andschwa/ghost (~> 0.1.0)
+  andschwa/ghost (~> 0.1.1)
   andschwa/minecraft (~> 2.1.6)
   andschwa/mumble (~> 0.0.2)
   arnoudj/sudo (~> 1.1.1)
@@ -115,6 +116,7 @@ DEPENDENCIES
   puppetlabs/stdlib (~> 4.1.0)
   puppetlabs/vcsrepo (~> 0.2.0)
   redis (>= 0)
+  thias/postfix (~> 0.3.2)
   thias/vsftpd (~> 0.2.0)
   ubuntu (>= 0)
 

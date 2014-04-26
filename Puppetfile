@@ -40,7 +40,7 @@ andschwa "postgresql", :ref => 'client-package-hotfix'
 
 # Forge modules
 mod "alup/rbenv",                "~> 1.2.0"
-mod "andschwa/ghost",            "~> 0.1.0"
+mod "andschwa/ghost",            "~> 0.1.1"
 mod "andschwa/minecraft",        "~> 2.1.6"
 mod "andschwa/mumble",           "~> 0.0.2"
 mod "arnoudj/sudo",              "~> 1.1.1"
@@ -55,4 +55,5 @@ mod "puppetlabs/java",           "~> 1.0.1"
 mod "puppetlabs/ntp",            "~> 3.0.1"
 mod "puppetlabs/stdlib",         "~> 4.1.0"
 mod "puppetlabs/vcsrepo",        "~> 0.2.0"
+mod "thias/postfix",             "~> 0.3.2"
 mod "thias/vsftpd",              "~> 0.2.0"

@@ -4,6 +4,7 @@ classes:
   - gitlab
   - mumble
   - nginx
+  - postfix::server
   - postgresql
   - postgresql::globals
   - postgresql::server
@@ -15,13 +16,16 @@ classes:
 ghost::blogs:
   andrew:
     production_url: https://schwartzmeyer.com
+    transport: sendmail
   jackie:
     production_url: https://jackie.schwartzmeyer.com
     production_port: 2369
+    transport: sendmail
 
 gitlab::git_email: git@suchcodemuchlove.com
 gitlab::gitlab_branch: v6.8.1
 gitlab::gitlab_manage_nginx: false
+gitlab::gitlab_ensure_postfix: false
 gitlab::gitlabshell_branch: v1.9.3
 gitlab::gitlab_backup: "%{gitlab::git_home}/backups"
 gitlab::gitlab_dbtype: pgsql
@@ -120,6 +124,9 @@ nginx::nginx_locations:
       expires: max
       add_header: Cache-Control public
     ssl: true
+
+postfix::server::myhostname: schwartzmeyer.com
+postfix::server::mydestination: schwartzmeyer.com, localhost
 
 postgresql::globals::manage_package_repo: true
 postgresql::globals::version: '9.3'
