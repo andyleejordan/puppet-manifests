@@ -1,6 +1,36 @@
 ---
 classes:
+  - ghost
   - nginx
+  - postfix::server
+
+ghost::blogs:
+  test:
+    production_url: http://vagrant
+    transport: sendmail
+
+nginx::proxy_cache_path: '/var/www/cache'
+nginx::proxy_cache_keys_zone: STATIC:100m
+nginx::proxy_cache_max_size: 2g
+nginx::proxy_cache_inactive: 24h
+nginx::client_max_body_size: 20m
+nginx::proxy_set_header:
+  - Host $host
+  - X-Real-IP $remote_addr
+  - X-Forwarded-For $proxy_add_x_forwarded_for
+  - X-Forwarded-Proto $scheme
+nginx::http_cfg_append:
+  proxy_cache: STATIC
+nginx::server_tokens: 'off'
+
+nginx::nginx_upstreams:
+  ghost:
+    members:
+      - localhost:2368
+
+nginx::nginx_vhosts:
+  vagrant:
+    proxy: http://ghost
 
 ssh_key_defaults:
   ensure: present
@@ -18,15 +48,3 @@ sudo::sudoers:
     tags:
       - NOPASSWD
       - SETENV
-
-ufw::allows:
-  allow-mosh:
-    from: 192.168.0.0/16
-    proto: udp
-    port: 60000:61000
-  allow-ssh:
-    from: 192.168.0.0/16
-    port: 2222
-  allow-stringer:
-    from: 192.168.0.0/16
-    port: 9393
