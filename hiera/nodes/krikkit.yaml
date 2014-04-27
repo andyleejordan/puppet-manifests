@@ -26,7 +26,7 @@ gitlab::git_email: git@suchcodemuchlove.com
 gitlab::gitlab_branch: v6.8.1
 gitlab::gitlab_manage_nginx: false
 gitlab::gitlab_ensure_postfix: false
-gitlab::gitlabshell_branch: v1.9.3
+gitlab::gitlabshell_branch: v1.9.4
 gitlab::gitlab_backup: "%{gitlab::git_home}/backups"
 gitlab::gitlab_dbtype: pgsql
 gitlab::gitlab_dbname: git
