@@ -62,6 +62,8 @@ nginx::proxy_set_header:
   - X-Forwarded-Proto $scheme
 nginx::http_cfg_append:
   proxy_cache: STATIC
+  add_header: X-Cache-Status $upstream_cache_status
+  proxy_hide_header: Etag
 nginx::server_tokens: 'off'
 
 nginx::nginx_vhosts:
@@ -69,7 +71,7 @@ nginx::nginx_vhosts:
     www_root: '/var/www/idahothegoodlife.com'
     rewrite_www_to_non_www: true
   schwartzmeyer.com:
-    proxy: http://schwartzmeyer
+    use_default_location: false
     ssl: true
     ssl_cert: '/etc/ssl/certs/schwartzmeyer.com.crt'
     ssl_key: '/etc/ssl/private/schwartzmeyer.com.key'
@@ -82,7 +84,6 @@ nginx::nginx_vhosts:
     ssl_key: '/etc/ssl/private/schwartzmeyer.com.key'
   suchcodemuchlove.com:
     www_root: '/home/git/gitlab/public'
-    client_max_body_size: 20m
     try_files:
       - '$uri'
       - '$uri/index.html'
@@ -97,6 +98,14 @@ nginx::nginx_vhosts:
     rewrite_to_https: true
 
 nginx::nginx_locations:
+  schwartzmeyer_root:
+    vhost: schwartzmeyer.com
+    location: '/'
+    proxy: http://schwartzmeyer
+    location_cfg_append:
+      proxy_ignore_headers: '"Set-Cookie"'
+      proxy_hide_header: '"Set-Cookie"'
+    ssl: true
   schwartzmeyer_files:
     vhost: schwartzmeyer.com
     location: '/files/'
@@ -105,6 +114,22 @@ nginx::nginx_locations:
       autoindex: 'on'
       autoindex_exact_size: 'off'
       autoindex_localtime: 'on'
+    ssl: true
+  schwartzmeyer_assets:
+    vhost: schwartzmeyer.com
+    location: '~* \.(jpg|jpeg|png|gif|ico|css|js|eot|woff)$'
+    proxy: http://schwartzmeyer
+    location_cfg_append:
+      proxy_ignore_headers: "Cache-Control"
+      expires: max
+    ssl: true
+  schwartzmeyer_admin:
+    vhost: schwartzmeyer.com
+    location: '~ ^/ghost'
+    proxy: http://schwartzmeyer
+    location_cfg_append:
+      expires: '0'
+      add_header: 'Cache-Control "no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0"'
     ssl: true
   suchcodemuchlove_proxy:
     vhost: suchcodemuchlove.com
