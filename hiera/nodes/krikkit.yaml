@@ -150,8 +150,11 @@ nginx::nginx_locations:
       add_header: Cache-Control public
     ssl: true
 
-postfix::server::myhostname: schwartzmeyer.com
-postfix::server::mydestination: schwartzmeyer.com, localhost
+postfix::server::myhostname: suchcodemuchlove.com
+postfix::server::mydomain: suchcodemuchlove.com
+postfix::server::ssl: true
+postfix::server::smtpd_tls_cert_file: '/etc/ssl/certs/suchcodemuchlove.com.crt'
+postfix::server::smtpd_tls_key_file: '/etc/ssl/private/suchcodemuchlove.com.key'
 
 postgresql::globals::manage_package_repo: true
 postgresql::globals::version: '9.3'
