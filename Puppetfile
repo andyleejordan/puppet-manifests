@@ -31,30 +31,30 @@ def dev(name)
 end
 
 # GitHub andschwa/modules
-andschwa "latex"
-andschwa "person"
-andschwa "prosody"
-andschwa "redis"
-andschwa "ubuntu"
-andschwa "gitlab", :ref => 'development'
-andschwa "postgresql", :ref => 'client-package-hotfix'
+github 'andschwa', 'gitlab', :ref => 'development'
+github 'andschwa', 'latex'
+github 'andschwa', 'person'
+github 'andschwa', 'postgresql', :ref => 'client-package-hotfix'
+github 'andschwa', 'prosody'
+github 'andschwa', 'redis'
+github 'andschwa', 'ubuntu'
+github 'thias', 'postfix'
 
 # Forge modules
-mod "alup/rbenv",                "~> 1.2.0"
-mod "andschwa/ghost",            "~> 0.1.3"
-mod "andschwa/minecraft",        "~> 2.1.6"
-mod "andschwa/mumble",           "~> 0.0.2"
-mod "arnoudj/sudo",              "~> 1.1.1"
-mod "attachmentgenie/ssh",       "~> 1.2.1"
-mod "attachmentgenie/ufw",       "~> 1.4.7"
-mod "fsalum/redis",              "~> 0.0.9"
-mod "jfryman/nginx",             "~> 0.0.7"
-mod "maestrodev/wget",           "~> 1.3.1"
-mod "puppetlabs/apt",            "~> 1.4.0"
-mod "puppetlabs/concat",         "~> 1.1.0"
-mod "puppetlabs/java",           "~> 1.0.1"
-mod "puppetlabs/ntp",            "~> 3.0.1"
-mod "puppetlabs/stdlib",         "~> 4.1.0"
-mod "puppetlabs/vcsrepo",        "~> 0.2.0"
-mod "thias/postfix",             "~> 0.3.2"
-mod "thias/vsftpd",              "~> 0.2.0"
+mod 'alup/rbenv',                '~> 1.2.0'
+mod 'andschwa/ghost',            '~> 0.1.3'
+mod 'andschwa/minecraft',        '~> 2.1.6'
+mod 'andschwa/mumble',           '~> 0.0.2'
+mod 'arnoudj/sudo',              '~> 1.1.1'
+mod 'attachmentgenie/ssh',       '~> 1.2.1'
+mod 'attachmentgenie/ufw',       '~> 1.4.7'
+mod 'fsalum/redis',              '~> 0.0.9'
+mod 'jfryman/nginx',             '~> 0.0.7'
+mod 'maestrodev/wget',           '~> 1.3.1'
+mod 'puppetlabs/apt',            '~> 1.4.0'
+mod 'puppetlabs/concat',         '~> 1.1.0'
+mod 'puppetlabs/java',           '~> 1.0.1'
+mod 'puppetlabs/ntp',            '~> 3.0.1'
+mod 'puppetlabs/stdlib',         '~> 4.1.0'
+mod 'puppetlabs/vcsrepo',        '~> 0.2.0'
+mod 'thias/vsftpd',              '~> 0.2.0'
