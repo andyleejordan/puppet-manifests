@@ -8,20 +8,20 @@
 forge "http://forge.puppetlabs.com"
 
 # Shortcut for a module from andschwa's GitHub account
-def andschwa(name, *args)
+def github(user, name, *args)
   options ||= if args.last.is_a? Hash
                 args.last
               else
                 {}
               end
   if path = options.delete(:path)
-    mod name, :path => path
+    mod user + '/' + name, :path => path
   else
-    options[:repo] ||= "git://github.com/andschwa/puppet-#{name}.git"
+    options[:repo] ||= "git://github.com/#{user}/puppet-#{name}.git"
     options[:ref] ||= if not options.has_key?('ref')
                         'master'
                       end
-    mod name, :git => options[:repo], :ref => options[:ref]
+    mod user + '/' + name, :git => options[:repo], :ref => options[:ref]
   end
 end
 
