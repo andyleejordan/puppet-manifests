@@ -1,10 +1,21 @@
 ---
 classes:
+  - amavis
+  - amavis::config
+  - clamav
+  - dovecot
+  - dovecot::auth
+  - dovecot::base
+  - dovecot::imap
+  - dovecot::mail
+  - dovecot::master
+  - dovecot::ssl
   - ghost
   - gitlab
   - mumble
   - nginx
-  - postfix::server
+  - postfix
+  - postfix::config
   - postgresql
   - postgresql::globals
   - postgresql::server
