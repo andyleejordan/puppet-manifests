@@ -2,7 +2,6 @@
 classes:
   - ghost
   - nginx
-  - postfix::server
 
 ghost::blogs:
   test:
