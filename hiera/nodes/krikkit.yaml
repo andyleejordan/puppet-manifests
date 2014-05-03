@@ -316,6 +316,10 @@ ufw::allows:
     port: 64738
   allow-prosody-from-all:
     port: 5222
+  allow-smtp-from-all:
+    port: 25
+  allow-smtp-tls-from-all:
+    port: 587
 
 vsftpd::template: vsftpd/empty.conf.erb
 vsftpd::directives:
