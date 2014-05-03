@@ -24,6 +24,13 @@ classes:
   - ufw
   - vsftpd
 
+amavis::config::bypass_virus_checks_maps: '(\%bypass_virus_checks, \@bypass_virus_checks_acl, \$bypass_virus_checks_re);'
+amavis::config::bypass_spam_checks_maps: '(\%bypass_spam_checks, \@bypass_spam_checks_acl, \$bypass_spam_checks_re);'
+amavis::config::final_virus_destiny: 'D_REJECT;'
+amavis::config::final_banned_destiny: 'D_REJECT;'
+amavis::config::final_spam_destiny: 'D_PASS;'
+amavis::config::final_bad_header_destiny: 'D_PASS;'
+
 ghost::blogs:
   andrew:
     production_url: https://schwartzmeyer.com
