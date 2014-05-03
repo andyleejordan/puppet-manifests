@@ -177,11 +177,86 @@ nginx::nginx_locations:
       add_header: Cache-Control public
     ssl: true
 
-postfix::server::myhostname: suchcodemuchlove.com
-postfix::server::mydomain: suchcodemuchlove.com
-postfix::server::ssl: true
-postfix::server::smtpd_tls_cert_file: '/etc/ssl/certs/suchcodemuchlove.com.crt'
-postfix::server::smtpd_tls_key_file: '/etc/ssl/private/suchcodemuchlove.com.key'
+postfix::config::alias_maps: 'hash:/etc/aliases'
+postfix::config::content_filter: 'smtp-amavis:[127.0.0.1]:10024'
+postfix::config::home_mailbox: 'mail/'
+postfix::config::local_recipient_maps: 'proxy:unix:passwd.byname $alias_maps'
+postfix::config::mailbox_size_limit: '0'
+postfix::config::myhostname: 'krikkit.schwartzmeyer.com'
+postfix::config::mydestination: '$myhostname, localhost.$mydomain, localhost, $mydomain'
+postfix::config::mynetworks: '127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128'
+postfix::config::myorigin: '$mydomain'
+postfix::config::smtpd_recipient_restrictions: 'permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination, reject_unknown_sender_domain'
+postfix::config::smtpd_sasl_auth_enable: 'yes'
+postfix::config::smtpd_sasl_local_domain: '$myhostname'
+postfix::config::smtpd_sasl_path: 'private/auth'
+postfix::config::smtpd_sasl_security_options: 'noanonymous'
+postfix::config::smtpd_sasl_type: 'dovecot'
+postfix::config::smtpd_sender_restrictions: 'permit_sasl_authenticated, permit_mynetworks'
+postfix::config::smtpd_tls_auth_only: 'no'
+postfix::config::smtpd_tls_cert_file: '/etc/ssl/certs/schwartzmeyer.com.crt'
+postfix::config::smtpd_tls_key_file: '/etc/ssl/private/schwartzmeyer.com.key'
+postfix::config::smtpd_tls_loglevel: '1'
+postfix::config::smtpd_tls_received_header: 'yes'
+postfix::config::smtpd_tls_session_cache_timeout: '3600s'
+postfix::config::smtpd_use_tls: 'yes'
+postfix::config::mastercfs:
+  smtp:
+    type: 'inet'
+    unprivileged: 'n'
+    command: '"smtpd"'
+  smtps:
+    type: 'inet'
+    private: 'n'
+    command: '"smtpd
+      -o syslog_name=postfix/smtps
+      -o smtpd_tls_wrappermode=yes
+      -o smtpd_sasl_auth_enable=yes
+      -o smtpd_client_restrictions=permit_sasl_authenticated,reject
+      -o milter_macro_daemon_name=ORIGINATING"'
+  smtp-amavis:
+    type: 'unix'
+    limit: '2'
+    chroot: 'y'
+    command: '"smtp
+      -o smtp_data_done_timeout=1200
+      -o smtp_send_xforward_command=yes
+      -o disable_dns_lookups=yes
+      -o max_use=20"'
+  dovecot:
+    type: 'unix'
+    unprivileged: 'n'
+    chroot: 'n'
+    command: '"pipe
+      flags=DRhu user=vmail:vmail argv=argv=/usr/bin/maildrop -d ${recipient}"'
+  maildrop:
+    type: 'unix'
+    unprivileged: 'n'
+    chroot: 'n'
+    command: '"pipe
+      flags=DRhu user=vmail:vmail argv=argv=/usr/bin/maildrop -d ${recipient}"'
+  127.0.0.1:10025:
+    type: 'inet'
+    private: 'n'
+    command: '"smtpd
+      -o content_filter=
+      -o local_recipient_maps=
+      -o relay_recipient_maps=
+      -o smtpd_restriction_classes=
+      -o smtpd_delay_reject=no
+      -o smtpd_client_restrictions=permit_mynetworks,reject
+      -o smtpd_helo_restrictions=
+      -o smtpd_sender_restrictions=
+      -o smtpd_recipient_restrictions=permit_mynetworks,reject
+      -o smtpd_data_restrictions=reject_unauth_pipelining
+      -o smtpd_end_of_data_restrictions=
+      -o mynetworks=127.0.0.0/8
+      -o smtpd_error_sleep_time=0
+      -o smtpd_soft_error_limit=1001
+      -o smtpd_hard_error_limit=1000
+      -o smtpd_client_connection_count_limit=0
+      -o smtpd_client_connection_rate_limit=0
+      -o receive_override_options=no_header_body_checks,no_unknown_recipient_checks"'
 
 postgresql::globals::manage_package_repo: true
 postgresql::globals::version: '9.3'
