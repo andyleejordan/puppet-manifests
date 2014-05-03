@@ -31,6 +31,15 @@ amavis::config::final_banned_destiny: 'D_REJECT;'
 amavis::config::final_spam_destiny: 'D_PASS;'
 amavis::config::final_bad_header_destiny: 'D_PASS;'
 
+dovecot::auth::disable_plaintext_auth: 'no'
+dovecot::auth::auth_mechanisms: 'login'
+dovecot::mail::mailstorepath: '~/mail'
+dovecot::master::postfix: true
+dovecot::ssl::ssl: 'yes'
+dovecot::ssl::ssl_certfile: '/etc/ssl/certs/schwartzmeyer.com.crt'
+dovecot::ssl::ssl_keyfile: '/etc/ssl/private/schwartzmeyer.com.key'
+dovecot::ssl::ssl_ca: '/etc/ssl/certs/ca-certificates.crt'
+
 ghost::blogs:
   andrew:
     production_url: https://schwartzmeyer.com
