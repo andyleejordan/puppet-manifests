@@ -21,11 +21,15 @@ classes:
   - ufw
   - vsftpd
 
-dovecot::auth::disable_plaintext_auth: 'no'
+dovecot::auth::disable_plaintext_auth: 'yes'
 dovecot::auth::auth_mechanisms: 'plain login'
+dovecot::base::protocols: 'imap'
 dovecot::mail::mailstorepath: '~/mail'
+dovecot::mail::first_valid_uid: 1000
+dovecot::mail::first_valid_gid: 1000
 dovecot::master::postfix: true
-dovecot::ssl::ssl: 'yes'
+dovecot::master::auth_worker_user: 'root'
+dovecot::ssl::ssl: 'required'
 dovecot::ssl::ssl_certfile: '/etc/ssl/certs/schwartzmeyer.com.crt'
 dovecot::ssl::ssl_keyfile: '/etc/ssl/private/schwartzmeyer.com.key'
 
@@ -259,8 +263,12 @@ ufw::allows:
     port: 5222
   allow-smtp-from-all:
     port: 25
-  allow-smtp-tls-from-all:
+  allow-smtps-from-all:
     port: 587
+  allow-imap-from-all:
+    port: 143
+  allow-imaps-from-all:
+    port: 993
 
 vsftpd::template: vsftpd/empty.conf.erb
 vsftpd::directives:
