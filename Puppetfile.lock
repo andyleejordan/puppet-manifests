@@ -24,6 +24,7 @@ FORGE
       puppetlabs/concat (>= 1.0.0)
       puppetlabs/stdlib (>= 0.1.6)
     maestrodev/wget (1.3.2)
+    mjhas/amavis (0.0.2)
     puppetlabs/apt (1.4.2)
       puppetlabs/stdlib (>= 2.2.1)
     puppetlabs/concat (1.1.0-rc1)
@@ -35,12 +36,8 @@ FORGE
       puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/stdlib (4.1.0)
     puppetlabs/vcsrepo (0.2.0)
-    stahnma/epel (0.0.6)
     thias/sysctl (0.3.0)
     thias/vsftpd (0.2.1)
-    wyrie/spamassassin (0.1.0)
-      puppetlabs/stdlib (>= 4.0.2)
-      stahnma/epel (>= 0.0.3)
 
 GIT
   remote: git://github.com/andschwa/puppet-dovecot.git
@@ -76,7 +73,7 @@ GIT
 GIT
   remote: git://github.com/andschwa/puppet-postfix.git
   ref: master
-  sha: 2b278d92d01366db3601a05476086d50aacad995
+  sha: f456aeb47045ba28628d77ba3612cb8c3d89134b
   specs:
     andschwa/postfix (0.0.5)
 
@@ -132,6 +129,7 @@ DEPENDENCIES
   fsalum/redis (~> 0.0.9)
   jfryman/nginx (~> 0.0.7)
   maestrodev/wget (~> 1.3.1)
+  mjhas/amavis (~> 0.0.2)
   puppetlabs/apt (~> 1.4.0)
   puppetlabs/concat (~> 1.1.0)
   puppetlabs/java (~> 1.0.1)
@@ -139,5 +137,4 @@ DEPENDENCIES
   puppetlabs/stdlib (~> 4.1.0)
   puppetlabs/vcsrepo (~> 0.2.0)
   thias/vsftpd (~> 0.2.0)
-  wyrie/spamassassin (~> 0.1.0)
 
