@@ -4,7 +4,7 @@ classes:
   - apt::unattended_upgrades
   - ubuntu
 
-apt::always_apt_update: true
+apt::always_apt_update: false
 
 apt::unattended_upgrades::origins:
   - Ubuntu precise-security
