@@ -30,15 +30,10 @@ common_pip_packages:
 person::persons:
   andrew:
     fullname: Andrew Schwartzmeyer
-    groups:
       - andrew
       - adm
       - sudo
-    packages:
-      - zsh
-    password: 'default_password_for_ci_tests'
-    shell: '/usr/bin/zsh'
-    repo: git@suchcodemuchlove.com:dotfiles/mr.git
+    password: password_for_ci_tests
 
 ssh_key_defaults:
   ensure: present
