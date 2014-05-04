@@ -180,6 +180,7 @@ nginx::nginx_locations:
 postfix::config::alias_maps: 'hash:/etc/aliases'
 postfix::config::append_dot_mydomain: 'no'
 postfix::config::biff: 'no'
+postfix::config::content_filter: 'amavisfeed:[127.0.0.1]:10024'
 postfix::config::home_mailbox: 'mail/'
 postfix::config::local_recipient_maps: 'proxy:unix:passwd.byname $alias_maps'
 postfix::config::mailbox_size_limit: '0'
