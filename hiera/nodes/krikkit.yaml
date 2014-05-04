@@ -1,8 +1,5 @@
 ---
 classes:
-  - amavis
-  - amavis::config
-  - clamav
   - dovecot
   - dovecot::auth
   - dovecot::base
@@ -23,13 +20,6 @@ classes:
   - redis
   - ufw
   - vsftpd
-
-amavis::config::bypass_virus_checks_maps: '(\%bypass_virus_checks, \@bypass_virus_checks_acl, \$bypass_virus_checks_re);'
-amavis::config::bypass_spam_checks_maps: '(\%bypass_spam_checks, \@bypass_spam_checks_acl, \$bypass_spam_checks_re);'
-amavis::config::final_virus_destiny: 'D_REJECT;'
-amavis::config::final_banned_destiny: 'D_REJECT;'
-amavis::config::final_spam_destiny: 'D_PASS;'
-amavis::config::final_bad_header_destiny: 'D_PASS;'
 
 dovecot::auth::disable_plaintext_auth: 'no'
 dovecot::auth::auth_mechanisms: 'login'
