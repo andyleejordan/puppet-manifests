@@ -33,15 +33,21 @@ ntp::servers:
   - 2.north-america.pool.ntp.org
   - 3.north-america.pool.ntp.org
 ntp::restrict:
-  - 127.0.0.1
+  - 127.0.0.1 noquery
 
+person_andrew_pwd: password_for_ci_tests
 person::persons:
   andrew:
     fullname: Andrew Schwartzmeyer
+    groups:
       - andrew
       - adm
       - sudo
-    password: password_for_ci_tests
+    packages:
+      - zsh
+    password: "%{hiera('person_andrew_pwd')}"
+    shell: '/usr/bin/zsh'
+    repo: git@suchcodemuchlove.com:dotfiles/mr.git
 
 ssh_key_defaults:
   ensure: present

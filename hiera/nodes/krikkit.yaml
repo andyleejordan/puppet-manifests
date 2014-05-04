@@ -92,7 +92,6 @@ nginx::http_cfg_append:
   add_header: X-Cache-Status $upstream_cache_status
   proxy_hide_header: Etag
 nginx::server_tokens: 'off'
-
 nginx::nginx_vhosts:
   idahothegoodlife.com:
     www_root: '/var/www/idahothegoodlife.com'
@@ -123,7 +122,6 @@ nginx::nginx_vhosts:
     ssl_key: '/etc/ssl/private/suchcodemuchlove.com.key'
     rewrite_www_to_non_www: true
     rewrite_to_https: true
-
 nginx::nginx_locations:
   schwartzmeyer_root:
     vhost: schwartzmeyer.com
