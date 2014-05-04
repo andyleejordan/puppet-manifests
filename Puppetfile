@@ -31,14 +31,15 @@ def dev(name)
 end
 
 # GitHub andschwa/modules
+github 'andschwa', 'dovecot'
 github 'andschwa', 'gitlab', :ref => 'development'
 github 'andschwa', 'latex'
 github 'andschwa', 'person'
+github 'andschwa', 'postfix'
 github 'andschwa', 'postgresql', :ref => 'client-package-hotfix'
 github 'andschwa', 'prosody'
 github 'andschwa', 'redis'
 github 'andschwa', 'ubuntu'
-github 'andschwa', 'postfix'
 
 # Forge modules
 mod 'alup/rbenv',          '~> 1.2.0'
@@ -51,7 +52,6 @@ mod 'attachmentgenie/ufw', '~> 1.4.7'
 mod 'fsalum/redis',        '~> 0.0.9'
 mod 'jfryman/nginx',       '~> 0.0.7'
 mod 'maestrodev/wget',     '~> 1.3.1'
-mod 'mjhas/dovecot',       '~> 0.0.6'
 mod 'puppetlabs/apt',      '~> 1.4.0'
 mod 'puppetlabs/concat',   '~> 1.1.0'
 mod 'puppetlabs/java',     '~> 1.0.1'
@@ -59,3 +59,4 @@ mod 'puppetlabs/ntp',      '~> 3.0.1'
 mod 'puppetlabs/stdlib',   '~> 4.1.0'
 mod 'puppetlabs/vcsrepo',  '~> 0.2.0'
 mod 'thias/vsftpd',        '~> 0.2.0'
+mod 'wyrie/spamassassin',  '~> 0.1.0'
