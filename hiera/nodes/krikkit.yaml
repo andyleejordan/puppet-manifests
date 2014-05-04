@@ -188,6 +188,7 @@ postfix::config::smtpd_tls_loglevel: '1'
 postfix::config::smtpd_tls_received_header: 'yes'
 postfix::config::smtpd_tls_session_cache_timeout: '3600s'
 postfix::config::smtp_tls_note_starttls_offer: 'yes'
+postfix::config::strict_rfc821_envelopes: 'yes'
 postfix::config::tls_random_source: 'dev:/dev/urandom'
 postfix::config::mastercfs:
   submission:
