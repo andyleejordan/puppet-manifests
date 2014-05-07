@@ -49,7 +49,7 @@ GIT
 GIT
   remote: git://github.com/andschwa/puppet-gitlab.git
   ref: development
-  sha: d983507c02f3a13cb2ba3124e4ba3493bbec0ee4
+  sha: e38b22aa95269168df25f71763ce2ba212a33833
   specs:
     andschwa/gitlab (0.1.3)
       alup/rbenv (>= 1.2.0)
@@ -66,7 +66,7 @@ GIT
 GIT
   remote: git://github.com/andschwa/puppet-person.git
   ref: master
-  sha: 64a2f94a87747a3d1f8d9e48c9acb3d8c9cc5854
+  sha: fa2e7732f237a2f7766a5cf3466449390a9992b3
   specs:
     andschwa/person (0.0.1)
 
