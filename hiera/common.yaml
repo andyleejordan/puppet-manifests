@@ -35,7 +35,6 @@ ntp::servers:
 ntp::restrict:
   - 127.0.0.1 noquery
 
-person_andrew_pwd: password_for_ci_tests
 person::persons:
   andrew:
     fullname: Andrew Schwartzmeyer
@@ -45,7 +44,7 @@ person::persons:
       - sudo
     packages:
       - zsh
-    password: "%{hiera('person_andrew_pwd')}"
+    password: password_for_ci_tests
     shell: '/usr/bin/zsh'
     repo: git@suchcodemuchlove.com:dotfiles/mr.git
 

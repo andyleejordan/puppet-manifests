@@ -29,6 +29,10 @@ nginx::nginx_vhosts:
     proxy_set_header:
       - Host $host
 
+person::persons:
+  andrew:
+    password: "%{hiera('person_andrew_slartibartfast')}"
+
 ufw::allows:
   allow-ssh-from-all:
     port: 22

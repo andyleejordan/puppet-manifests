@@ -175,6 +175,12 @@ nginx::nginx_locations:
       add_header: Cache-Control public
     ssl: true
 
+person::persons:
+  andrew:
+    groups:
+      - git
+    password: "%{hiera('person_andrew_krikkit')}"
+
 postfix::config::alias_maps: 'hash:/etc/aliases'
 postfix::config::append_dot_mydomain: 'no'
 postfix::config::biff: 'no'
