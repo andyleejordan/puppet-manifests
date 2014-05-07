@@ -11,4 +11,3 @@
   - "private/%{::hostname}"
   - private
   - common
-:logger: console
