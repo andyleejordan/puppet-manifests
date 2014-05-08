@@ -12,10 +12,10 @@ common_packages:
   - curl
   - duplicity
   - git
-  - gnupg2
+  - gnupg
   - mg
-  - mailutils
   - mosh
+  - most
   - silversearcher-ag
   - sqlite
   - sshguard
