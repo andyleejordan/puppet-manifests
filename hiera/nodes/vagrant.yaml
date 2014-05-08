@@ -8,7 +8,7 @@ ghost::blogs:
     production_url: http://vagrant
     transport: sendmail
 
-nginx::proxy_cache_path: '/var/www/cache'
+nginx::proxy_cache_path: /var/www/cache
 nginx::proxy_cache_keys_zone: STATIC:100m
 nginx::proxy_cache_max_size: 2g
 nginx::proxy_cache_inactive: 24h

@@ -45,7 +45,7 @@ person::persons:
     packages:
       - zsh
     password: password_for_ci_tests
-    shell: '/usr/bin/zsh'
+    shell: /usr/bin/zsh
     repo: git@suchcodemuchlove.com:dotfiles/mr.git
 
 ssh_key_defaults:
