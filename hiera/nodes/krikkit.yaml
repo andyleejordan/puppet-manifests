@@ -35,10 +35,10 @@ dovecot::mail::mailstorepath: '~/mail'
 dovecot::mail::first_valid_uid: 1000
 dovecot::mail::first_valid_gid: 1000
 dovecot::master::postfix: true
-dovecot::master::auth_worker_user: 'root'
 dovecot::ssl::ssl: 'required'
 dovecot::ssl::ssl_certfile: '/etc/ssl/certs/schwartzmeyer.com.crt'
 dovecot::ssl::ssl_keyfile: '/etc/ssl/private/schwartzmeyer.com.key'
+dovecot::master::auth_worker_group: shadow
 
 ghost::blogs:
   andrew:
