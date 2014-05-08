@@ -31,7 +31,7 @@ def dev(name)
 end
 
 # GitHub andschwa/modules
-github 'andschwa', 'dovecot'
+github 'andschwa', 'dovecot', :ref => 'development'
 github 'andschwa', 'gitlab', :ref => 'development'
 github 'andschwa', 'latex'
 github 'andschwa', 'person'

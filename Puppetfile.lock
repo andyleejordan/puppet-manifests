@@ -41,8 +41,8 @@ FORGE
 
 GIT
   remote: git://github.com/andschwa/puppet-dovecot.git
-  ref: master
-  sha: b5891bdc42986bea0bcf9e595e4a2b38f3673284
+  ref: development
+  sha: 2f5e7f0009c5ada69cff2a4d62676bbb403e3b77
   specs:
     andschwa/dovecot (0.0.6)
 
