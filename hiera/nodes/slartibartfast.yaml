@@ -34,11 +34,6 @@ person::persons:
     password: "%{hiera('person_andrew_slartibartfast')}"
 
 ufw::allows:
-  allow-ssh-from-all:
-    port: 22
-  allow-mosh-from-all:
-    proto: udp
-    port: 60000:61000
   allow-http-from-all:
     port: 80
   allow-minecraft-from-all:
