@@ -1,0 +1,30 @@
+apt::unattended_upgrades::origins:
+  - Ubuntu precise-security
+  - Ubuntu precise-updates
+
+ubuntu::sources:
+  precise:
+    release: precise
+  updates:
+    release: precise-updates
+  security:
+    release: precise-security
+  proposed:
+    release: precise-proposed
+    pin: 400
+  backports:
+    release: precise-backports
+    pin: 200
+  puppetlabs:
+    location: http://apt.puppetlabs.com
+    repos: main dependencies
+    key: 4BD6EC30
+ubuntu::ppas:
+  ppa:duplicity-team/ppa:
+    before: Package[duplicity]
+  ppa:git-core/ppa:
+    before: Package[git]
+  ppa:keithw/mosh:
+    before: Package[mosh]
+  ppa:lvillani/silversearcher:
+    before: Package[silversearcher-ag]

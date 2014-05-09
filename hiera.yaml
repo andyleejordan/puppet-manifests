@@ -6,6 +6,7 @@
 :merge_behavior: deeper
 :hierarchy:
   - "nodes/%{::hostname}"
+  - "os/%{::operatingsystem}/%{::operatingsystemrelease}"
   - "os/%{::operatingsystem}"
   - "virtual_%{::is_virtual}"
   - "private/%{::hostname}"

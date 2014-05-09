@@ -7,22 +7,6 @@ classes:
 
 gitlab_dbpwd: password_for_ci_tests
 
-common_packages:
-  - aptitude
-  - curl
-  - duplicity
-  - git
-  - gnupg
-  - mg
-  - mosh
-  - most
-  - silversearcher-ag
-  - sqlite
-  - sshguard
-  - wget
-  - unzip
-  - zsh
-
 common_pip_packages:
   - pyrax
   - virtualenvwrapper

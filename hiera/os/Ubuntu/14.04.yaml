@@ -1,0 +1,21 @@
+apt::unattended_upgrades::origins:
+  - Ubuntu trusty-security
+  - Ubuntu trusty-updates
+
+ubuntu::sources:
+  trusty:
+    release: trusty
+  updates:
+    release: trusty-updates
+  security:
+    release: trusty-security
+  proposed:
+    release: trusty-proposed
+    pin: 400
+  backports:
+    release: trusty-backports
+    pin: 200
+  puppetlabs:
+    location: http://apt.puppetlabs.com
+    repos: main dependencies
+    key: 4BD6EC30

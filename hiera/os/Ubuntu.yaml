@@ -5,47 +5,34 @@ classes:
   - ubuntu
 
 apt::always_apt_update: false
-
-apt::unattended_upgrades::origins:
-  - Ubuntu precise-security
-  - Ubuntu precise-updates
 apt::unattended_upgrades::mail_to: andrew@localhost
 apt::unattended_upgrades::minimal_steps: true
 
-ubuntu::sources:
-  precise:
-    release: precise
-  updates:
-    release: precise-updates
-  security:
-    release: precise-security
-  proposed:
-    release: precise-proposed
-    pin: 400
-  backports:
-    release: precise-backports
-    pin: 200
-  puppetlabs:
-    location: http://apt.puppetlabs.com
-    repos: main dependencies
-    key: 4BD6EC30
-ubuntu::ppas:
-  ppa:duplicity-team/ppa:
-    before: Package[duplicity]
-  ppa:git-core/ppa:
-    before: Package[git]
-  ppa:keithw/mosh:
-    before: Package[mosh]
-  ppa:lvillani/silversearcher:
-    before: Package[silversearcher-ag]
+common_packages:
+  - augeas-tools
+  - aptitude
+  - curl
+  - duplicity
+  - git
+  - gnupg
+  - mg
+  - mosh
+  - most
+  - silversearcher-ag
+  - sqlite
+  - sshguard
+  - wget
+  - unzip
+  - zsh
+
 ubuntu::repos: main universe
 ubuntu::location: http://archive.ubuntu.com/ubuntu/
 
 ufw::allows:
-  allow-mosh:
+  allow-mosh-from-all:
     proto: udp
     port: 60000:61000
-  allow-ssh:
+  allow-ssh-from-all:
     port: 22
 
 ufw::limits:
