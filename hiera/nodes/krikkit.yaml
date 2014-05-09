@@ -1,4 +1,9 @@
 ---
+schwartzmeyer.com_cert: &schw_cert /etc/ssl/certs/schwartzmeyer.com.crt
+schwartzmeyer.com_key: &schw_key  /etc/ssl/private/schwartzmeyer.com.key
+suchcodemuchlove.com_cert: &scml_cert /etc/ssl/certs/suchcodemuchlove.com.crt
+suchcodemuchlove.com_key: &scml_key /etc/ssl/private/suchcodemuchlove.com.key
+
 classes:
   - amavis
   - amavis::config
@@ -37,8 +42,8 @@ dovecot::mail::first_valid_gid: 1000
 dovecot::master::postfix: true
 dovecot::master::auth_worker_group: shadow
 dovecot::ssl::ssl: required
-dovecot::ssl::ssl_certfile: /etc/ssl/certs/schwartzmeyer.com.crt
-dovecot::ssl::ssl_keyfile: /etc/ssl/private/schwartzmeyer.com.key
+dovecot::ssl::ssl_certfile: *schw_cert
+dovecot::ssl::ssl_keyfile: *schw_key
 
 ghost::blogs:
   andrew:
@@ -63,10 +68,11 @@ gitlab::gitlab_dbuser: git
 gitlab::gitlab_dbpwd: "%{hiera('gitlab_dbpwd')}"
 gitlab::gitlab_domain: suchcodemuchlove.com
 gitlab::gitlab_ssl: true
-gitlab::gitlab_ssl_cert: /etc/ssl/certs/suchcodemuchlove.com.crt
-gitlab::gitlab_ssl_key: /etc/ssl/private/suchcodemuchlove.com.key
+gitlab::gitlab_ssl_cert: *scml_cert
+gitlab::gitlab_ssl_key: *scml_key
 
-mumble::snapshot: true
+mumble::ppa: true
+mumble::server_password: '%{mumble_password}'
 
 nginx::nginx_upstreams:
   schwartzmeyer:
@@ -101,15 +107,15 @@ nginx::nginx_vhosts:
   schwartzmeyer.com:
     use_default_location: false
     ssl: true
-    ssl_cert: /etc/ssl/certs/schwartzmeyer.com.crt
-    ssl_key: /etc/ssl/private/schwartzmeyer.com.key
+    ssl_cert: *schw_cert
+    ssl_key: *schw_key
     rewrite_www_to_non_www: true
     rewrite_to_https: true
   jackie.schwartzmeyer.com:
     proxy: http://jackie
     ssl: true
-    ssl_cert: /etc/ssl/certs/schwartzmeyer.com.crt
-    ssl_key: /etc/ssl/private/schwartzmeyer.com.key
+    ssl_cert: *schw_cert
+    ssl_key: *schw_key
   suchcodemuchlove.com:
     www_root: /home/git/gitlab/public
     try_files:
@@ -120,8 +126,8 @@ nginx::nginx_vhosts:
     vhost_cfg_append:
       error_page: 502 /502.html
     ssl: true
-    ssl_cert: /etc/ssl/certs/suchcodemuchlove.com.crt
-    ssl_key: /etc/ssl/private/suchcodemuchlove.com.key
+    ssl_cert: *scml_cert
+    ssl_key: *scml_key
     rewrite_www_to_non_www: true
     rewrite_to_https: true
 nginx::nginx_locations:
@@ -198,8 +204,8 @@ postfix::config::smtp_tls_note_starttls_offer: 'yes'
 postfix::config::smtpd_banner: $myhostname ESMTP $mail_name (Ubuntu)
 postfix::config::smtpd_helo_required: 'yes'
 postfix::config::smtpd_tls_auth_only: 'yes'
-postfix::config::smtpd_tls_cert_file: /etc/ssl/certs/schwartzmeyer.com.crt
-postfix::config::smtpd_tls_key_file: /etc/ssl/private/schwartzmeyer.com.key
+postfix::config::smtpd_tls_cert_file: *schw_cert
+postfix::config::smtpd_tls_key_file: *schw_key
 postfix::config::smtpd_tls_loglevel: '1'
 postfix::config::smtpd_tls_received_header: 'yes'
 postfix::config::smtpd_tls_session_cache_timeout: 3600s
@@ -258,9 +264,6 @@ postgresql::dbs:
     user: git
     password: "%{hiera('gitlab_dbpwd')}"
 
-person::groups:
-  - git
-
 prosody::admins:
     - andrew@schwartzmeyer.com
     - andrew@suchcodemuchlove.com
@@ -278,11 +281,11 @@ prosody::modules:
   - offline
 prosody::virtualhosts:
   schwartzmeyer.com:
-    ssl_cert: /etc/ssl/certs/schwartzmeyer.com.crt
-    ssl_key: /etc/ssl/private/schwartzmeyer.com.key
+    ssl_cert: *schw_cert
+    ssl_key: *schw_key
   suchcodemuchlove.com:
-    ssl_cert: /etc/ssl/certs/suchcodemuchlove.com.crt
-    ssl_key: /etc/ssl/private/suchcodemuchlove.com.key
+    ssl_cert: *scml_cert
+    ssl_key: *scml_key
 
 ubuntu::location: http://mirrors.digitalocean.com/ubuntu/
 ubuntu::sources:
@@ -340,7 +343,7 @@ vsftpd::directives:
   ftpd_banner: Welcome to this awesome server, friend!
   local_root: /home/virtual/$USER
   nopriv_user: ftp
-  rsa_cert_file: /etc/ssl/certs/schwartzmeyer.com.crt
-  rsa_private_key_file: /etc/ssl/private/schwartzmeyer.com.key
+  rsa_cert_file: *schw_cert
+  rsa_private_key_file: *schw_key
   user_config_dir: /etc/vsftpd/user_conf
   user_sub_token: $USER
