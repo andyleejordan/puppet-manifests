@@ -31,6 +31,10 @@ nginx::nginx_vhosts:
   vagrant:
     proxy: http://ghost
 
+person::persons:
+  andrew:
+    repo: false
+
 ssh_key_defaults:
   ensure: present
   type: rsa
