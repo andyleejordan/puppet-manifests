@@ -1,12 +1,54 @@
 ---
+ssl_cert: &cert /etc/ssl/certs/
+ssl_key: &key  /etc/ssl/private/
+
 classes:
+  - amavis
+  - amavis::config
+  - dovecot
+  - dovecot::auth
+  - dovecot::base
+  - dovecot::imap
+  - dovecot::mail
+  - dovecot::master
   - ghost
+  - mumble
   - nginx
+  - postfix
+  - postfix::config
+  - postgresql
+  - postgresql::globals
+  - postgresql::server
+  - prosody
+  - redis
+  - ufw
+  - vsftpd
+
+amavis::config::bypass_spam_checks_maps: (\%bypass_spam_checks, \@bypass_spam_checks_acl, \$bypass_spam_checks_re);
+amavis::config::final_banned_destiny: D_REJECT;
+amavis::config::final_spam_destiny: D_PASS;
+amavis::config::final_bad_header_destiny: D_PASS;
+
+dovecot::auth::disable_plaintext_auth: 'yes'
+dovecot::auth::auth_mechanisms: plain login
+dovecot::base::protocols: imap
+dovecot::mail::mailstorepath: ~/mail
+dovecot::mail::first_valid_uid: 1000
+dovecot::mail::first_valid_gid: 1000
+dovecot::master::postfix: true
+dovecot::master::auth_worker_group: shadow
 
 ghost::blogs:
-  test:
-    production_url: http://vagrant
+  vagrant:
+    production_url: http://vagrant.local.dev
     transport: sendmail
+
+mumble::snapshot: true
+
+nginx::nginx_upstreams:
+  vagrant:
+    members:
+      - localhost:2368
 
 nginx::proxy_cache_path: /var/www/cache
 nginx::proxy_cache_keys_zone: STATIC:100m
@@ -20,19 +62,48 @@ nginx::proxy_set_header:
   - X-Forwarded-Proto $scheme
 nginx::http_cfg_append:
   proxy_cache: STATIC
+  add_header: X-Cache-Status $upstream_cache_status
+  proxy_hide_header: Etag
 nginx::server_tokens: 'off'
-
-nginx::nginx_upstreams:
-  ghost:
-    members:
-      - localhost:2368
-
 nginx::nginx_vhosts:
   vagrant:
-    proxy: http://ghost
+    use_default_location: false
+    rewrite_www_to_non_www: true
+    rewrite_to_https: true
+nginx::nginx_locations:
+  vagrant_root:
+    vhost: vagrant
+    location: /
+    proxy: http://vagrant
+    location_cfg_append:
+      proxy_ignore_headers: Set-Cookie
+      proxy_hide_header: Set-Cookie
+  vagrant_files:
+    vhost: vagrant
+    location: /files/
+    location_alias: /var/www/files/
+    location_cfg_append:
+      autoindex: 'on'
+      autoindex_exact_size: 'off'
+      autoindex_localtime: 'on'
+  vagrant_assets:
+    vhost: vagrant
+    location: ~* \.(jpg|jpeg|png|gif|ico|css|js|eot|woff)$
+    proxy: http://vagrant
+    location_cfg_append:
+      proxy_ignore_headers: Cache-Control
+      expires: max
+  vagrant_admin:
+    vhost: vagrant
+    location: ~ ^/ghost
+    proxy: http://vagrant
+    location_cfg_append:
+      expires: '0'
+      add_header: Cache-Control 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0'
 
 person::persons:
   andrew:
+    password: "%{hiera('person_andrew_krikkit')}"
     repo: false
 
 ssh_key_defaults:
@@ -51,3 +122,124 @@ sudo::sudoers:
     tags:
       - NOPASSWD
       - SETENV
+
+postfix::config::alias_maps: hash:/etc/aliases
+postfix::config::append_dot_mydomain: 'no'
+postfix::config::biff: 'no'
+postfix::config::content_filter: amavisfeed:[127.0.0.1]:10024
+postfix::config::home_mailbox: mail/
+postfix::config::local_recipient_maps: proxy:unix:passwd.byname $alias_maps
+postfix::config::mailbox_size_limit: '0'
+postfix::config::mydestination: $myhostname, localhost.$mydomain, localhost, $mydomain
+postfix::config::myhostname: vagrant.local.dev
+postfix::config::mynetworks: 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
+postfix::config::myorigin: /etc/mailname
+postfix::config::smtp_tls_note_starttls_offer: 'yes'
+postfix::config::smtpd_banner: $myhostname ESMTP $mail_name (Ubuntu)
+postfix::config::smtpd_helo_required: 'yes'
+postfix::config::smtpd_tls_auth_only: 'yes'
+postfix::config::smtpd_tls_cert_file: *cert
+postfix::config::smtpd_tls_key_file: *key
+postfix::config::smtpd_tls_loglevel: '1'
+postfix::config::smtpd_tls_received_header: 'yes'
+postfix::config::smtpd_tls_session_cache_timeout: 3600s
+postfix::config::smtpd_use_tls: 'yes'
+postfix::config::strict_rfc821_envelopes: 'yes'
+postfix::config::tls_random_source: dev:/dev/urandom
+postfix::config::mastercfs:
+  submission:
+    type: inet
+    private: 'n'
+    command: '"smtpd
+      -o syslog_name=postfix/submission
+      -o smtpd_tls_wrappermode=no
+      -o smtpd_tls_security_level=encrypt
+      -o smtpd_sasl_auth_enable=yes
+      -o smtpd_recipient_restrictions=permit_mynetworks,permit_sasl_authenticated,reject
+      -o milter_macro_daemon_name=ORIGINATING
+      -o smtpd_sasl_type=dovecot
+      -o smtpd_sasl_path=private/auth"'
+  amavisfeed:
+    type: unix
+    chroot: 'y'
+    limit: '2'
+    command: '"lmtp
+      -o lmtp_data_done_timeout=1200
+      -o lmtp_send_xforward_command=yes
+      -o disable_dns_lookups=yes
+      -o max_use=20"'
+  127.0.0.1:10025:
+    type: inet
+    private: 'n'
+    chroot: 'n'
+    command: '"smtpd
+      -o content_filter=
+      -o smtpd_delay_reject=no
+      -o smtpd_client_restrictions=permit_mynetworks,reject
+      -o smtpd_helo_restrictions=
+      -o smtpd_sender_restrictions=
+      -o smtpd_recipient_restrictions=permit_mynetworks,reject
+      -o smtpd_data_restrictions=reject_unauth_pipelining
+      -o smtpd_end_of_data_restrictions=
+      -o smtpd_restriction_classes=
+      -o mynetworks=127.0.0.0/8
+      -o smtpd_error_sleep_time=0
+      -o smtpd_soft_error_limit=1001
+      -o smtpd_hard_error_limit=1000
+      -o smtpd_client_connection_count_limit=0
+      -o smtpd_client_connection_rate_limit=0
+      -o receive_override_options=no_header_body_checks,no_unknown_recipient_checks,no_milters
+      -o local_header_rewrite_clients="'
+
+mumble::ppa: true
+
+ufw::allows:
+  allow-ftp-data-from-all:
+    port: 20
+  allow-ftp-listen-from-all:
+    port: 21
+  allow-ftp-passive-from-all:
+    port: 42000:42256
+  allow-http-from-all:
+    port: 80
+  allow-https-from-all:
+    port: 443
+  allow-mumble-from-all:
+    port: 64738
+  allow-mumble-udp-from-all:
+    proto: udp
+    port: 64738
+  allow-prosody-from-all:
+    port: 5222
+  allow-smtp-from-all:
+    port: 25
+  allow-smtps-from-all:
+    port: 587
+  allow-imap-from-all:
+    port: 143
+  allow-imaps-from-all:
+    port: 993
+
+vsftpd::template: vsftpd/empty.conf.erb
+vsftpd::directives:
+  connect_from_port_20: 'YES'
+  dual_log_enable: 'YES'
+  force_dot_files: 'YES'
+  guest_enable: 'YES'
+  hide_ids: 'YES'
+  listen: 'YES'
+  local_enable: 'YES'
+  no_anon_password: 'YES'
+  ssl_enable: 'NO'
+  use_localtime: 'YES'
+  write_enable: 'NO'
+  virtual_use_local_privs: 'YES'
+  anon_root: /var/www/public
+  max_clients: 10
+  pasv_min_port: 42000
+  pasv_max_port: 42256
+  ftpd_banner: Welcome to this awesome server, friend!
+  local_root: /home/virtual/$USER
+  nopriv_user: ftp
+  user_config_dir: /etc/vsftpd/user_conf
+  user_sub_token: $USER
