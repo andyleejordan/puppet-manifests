@@ -22,6 +22,8 @@ ntp::restrict:
 person::persons:
   andrew:
     fullname: Andrew Schwartzmeyer
+    make_groups:
+      - andrew
     groups:
       - andrew
       - adm
