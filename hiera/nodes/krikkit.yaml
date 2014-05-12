@@ -111,11 +111,15 @@ nginx::nginx_vhosts:
     ssl_key: *schw_key
     rewrite_www_to_non_www: true
     rewrite_to_https: true
+    vhost_cfg_append:
+      add_header: Strict-Transport-Security max-age=15768000
   jackie.schwartzmeyer.com:
     proxy: http://jackie
     ssl: true
     ssl_cert: *schw_cert
     ssl_key: *schw_key
+    vhost_cfg_append:
+      add_header: Strict-Transport-Security max-age=15768000
   suchcodemuchlove.com:
     www_root: /home/git/gitlab/public
     try_files:
@@ -125,6 +129,7 @@ nginx::nginx_vhosts:
       - '@gitlab'
     vhost_cfg_append:
       error_page: 502 /502.html
+      add_header: Strict-Transport-Security max-age=15768000
     ssl: true
     ssl_cert: *scml_cert
     ssl_key: *scml_key
