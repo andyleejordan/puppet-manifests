@@ -272,6 +272,9 @@ postgresql::dbs:
 prosody::admins:
     - andrew@schwartzmeyer.com
     - andrew@suchcodemuchlove.com
+prosody::c2s_require_encryption: 'true'
+prosody::s2s_require_encryption: 'true'
+prosody::s2s_secure_auth: 'true'
 prosody::ssl_protocol: sslv23
 prosody::ssl_options:
   - no_sslv2
@@ -315,8 +318,10 @@ ufw::allows:
   allow-mumble-udp-from-all:
     proto: udp
     port: 64738
-  allow-prosody-from-all:
+  allow-prosody-client-from-all:
     port: 5222
+  allow-prosody-server-from-all:
+    port: 5269
   allow-smtp-from-all:
     port: 25
   allow-smtps-from-all:
