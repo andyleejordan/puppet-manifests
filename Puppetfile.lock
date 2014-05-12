@@ -62,6 +62,13 @@ GIT
     andschwa/latex (0.0.1)
 
 GIT
+  remote: git://github.com/andschwa/puppet-papertrail.git
+  ref: master
+  sha: 73aab67ee6abd6ca9cd8b98d2ab70e893fa034c7
+  specs:
+    andschwa/papertrail (0.0.1)
+
+GIT
   remote: git://github.com/andschwa/puppet-person.git
   ref: master
   sha: 1f66efa3c33a5df15280b03f9c3f3a62409127e8
@@ -124,6 +131,7 @@ DEPENDENCIES
   andschwa/latex (>= 0)
   andschwa/minecraft (~> 2.1.6)
   andschwa/mumble (~> 0.0.3)
+  andschwa/papertrail (>= 0)
   andschwa/person (>= 0)
   andschwa/postfix (>= 0)
   andschwa/postgresql (>= 0)

@@ -18,6 +18,7 @@ classes:
   - gitlab
   - mumble
   - nginx
+  - papertrail
   - postfix
   - postfix::config
   - postgresql
@@ -187,6 +188,22 @@ nginx::nginx_locations:
       expires: max
       add_header: Cache-Control public
     ssl: true
+
+papertrail::log_port: 54633
+papertrail::log_host: logs.papertrailapp.com
+papertrail::extra_logs:
+  - /var/log/mumble-server/mumble-server.log
+  - /var/log/nginx/error.log
+  - /var/log/nginx/gitlab_error.log
+  - /var/log/nginx/ssl-schwartzmeyer.com.error.log
+  - /var/log/nginx/ssl-suchcodemuchlove.com.error.log
+  - /var/log/postgresql/postgresql-9.3-main.log
+  - /var/log/redis-server.log
+  - /var/log/supervisor/ghost_andrew_err.log
+  - /var/log/supervisor/ghost_jackie_err.log
+  - /var/log/supervisor/supervisord.log
+  - /var/log/unattended-upgrades/unattended-upgrades.log
+  - /var/log/vsftpd.log
 
 person::persons:
   andrew:
