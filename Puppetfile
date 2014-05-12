@@ -36,12 +36,12 @@ github 'andschwa', 'gitlab', :ref => 'development'
 github 'andschwa', 'latex'
 github 'andschwa', 'person'
 github 'andschwa', 'postfix'
+github 'andschwa', 'papertrail', :ref => 'development'
 github 'andschwa', 'postgresql', :ref => 'client-package-hotfix'
 github 'andschwa', 'prosody', :ref => 'development'
 github 'andschwa', 'redis'
 github 'andschwa', 'ubuntu'
 github 'andschwa', 'ufw', :ref => 'development'
-github 'andschwa', 'papertrail'
 
 # Forge modules
 mod 'alup/rbenv',          '~> 1.2.0'
