@@ -43,10 +43,10 @@ node 'slartibartfast.schwartzmeyer.us' inherits default {
 
 node default {
   # hiera ssh keys
-  create_resources('ssh_authorized_key', hiera_hash('ssh_keys'), hiera_hash('ssh_key_defaults'))
+  create_resources('ssh_authorized_key', hiera_hash('ssh_keys', {}), hiera_hash('ssh_key_defaults', {}))
 
   # hiera packages
-  ensure_packages(hiera_array('common_packages'))
+  ensure_packages(hiera_array('common_packages', []))
 
   # dependencies
   ensure_packages(['git', 'python', 'python-pip'])
