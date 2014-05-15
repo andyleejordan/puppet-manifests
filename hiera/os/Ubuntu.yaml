@@ -15,12 +15,14 @@ common_packages:
   - duplicity
   - git
   - gnupg
+  - logwatch
   - mg
   - mosh
   - most
   - silversearcher-ag
   - sqlite
   - sshguard
+  - tiger
   - wget
   - unzip
   - zsh
