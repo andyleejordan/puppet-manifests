@@ -345,8 +345,6 @@ ufw::allows:
     port: 25
   allow-smtps-from-all:
     port: 587
-  allow-imap-from-all:
-    port: 143
   allow-imaps-from-all:
     port: 993
 
