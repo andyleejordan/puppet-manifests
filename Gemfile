@@ -11,4 +11,4 @@ gem "puppetlabs_spec_helper", "~> 0.4.1"
 gem "rake",                   "~> 10.3.1"
 gem "rspec-puppet",           "~> 1.0.1"
 
-ruby '2.1.1'
+ruby '2.1.2'
