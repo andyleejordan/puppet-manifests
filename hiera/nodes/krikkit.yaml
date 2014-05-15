@@ -74,6 +74,8 @@ gitlab::gitlab_ssl_key: *scml_key
 
 mumble::ppa: true
 mumble::server_password: '%{mumble_password}'
+mumble::ssl_cert: *schw_cert
+mumble::ssl_key: *schw_key
 
 nginx::nginx_upstreams:
   schwartzmeyer:
