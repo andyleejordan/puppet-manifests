@@ -150,8 +150,8 @@ nginx::nginx_locations:
     ssl: true
   schwartzmeyer_files:
     vhost: schwartzmeyer.com
-    location: /files/
-    location_alias: /var/www/files/
+    location: /download/
+    location_alias: /var/www/download/
     location_cfg_append:
       autoindex: 'on'
       autoindex_exact_size: 'off'
@@ -381,7 +381,7 @@ vsftpd::directives:
   use_localtime: 'YES'
   write_enable: 'NO'
   virtual_use_local_privs: 'YES'
-  anon_root: /var/www/files
+  anon_root: /var/www/download
   max_clients: 10
   pasv_min_port: 42000
   pasv_max_port: 42256
