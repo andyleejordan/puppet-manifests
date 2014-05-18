@@ -191,6 +191,9 @@ nginx::nginx_locations:
       add_header: Cache-Control public
     ssl: true
 
+packages:
+  - monitorix
+
 papertrail::log_port: 54633
 papertrail::log_host: logs.papertrailapp.com
 papertrail::extra_logs:
@@ -320,6 +323,13 @@ ubuntu::sources:
     location: http://packages.prosody.im/debian
     repos: main
     key: 74D9DBB5
+  monitorix:
+    location: http://apt.izzysoft.de/ubuntu
+    release: generic
+    repos: universe
+    key: C9B9B62C
+    include_src: false
+    before: Package[monitorix]
 
 ufw::allows:
   allow-ftp-data-from-all:
