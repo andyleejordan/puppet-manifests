@@ -73,6 +73,17 @@ gitlab::gitlab_ssl: true
 gitlab::gitlab_ssl_cert: *scml_cert
 gitlab::gitlab_ssl_key: *scml_key
 
+mount_points:
+  /home/virtual/shared/resources:
+    before: Mount[/home/virtual/shared/resources]
+mounts:
+  /home/virtual/shared/resources:
+    ensure: mounted
+    device: /home/andrew/resources
+    fstype: none
+    options:
+      - bind
+
 mumble::ppa: true
 mumble::server_password: '%{mumble_password}'
 mumble::ssl_cert: *schw_cert
@@ -367,6 +378,7 @@ vcsrepos:
 vsftpd::template: vsftpd/empty.conf.erb
 vsftpd::directives:
   allow_anon_ssl: 'YES'
+  chroot_local_user: 'YES'
   dual_log_enable: 'YES'
   force_dot_files: 'YES'
   guest_enable: 'YES'
