@@ -358,6 +358,13 @@ ufw::allows:
   allow-imaps-from-all:
     port: 993
 
+vcsrepos:
+  /var/www/idahothegoodlife.com:
+    ensure: latest
+    provider: git
+    source: https://github.com/andschwa/idahothegoodlife.com.git
+    revision: master
+
 vsftpd::template: vsftpd/empty.conf.erb
 vsftpd::directives:
   allow_anon_ssl: 'YES'

@@ -23,6 +23,24 @@ minecraft::plugins:
   myultrawarps:
     source: http://dev.bukkit.org/media/files/769/247/myUltraWarps.jar
 
+mount_points:
+  /mnt/backup:
+    before: Mount[/mnt/backup]
+  /mnt/stuff:
+    before: Mount[/mnt/stuff]
+mount_defaults:
+  ensure: present
+  fstype: vboxsf
+  options:
+    - rw
+    - uid=andrew
+    - gid=andrew
+mounts:
+  /mnt/backup:
+    device: backup
+  /mnt/stuff:
+    device: stuff
+
 nginx::nginx_vhosts:
   minecraft.schwartzmeyer.us:
     proxy: http://localhost:8123
