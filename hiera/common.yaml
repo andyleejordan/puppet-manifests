@@ -7,7 +7,7 @@ classes:
 
 gitlab_dbpwd: password_for_ci_tests
 
-common_pip_packages:
+pip_packages:
   - pyrax
   - virtualenvwrapper
 

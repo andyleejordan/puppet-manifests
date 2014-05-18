@@ -46,13 +46,13 @@ node default {
   create_resources('ssh_authorized_key', hiera_hash('ssh_keys', {}), hiera_hash('ssh_key_defaults', {}))
 
   # hiera packages
-  ensure_packages(hiera_array('common_packages', []))
+  ensure_packages(hiera_array('packages', []))
 
   # dependencies
   ensure_packages(['git', 'python', 'python-pip'])
 
-  $common_pip_packages = hiera_array('common_pip_packages')
-  package { $common_pip_packages:
+  $pip_packages = hiera_array('pip_packages')
+  package { $pip_packages:
     ensure   => latest,
     provider => pip,
     require  => Package['python-pip']

@@ -8,7 +8,7 @@ apt::always_apt_update: false
 apt::unattended_upgrades::mail_to: andrew@localhost
 apt::unattended_upgrades::minimal_steps: true
 
-common_packages:
+packages:
   - augeas-tools
   - aptitude
   - curl
