@@ -27,7 +27,7 @@ end
 
 # Shortcut for a module under development
 def dev(name)
-  mod 'dev/' + name, :path => "#{ENV['HOME']}/src/puppet/puppet-#{name}"
+  mod 'dev/' + name, :path => "#{ENV['HOME']}/Documents/src/puppet-modules/#{name}"
 end
 
 # GitHub andschwa/modules
