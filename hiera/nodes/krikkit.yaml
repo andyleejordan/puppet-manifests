@@ -333,8 +333,6 @@ ubuntu::sources:
     before: Package[monitorix]
 
 ufw::allows:
-  allow-ftp-data-from-all:
-    port: 20
   allow-ftp-listen-from-all:
     port: 21
   allow-ftp-passive-from-all:
@@ -369,7 +367,6 @@ vcsrepos:
 vsftpd::template: vsftpd/empty.conf.erb
 vsftpd::directives:
   allow_anon_ssl: 'YES'
-  connect_from_port_20: 'YES'
   dual_log_enable: 'YES'
   force_dot_files: 'YES'
   guest_enable: 'YES'
