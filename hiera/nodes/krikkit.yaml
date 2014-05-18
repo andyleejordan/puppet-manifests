@@ -335,6 +335,7 @@ ubuntu::sources:
     location: http://packages.prosody.im/debian
     repos: main
     key: 74D9DBB5
+    include_src: false
   monitorix:
     location: http://apt.izzysoft.de/ubuntu
     release: generic
