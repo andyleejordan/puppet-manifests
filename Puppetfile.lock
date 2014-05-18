@@ -25,9 +25,9 @@ FORGE
     mjhas/amavis (0.0.2)
     puppetlabs/apt (1.4.2)
       puppetlabs/stdlib (>= 2.2.1)
-    puppetlabs/concat (1.1.0-rc1)
-      puppetlabs/stdlib (>= 3.0.0)
-    puppetlabs/firewall (1.0.2)
+    puppetlabs/concat (1.1.0)
+      puppetlabs/stdlib (>= 4.0.0)
+    puppetlabs/firewall (1.1.1)
     puppetlabs/java (1.0.1)
       puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/ntp (3.0.3)
@@ -63,8 +63,8 @@ GIT
 
 GIT
   remote: git://github.com/andschwa/puppet-papertrail.git
-  ref: master
-  sha: 73aab67ee6abd6ca9cd8b98d2ab70e893fa034c7
+  ref: development
+  sha: 9a35a14fd6ae0a997e26c22f013019f46e914456
   specs:
     andschwa/papertrail (0.0.1)
 
