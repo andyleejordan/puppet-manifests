@@ -71,6 +71,7 @@ gitlab::gitlab_domain: suchcodemuchlove.com
 gitlab::gitlab_ssl: true
 gitlab::gitlab_ssl_cert: *scml_cert
 gitlab::gitlab_ssl_key: *scml_key
+gitlab::google_analytics_id: UA-51283958-1
 
 mount_points:
   /home/virtual/shared/resources:
