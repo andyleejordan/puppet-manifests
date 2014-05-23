@@ -107,7 +107,33 @@ cat www_yourdomain_com.crt ComodoHigh-AssuranceSecureServerCA.crt AddTrustExtern
 
 ## Postfix
 
-### Pyzor
+### Aliases
+
+These are sane aliases from the
+[DigitalOcean guide](https://www.digitalocean.com/community/articles/how-to-set-up-a-postfix-e-mail-server-with-dovecot),
+with root being forwarded to my email.
+
+```
+mailer-daemon: postmaster
+postmaster: root
+nobody: root
+hostmaster: root
+webmaster: root
+www: root
+ftp: root
+abuse: root
+root: andrew
+```
+
+### Amavis
+
+Setting up Amavis meant following the included readme for Postfix; it
+is quite detailed and worked perfectly. Michael's modules installed
+the necessary packages for Amavis with SpamAssassin. The latter also
+has an integration with Postfix
+[guide](https://wiki.apache.org/spamassassin/IntegratedInPostfixWithAmavis).
+
+#### Pyzor
 
 The latest version of Pyzor should be installed from the Python
 package repositories, as the Ubuntu/Debian package is woefully out of
