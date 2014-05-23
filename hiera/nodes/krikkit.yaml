@@ -62,7 +62,6 @@ gitlab::gitlabshell_branch: v1.9.4
 gitlab::gitlab_manage_nginx: false
 gitlab::gitlab_ensure_postfix: false
 gitlab::gitlab_backup: false
-gitlab::gitlab_backup_path: "%{gitlab::git_home}/backups"
 gitlab::gitlab_backup_keep_time: 3600
 gitlab::gitlab_dbtype: pgsql
 gitlab::gitlab_dbname: git
