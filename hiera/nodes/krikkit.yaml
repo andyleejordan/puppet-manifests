@@ -126,6 +126,7 @@ nginx::nginx_vhosts:
     ssl: true
     ssl_cert: *schw_cert
     ssl_key: *schw_key
+    spdy: 'on'
     rewrite_www_to_non_www: true
     rewrite_to_https: true
     vhost_cfg_append:
@@ -135,6 +136,7 @@ nginx::nginx_vhosts:
     ssl: true
     ssl_cert: *schw_cert
     ssl_key: *schw_key
+    spdy: 'on'
     vhost_cfg_append:
       add_header: Strict-Transport-Security max-age=15768000
   suchcodemuchlove.com:
@@ -150,6 +152,7 @@ nginx::nginx_vhosts:
     ssl: true
     ssl_cert: *scml_cert
     ssl_key: *scml_key
+    spdy: 'on'
     rewrite_www_to_non_www: true
     rewrite_to_https: true
 nginx::nginx_locations:
