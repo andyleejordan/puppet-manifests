@@ -104,3 +104,24 @@ openssl req -new -newkey rsa:2048 -nodes -keyout domain.key -out domain.csr
 ```
 cat www_yourdomain_com.crt ComodoHigh-AssuranceSecureServerCA.crt AddTrustExternalCARoot.crt >> ssl-bundle.crt
 ```
+
+## Postfix
+
+### Pyzor
+
+The latest version of Pyzor should be installed from the Python
+package repositories, as the Ubuntu/Debian package is woefully out of
+date. This is done by Puppet for my mailhost.
+
+I (sadly) do not have Spamassassin Puppetized further than
+installation, so for setup, add the following lines (from the
+[Wiki](https://wiki.apache.org/spamassassin/UsingPyzor)):
+
+```
+# pyzor
+use_pyzor 1
+pyzor_path /usr/local/bin/pyzor
+pyzor_options --homedir /etc/mail/spamassassin
+```
+
+Then test with `echo "test" | spamassassin -D pyzor 2>&1 | less`.

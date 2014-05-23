@@ -209,6 +209,8 @@ nginx::nginx_locations:
 
 packages:
   - monitorix
+pip_packages:
+  - pyzor
 
 papertrail::log_port: 54633
 papertrail::log_host: logs.papertrailapp.com
