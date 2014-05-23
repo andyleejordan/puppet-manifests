@@ -15,6 +15,7 @@ __default_facts: &default_facts
   operatingsystem: Ubuntu
   operatingsystemrelease: 12.04
   osfamily: Debian
+  processorcount: '1'
 
 krikkit:
   <<: *default_facts
