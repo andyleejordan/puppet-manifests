@@ -151,3 +151,35 @@ pyzor_options --homedir /etc/mail/spamassassin
 ```
 
 Then test with `echo "test" | spamassassin -D pyzor 2>&1 | less`.
+
+## LogWatch
+
+Setting up [LogWatch](https://sourceforge.net/projects/logwatch/) is
+as simple as installing the package. DigitalOcean has a
+[guide](https://www.digitalocean.com/community/articles/how-to-install-and-use-logwatch-log-analyzer-and-reporter-on-a-vps)
+for configuration; however, the defaults are practically perfect.
+
+There is a
+[reported bug](https://bugs.launchpad.net/ubuntu/+source/logwatch/+bug/1058760)
+with the Dovecot service, resulting in many unmatched entries.
+
+After backing up `/usr/share/logwatch/scripts/services/dovecot`, apply
+the patch via `curl
+https://launchpadlibrarian.net/117816434/dovecot.patch | sudo patch`.
+
+## Tiger
+
+[Tiger](http://www.nongnu.org/tiger/) is the Unix security audit and
+intrusion detection tool, and is "setup" by installing the
+package. The default configuration enables periodic audit emails. I
+have found that I also needed to add the following lines to
+`/etc/tiger/tiger.ignore`:
+
+```
+The process `smtpd' is listening on socket 25 \(TCP on every interface\) is run by postfix\.
+The process `imap-login' is listening on socket (143|993) \(TCP on every interface\) is run by dovenull\.
+The process `avahi-daemon' is listening on socket \d+ \(UDP on every interface\) is run by avahi\.
+```
+
+This ignores frequently repeated messages about `smtpd`, `imap-login`,
+and `avahi-daemon`.
