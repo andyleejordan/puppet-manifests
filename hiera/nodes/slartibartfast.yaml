@@ -31,10 +31,7 @@ mount_points:
 mount_defaults:
   ensure: present
   fstype: vboxsf
-  options:
-    - rw
-    - uid=andrew
-    - gid=andrew
+  options: rw,uid=andrew,gid=andrew,nobootwait
 mounts:
   /mnt/backup:
     device: backup
