@@ -100,6 +100,8 @@ nginx::nginx_upstreams:
     members:
       - unix:/home/git/gitlab/tmp/sockets/gitlab.socket
 
+nginx::confd_purge: true
+nginx::vhost_purge: true
 nginx::proxy_cache_path: /var/www/cache
 nginx::proxy_cache_keys_zone: STATIC:100m
 nginx::proxy_cache_max_size: 2g
