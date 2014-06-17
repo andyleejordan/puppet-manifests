@@ -30,19 +30,22 @@ mount_points:
     before: Mount[/mnt/stuff]
 mount_defaults:
   ensure: present
-  fstype: vboxsf
-  options: rw,uid=andrew,gid=andrew,nobootwait
+  fstype: cifs
+  options: rw,uid=andrew,gid=andrew,nobootwait,guest
 mounts:
   /mnt/backup:
-    device: backup
+    device: \\192.168.1.122\Backup
   /mnt/stuff:
-    device: stuff
+    device: \\192.168.1.122\Stuff
 
 nginx::nginx_vhosts:
   minecraft.schwartzmeyer.us:
     proxy: http://localhost:8123
     proxy_set_header:
       - Host $host
+
+packages:
+  - cifs-utils
 
 person::persons:
   andrew:
