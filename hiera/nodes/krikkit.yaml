@@ -57,8 +57,8 @@ ghost::blogs:
     transport: sendmail
 
 gitlab::git_email: git@suchcodemuchlove.com
-gitlab::gitlab_branch: 6-9-stable
-gitlab::gitlabshell_branch: v1.9.4
+gitlab::gitlab_branch: 7-0-stable
+gitlab::gitlabshell_branch: v1.9.6
 gitlab::gitlab_manage_nginx: false
 gitlab::gitlab_ensure_postfix: false
 gitlab::gitlab_backup: false

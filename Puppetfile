@@ -32,7 +32,7 @@ end
 
 # GitHub andschwa/modules
 github 'andschwa', 'dovecot', :ref => 'development'
-github 'andschwa', 'gitlab', :ref => 'development'
+github 'andschwa', 'gitlab', :ref => 'production'
 github 'andschwa', 'latex'
 github 'andschwa', 'person'
 github 'andschwa', 'postfix'
