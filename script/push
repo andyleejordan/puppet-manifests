@@ -1,4 +1,5 @@
 #!/bin/bash
 [[ -e script/push ]] || { echo >&2 "Please cd into manifests"; exit 1; }
-PUPPETS="krikkit.schwartzmeyer.com:manifests slartibartfast.schwartzmeyer.us:manifests"
-parallel rsync -rl --executability --exclude '.git*' --exclude 'ssl' . ::: $PUPPETS
+
+source script/.get_host
+parallel rsync -rl --executability --exclude '.git*' --exclude 'ssl' . ::: $(get_host $@)

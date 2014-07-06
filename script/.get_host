@@ -1,0 +1,14 @@
+# -*- mode: sh; -*-
+function get_host
+{
+    for host; do
+	case $host in
+	    krikkit)
+		echo 'krikkit.schwartzmeyer.com:manifests';;
+	    slartibartfast)
+		echo 'slartibartfast.schwartzmeyer.us:manifests';;
+	    *)
+		echo ${1};;
+	esac
+    done
+}
