@@ -25,6 +25,7 @@ FORGE
       puppetlabs/stdlib (>= 0.1.6)
     maestrodev/wget (1.3.2)
     mjhas/amavis (0.0.2)
+    mjhas/dovecot (0.0.8)
     puppetlabs/apt (1.4.2)
       puppetlabs/stdlib (>= 2.2.1)
     puppetlabs/concat (1.1.0)
@@ -39,13 +40,6 @@ FORGE
     puppetlabs/vcsrepo (0.2.0)
     thias/sysctl (0.3.0)
     thias/vsftpd (0.2.1)
-
-GIT
-  remote: git://github.com/andschwa/puppet-dovecot.git
-  ref: development
-  sha: 241785e2d6e1e851e87631a32de1f295c1e9b8d6
-  specs:
-    andschwa/dovecot (0.0.6)
 
 GIT
   remote: git://github.com/andschwa/puppet-gitlab.git
@@ -121,7 +115,6 @@ GIT
 
 DEPENDENCIES
   alup/rbenv (~> 1.2.0)
-  andschwa/dovecot (>= 0)
   andschwa/ghost (~> 0.1.3)
   andschwa/gitlab (>= 0)
   andschwa/latex (>= 0)
@@ -141,6 +134,7 @@ DEPENDENCIES
   jfryman/nginx (~> 0.0.7)
   maestrodev/wget (~> 1.3.1)
   mjhas/amavis (~> 0.0.2)
+  mjhas/dovecot (~> 0.0.8)
   puppetlabs/apt (~> 1.4.0)
   puppetlabs/concat (~> 1.1.0)
   puppetlabs/git (~> 0.0.3)

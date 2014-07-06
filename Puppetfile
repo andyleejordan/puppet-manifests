@@ -31,7 +31,6 @@ def dev(name)
 end
 
 # GitHub andschwa/modules
-github 'andschwa', 'dovecot', :ref => 'development'
 github 'andschwa', 'gitlab', :ref => 'production'
 github 'andschwa', 'latex'
 github 'andschwa', 'person'
@@ -54,6 +53,7 @@ mod 'fsalum/redis',        '~> 0.0.9'
 mod 'jfryman/nginx',       '~> 0.0.7'
 mod 'maestrodev/wget',     '~> 1.3.1'
 mod 'mjhas/amavis',        '~> 0.0.2'
+mod 'mjhas/dovecot',       '~> 0.0.8'
 mod 'puppetlabs/apt',      '~> 1.4.0'
 mod 'puppetlabs/git',      '~> 0.0.3'
 mod 'puppetlabs/concat',   '~> 1.1.0'
