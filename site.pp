@@ -20,7 +20,7 @@ node default {
   ensure_packages(hiera_array('packages', []))
 
   # common package dependencies
-  ensure_packages(['git', 'python', 'python-pip'])
+  ensure_packages(['python', 'python-pip'])
 
   $pip_packages = hiera_array('pip_packages')
   package { $pip_packages:

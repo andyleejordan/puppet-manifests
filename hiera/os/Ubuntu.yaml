@@ -13,7 +13,6 @@ packages:
   - aptitude
   - curl
   - duplicity
-  - git
   - gnupg
   - logwatch
   - mg

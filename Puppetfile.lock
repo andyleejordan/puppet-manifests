@@ -28,6 +28,7 @@ FORGE
     puppetlabs/concat (1.1.0)
       puppetlabs/stdlib (>= 4.0.0)
     puppetlabs/firewall (1.1.1)
+    puppetlabs/git (0.0.3)
     puppetlabs/java (1.0.1)
       puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/ntp (3.0.3)
