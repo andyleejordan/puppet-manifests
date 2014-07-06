@@ -193,7 +193,7 @@ postfix::config::mastercfs:
 
 mumble::ppa: true
 
-ufw::allows:
+ufw::allow:
   allow-ftp-data-from-all:
     port: 20
   allow-ftp-listen-from-all:

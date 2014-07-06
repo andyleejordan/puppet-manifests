@@ -51,7 +51,7 @@ person::persons:
   andrew:
     password: "%{hiera('person_andrew_slartibartfast')}"
 
-ufw::allows:
+ufw::allow:
   allow-http-from-all:
     port: 80
   allow-minecraft-from-all:

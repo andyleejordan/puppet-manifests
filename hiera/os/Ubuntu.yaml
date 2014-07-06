@@ -29,13 +29,13 @@ packages:
 ubuntu::repos: main universe
 ubuntu::location: http://archive.ubuntu.com/ubuntu/
 
-ufw::allows:
+ufw::allow:
   allow-mosh-from-all:
     proto: udp
     port: 60000:61000
   allow-ssh-from-all:
     port: 22
 
-ufw::limits:
+ufw::limit:
   limit-ssh-from-all:
     name: 22

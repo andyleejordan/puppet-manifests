@@ -350,7 +350,7 @@ ubuntu::sources:
     include_src: false
     before: Package[monitorix]
 
-ufw::allows:
+ufw::allow:
   allow-ftp-listen-from-all:
     port: 21
   allow-ftp-passive-from-all:
