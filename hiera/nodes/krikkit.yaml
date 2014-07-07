@@ -336,6 +336,9 @@ prosody::virtualhosts:
     ssl_key: *scml_key
 
 ubuntu::location: http://mirrors.digitalocean.com/ubuntu/
+ubuntu::ppas:
+  ppa:chris-lea/redis-server:
+    before: Package[redis]
 ubuntu::sources:
   prosody:
     location: http://packages.prosody.im/debian
