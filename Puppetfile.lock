@@ -61,8 +61,8 @@ GIT
 
 GIT
   remote: git://github.com/andschwa/puppet-papertrail.git
-  ref: development
-  sha: 9a35a14fd6ae0a997e26c22f013019f46e914456
+  ref: master
+  sha: fdf5b65ff09a02956dcaf9916c2858dd4af067ca
   specs:
     andschwa/papertrail (0.0.1)
 
