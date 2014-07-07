@@ -84,7 +84,7 @@ mounts:
     options: bind
 
 mumble::ppa: true
-mumble::server_password: '%{mumble_password}'
+mumble::server_password: "%{hiera('mumble_password')}"
 mumble::ssl_cert: *schw_cert
 mumble::ssl_key: *schw_key
 
