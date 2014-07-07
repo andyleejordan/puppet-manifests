@@ -93,8 +93,8 @@ GIT
 
 GIT
   remote: git://github.com/andschwa/puppet-prosody.git
-  ref: development
-  sha: b4e2037838f05deba9545df9fdbeb794274b4108
+  ref: production
+  sha: 3522a8f314f4d46f15746e196c8168c857ad526f
   specs:
     andschwa/prosody (0.1.3)
       puppetlabs/stdlib (>= 3.2.0)

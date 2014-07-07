@@ -312,9 +312,9 @@ postgresql::dbs:
 prosody::admins:
     - andrew@schwartzmeyer.com
     - andrew@suchcodemuchlove.com
-prosody::c2s_require_encryption: 'true'
-prosody::s2s_require_encryption: 'true'
-prosody::s2s_secure_auth: 'true'
+prosody::c2s_require_encryption: true
+prosody::s2s_require_encryption: true
+prosody::s2s_secure_auth: true
 prosody::ssl_protocol: sslv23
 prosody::ssl_options:
   - no_sslv2
@@ -327,6 +327,7 @@ prosody::ssl_ciphers: 'HIGH+kEDH:HIGH+kEECDH:HIGH:!PSK:!SRP:!3DES:!aNULL'
 prosody::ssl_curve: secp384r1
 prosody::modules:
   - offline
+prosody::log_sinks: []
 prosody::virtualhosts:
   schwartzmeyer.com:
     ssl_cert: *schw_cert

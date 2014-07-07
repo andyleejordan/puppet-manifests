@@ -37,7 +37,7 @@ github 'andschwa', 'person'
 github 'andschwa', 'postfix'
 github 'andschwa', 'papertrail'
 github 'andschwa', 'postgresql', :ref => 'client-package-hotfix'
-github 'andschwa', 'prosody', :ref => 'development'
+github 'andschwa', 'prosody', :ref => 'production'
 github 'andschwa', 'redis'
 github 'andschwa', 'ubuntu'
 
