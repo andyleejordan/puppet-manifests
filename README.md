@@ -12,6 +12,17 @@ for manifest testing, and
 [Travis CI](https://travis-ci.org/andschwa/puppet-manifests) for
 continuous integration.
 
+## Hiera
+
+I use Hiera because, with the `deep_merge` gem installed, and the
+`deeper` merge behavior, Puppet's built-in function `create_resources`
+becomes incredibly handy for merging together and creating resources
+from across multiple YAML files (e.g. hostname, operating system,
+release). I finally figured out an easier way to test, and it looks
+like this:
+
+    hiera -h -d -c test/hiera.yaml ubuntu::sources ::hostname=krikkit ::operatingsystem=Ubuntu ::operatingsystemrelease=12.04
+
 ## Swap File setup
 
 [DigitalOcean Guide](https://www.digitalocean.com/community/articles/how-to-add-swap-on-ubuntu-12-04)
