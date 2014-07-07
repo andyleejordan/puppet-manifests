@@ -30,9 +30,6 @@ packages:
   - unzip
   - zsh
 
-ubuntu::repos: main universe
-ubuntu::location: http://archive.ubuntu.com/ubuntu/
-
 ufw::allow:
   allow-mosh-from-all:
     proto: udp
