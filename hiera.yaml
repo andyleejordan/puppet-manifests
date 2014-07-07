@@ -2,13 +2,13 @@
 :backends:
   - yaml
 :yaml:
-  :datadir: "%{settings::confdir}/hiera"
+  :datadir: "%{settings::confdir}/hiera" # requires quotes because it starts with percent :/
 :merge_behavior: deeper
 :hierarchy:
-  - "nodes/%{::hostname}"
-  - "os/%{::operatingsystem}/%{::operatingsystemrelease}"
-  - "os/%{::operatingsystem}"
-  - "virtual_%{::is_virtual}"
-  - "private/%{::hostname}"
+  - nodes/%{::hostname}
+  - os/%{::operatingsystem}/%{::operatingsystemrelease}
+  - os/%{::operatingsystem}
+  - virtual_%{::is_virtual}
+  - private/%{::hostname}
   - private
   - common

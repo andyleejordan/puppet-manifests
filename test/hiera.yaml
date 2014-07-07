@@ -2,14 +2,14 @@
 :backends:
   - yaml
 :yaml:
-  :datadir: "./hiera"
+  :datadir: ./hiera
 :merge_behavior: deeper
 :hierarchy:
-  - "nodes/%{::hostname}"
-  - "os/%{::operatingsystem}/%{::operatingsystemrelease}"
-  - "os/%{::operatingsystem}"
-  - "virtual_%{::is_virtual}"
-  - "private/%{::hostname}"
+  - nodes/%{::hostname}
+  - os/%{::operatingsystem}/%{::operatingsystemrelease}
+  - os/%{::operatingsystem}
+  - virtual_%{::is_virtual}
+  - private/%{::hostname}
   - private
   - common
 :logger: console
