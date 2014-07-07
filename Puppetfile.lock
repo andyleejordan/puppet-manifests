@@ -109,7 +109,7 @@ GIT
 GIT
   remote: git://github.com/andschwa/puppet-ubuntu.git
   ref: master
-  sha: ee9dfc4638b41988b82f11647888816d9ada5b55
+  sha: 5ce41d64e412f8f432a4830d3bfa4e79a724aea2
   specs:
     andschwa/ubuntu (0.0.1)
 
