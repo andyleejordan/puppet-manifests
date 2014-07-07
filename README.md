@@ -23,6 +23,19 @@ like this:
 
     hiera -h -d -c test/hiera.yaml ubuntu::sources ::hostname=krikkit ::operatingsystem=Ubuntu ::operatingsystemrelease=12.04
 
+Additionally, because of
+[HI-118](https://tickets.puppetlabs.com/browse/HI-118), there's no way
+to set resolution_type when using data bindings. That is, when using a
+class parameter, because Puppet doesn't know it needs a class (since
+parameters are untyped), Hiera silently falls back to `native` mode
+instead of `deeper` (since that can *only* be done on hashes, a type),
+thus causing unexpected lack of merging in modules that don't account
+for this. The fix I discovered a while ago is this: use the function
+`hiera_hash('data::source')`, which provides the type (hash, but could
+similarly be array), and thus gives proper merging. Example:
+
+    create_resources('apt::source', hiera_hash('ubuntu::sources', {}))
+
 ## Swap File setup
 
 [DigitalOcean Guide](https://www.digitalocean.com/community/articles/how-to-add-swap-on-ubuntu-12-04)
