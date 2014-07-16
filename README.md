@@ -157,13 +157,16 @@ the necessary packages for Amavis with SpamAssassin. The latter also
 has an integration with Postfix
 [guide](https://wiki.apache.org/spamassassin/IntegratedInPostfixWithAmavis).
 
-#### Pyzor
+Should always test that SpamAssassin is working with `spamassassin
+--lint`.
+
+#### [Pyzor](https://github.com/SpamExperts/pyzor)
 
 The latest version of Pyzor should be installed from the Python
 package repositories, as the Ubuntu/Debian package is woefully out of
 date. This is done by Puppet for my mailhost.
 
-I (sadly) do not have Spamassassin Puppetized further than
+I (sadly) do not have SpamAssassin Puppetized further than
 installation, so for setup, add the following lines (from the
 [Wiki](https://wiki.apache.org/spamassassin/UsingPyzor)):
 
@@ -185,7 +188,8 @@ receiving about a spam or two a day, so hopefully DCC will help.
 
 Used bits of
 [this guide](http://www.iredmail.org/forum/topic481-iredmail-support-install-pyzor-razor2-and-dcc-on-your-centosrhel-iredmail-server.html)
-to install and setup.
+to install and setup. Requires that firewall allows DCC reply packets
+on UDP port 6277.
 
 ##### Build and Install (package unavailable)
 
@@ -218,6 +222,8 @@ score DCC_CHECK 4.000
 
 Enable in `/etc/mail/spamassassin/v310.pre` by uncommenting relevant
 line.
+
+Test with `cdcc info`.
 
 ## LogWatch
 
