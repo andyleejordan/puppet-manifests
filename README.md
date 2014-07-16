@@ -168,13 +168,56 @@ installation, so for setup, add the following lines (from the
 [Wiki](https://wiki.apache.org/spamassassin/UsingPyzor)):
 
 ```
-# pyzor
 use_pyzor 1
 pyzor_path /usr/local/bin/pyzor
 pyzor_options --homedir /etc/mail/spamassassin
+score PYZOR_CHECK 2.500
 ```
 
-Then test with `echo "test" | spamassassin -D pyzor 2>&1 | less`.
+Then test with `spamassassin -t -D pyzor <
+/usr/share/doc/spamassassin/examples/sample-spam.txt`.
+
+#### [Distributed Checksum Clearinghouse](http://www.rhyolite.com/dcc/)
+
+Unfortunately although this is free to use, it is not FOSS, see
+[license](http://www.rhyolite.com/dcc/LICENSE). However, I am still
+receiving about a spam or two a day, so hopefully DCC will help.
+
+Used bits of
+[this guide](http://www.iredmail.org/forum/topic481-iredmail-support-install-pyzor-razor2-and-dcc-on-your-centosrhel-iredmail-server.html)
+to install and setup.
+
+##### Build and Install (package unavailable)
+
+```
+wget http://www.rhyolite.com/dcc/source/dcc.tar.Z
+tar xzf dcc.tar.Z
+cd dcc
+./configure --with-uid=amavis --disable-dccm --without-X
+make
+make install
+chown -R amavis:amavis /var/dcc
+ln -s /var/dcc/libexec/dccifd /usr/local/bin/dccifd
+```
+
+DCCM is unnecessary as I do not use sendmail. I am unsure if the final
+linking is required, but would rather not test and find out.
+
+##### Configure SpamAssassin
+
+Add to `/etc/mail/spamassassin/local.cf`:
+
+```
+use_dcc 1
+dcc_home /var/dcc
+dcc_path /usr/local/bin/dccproc
+dcc_timeout     10
+add_header all  DCC _DCCB_: _DCCR_
+score DCC_CHECK 4.000
+```
+
+Enable in `/etc/mail/spamassassin/v310.pre` by uncommenting relevant
+line.
 
 ## LogWatch
 
