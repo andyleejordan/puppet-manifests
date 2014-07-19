@@ -19,6 +19,7 @@ classes:
   - mumble
   - nginx
   - papertrail
+  - procmail
   - postfix
   - postfix::config
   - postgresql
@@ -234,6 +235,7 @@ person::persons:
       - git
     password: "%{hiera('person_andrew_krikkit')}"
 
+postfix::config::mailbox_command: /usr/bin/procmail -f-
 postfix::config::alias_maps: hash:/etc/aliases
 postfix::config::append_dot_mydomain: 'no'
 postfix::config::biff: 'no'
@@ -308,6 +310,13 @@ postgresql::dbs:
   git:
     user: git
     password: "%{hiera('gitlab_dbpwd')}"
+
+procmail::configs:
+  andrew:
+    maildir: /home/andrew/mail
+    rules:
+      - comment: Spam
+        condition: '^X-Spam-Status: Yes'
 
 prosody::admins:
     - andrew@schwartzmeyer.com
