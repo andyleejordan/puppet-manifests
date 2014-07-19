@@ -38,7 +38,7 @@ amavis::config::final_bad_header_destiny: D_PASS;
 dovecot::auth::disable_plaintext_auth: 'yes'
 dovecot::auth::auth_mechanisms: plain login
 dovecot::base::protocols: imap
-dovecot::imap::mail_max_userip_connections: 10
+dovecot::imap::mail_max_userip_connections: 20
 dovecot::mail::mailstorepath: ~/mail
 dovecot::mail::first_valid_uid: 1000
 dovecot::mail::first_valid_gid: 1000
