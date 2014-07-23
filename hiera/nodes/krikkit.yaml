@@ -313,10 +313,20 @@ postgresql::dbs:
 
 procmail::configs:
   andrew:
-    maildir: /home/andrew/mail
+    extra_vars:
+      LOGFILE: $MAILDIR/procmail.log
+      LOGABSTRACT: all
+      DELIVER: /usr/lib/dovecot/deliver
+    maildir: /home/andrew/mail/
     rules:
-      - comment: Spam
+      - comment: spam
         condition: '^X-Spam-Status: Yes'
+        flags: w
+        action: '| $DELIVER -m Spam'
+      - comment: fallthrough
+        condition: '.*'
+        flags: w
+        action: '| $DELIVER'
 
 prosody::admins:
     - andrew@schwartzmeyer.com
