@@ -50,11 +50,10 @@ dovecot::ssl::ssl_keyfile: *schw_key
 
 ghost::blogs:
   andrew:
-    production_url: https://schwartzmeyer.com
+    url: https://schwartzmeyer.com
     transport: sendmail
   jackie:
-    production_url: https://jackie.schwartzmeyer.com
-    production_port: 2369
+    url: https://jackie.schwartzmeyer.com
     transport: sendmail
 
 gitlab::git_email: git@suchcodemuchlove.com
@@ -92,10 +91,10 @@ mumble::ssl_key: *schw_key
 nginx::nginx_upstreams:
   schwartzmeyer:
     members:
-      - localhost:2368
+      - unix:/home/ghost/andrew/production.socket
   jackie:
     members:
-      - localhost:2369
+      - unix:/home/ghost/jackie/production.socket
   gitlab:
     members:
       - unix:/home/git/gitlab/tmp/sockets/gitlab.socket
@@ -207,6 +206,8 @@ nginx::nginx_locations:
       expires: max
       add_header: Cache-Control public
     ssl: true
+
+nodejs::manage_repo: true
 
 packages:
   - monitorix
