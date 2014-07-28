@@ -12,6 +12,7 @@ classes:
   - dovecot::mail
   - dovecot::master
   - ghost
+  - nodejs
   - mumble
   - nginx
   - postfix
@@ -38,22 +39,22 @@ dovecot::mail::first_valid_gid: 1000
 dovecot::master::postfix: true
 dovecot::master::auth_worker_group: shadow
 
+nodejs::manage_repo: true
+
 ghost::blogs:
   vagrant:
-    production_url: http://vagrant.local.dev
+    url: http://vagrant
     transport: sendmail
 
 mumble::snapshot: true
 
 nginx::nginx_upstreams:
-  vagrant:
+  ghost:
     members:
-      - localhost:2368
+      - unix:/home/ghost/vagrant/production.socket
 
-nginx::proxy_cache_path: /var/www/cache
-nginx::proxy_cache_keys_zone: STATIC:100m
-nginx::proxy_cache_max_size: 2g
-nginx::proxy_cache_inactive: 24h
+nginx::confd_purge: true
+nginx::vhost_purge: true
 nginx::client_max_body_size: 20m
 nginx::proxy_set_header:
   - Host $host
@@ -61,20 +62,18 @@ nginx::proxy_set_header:
   - X-Forwarded-For $proxy_add_x_forwarded_for
   - X-Forwarded-Proto $scheme
 nginx::http_cfg_append:
-  proxy_cache: STATIC
-  add_header: X-Cache-Status $upstream_cache_status
   proxy_hide_header: Etag
 nginx::server_tokens: 'off'
 nginx::nginx_vhosts:
   vagrant:
     use_default_location: false
     rewrite_www_to_non_www: true
-    rewrite_to_https: true
+    rewrite_to_https: false
 nginx::nginx_locations:
   vagrant_root:
     vhost: vagrant
     location: /
-    proxy: http://vagrant
+    proxy: http://ghost
     location_cfg_append:
       proxy_ignore_headers: Set-Cookie
       proxy_hide_header: Set-Cookie
@@ -89,17 +88,15 @@ nginx::nginx_locations:
   vagrant_assets:
     vhost: vagrant
     location: ~* \.(jpg|jpeg|png|gif|ico|css|js|eot|woff)$
-    proxy: http://vagrant
+    proxy: http://ghost
     location_cfg_append:
-      proxy_ignore_headers: Cache-Control
       expires: max
   vagrant_admin:
     vhost: vagrant
     location: ~ ^/ghost
-    proxy: http://vagrant
+    proxy: http://ghost
     location_cfg_append:
       expires: '0'
-      add_header: Cache-Control 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0'
 
 person::persons:
   andrew:
