@@ -22,6 +22,9 @@ node default {
   # common package dependencies
   ensure_packages(['python', 'python-pip'])
 
+  # yum repos
+  create_resources('yumrepo', hiera_hash('yumrepos', {}), hiera_hash('yumrepo_defaults', {}))
+
   $pip_packages = hiera_array('pip_packages')
   package { $pip_packages:
     ensure   => latest,
