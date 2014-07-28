@@ -318,6 +318,7 @@ procmail::configs:
       LOGFILE: $MAILDIR/procmail.log
       LOGABSTRACT: all
       DELIVER: /usr/lib/dovecot/deliver
+      DROPPRIVS: 'yes'
     maildir: /home/andrew/mail/
     rules:
       - comment: spam
