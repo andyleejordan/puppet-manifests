@@ -37,7 +37,7 @@ amavis::config::final_bad_header_destiny: D_PASS;
 
 dovecot::auth::disable_plaintext_auth: 'yes'
 dovecot::auth::auth_mechanisms: plain login
-dovecot::base::protocols: imap
+dovecot::base::protocols: imap lmtp
 dovecot::imap::mail_max_userip_connections: 20
 dovecot::mail::mailstorepath: ~/mail
 dovecot::mail::first_valid_uid: 1000
@@ -236,7 +236,7 @@ person::persons:
       - git
     password: "%{hiera('person_andrew_krikkit')}"
 
-postfix::config::mailbox_command: /usr/bin/procmail -f-
+postfix::config::mailbox_transport: lmtp:unix:/var/run/dovecot/lmtp
 postfix::config::alias_maps: hash:/etc/aliases
 postfix::config::append_dot_mydomain: 'no'
 postfix::config::biff: 'no'
