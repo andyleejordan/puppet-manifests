@@ -5,3 +5,4 @@ bin
 modules
 hiera/private
 hiera/private.yaml
+/hiera/nodes/vagrant.yaml
