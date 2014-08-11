@@ -31,13 +31,14 @@ def dev(name)
 end
 
 # GitHub andschwa/modules
-github 'andschwa', 'gitlab', :ref => 'production'
+github 'andschwa', 'dovecot',    :ref => 'production'
+github 'andschwa', 'gitlab',     :ref => 'production'
 github 'andschwa', 'latex'
 github 'andschwa', 'person'
-github 'andschwa', 'postfix'
+github 'andschwa', 'postfix',    :ref => 'production'
 github 'andschwa', 'papertrail'
-github 'andschwa', 'postgresql', :ref => 'client-package-hotfix'
-github 'andschwa', 'prosody', :ref => 'production'
+github 'andschwa', 'postgresql', :ref => 'production'
+github 'andschwa', 'prosody',    :ref => 'production'
 github 'andschwa', 'redis'
 github 'andschwa', 'ubuntu'
 
@@ -52,7 +53,6 @@ mod 'attachmentgenie/ufw', '~> 1.4.9'
 mod 'fsalum/redis',        '~> 0.0.9'
 mod 'jfryman/nginx',       '~> 0.0.7'
 mod 'mjhas/amavis',        '~> 0.0.2'
-mod 'mjhas/dovecot',       '~> 0.0.8'
 mod 'puppetlabs/apt',      '~> 1.4.0'
 mod 'puppetlabs/git',      '~> 0.0.3'
 mod 'puppetlabs/concat',   '~> 1.1.0'

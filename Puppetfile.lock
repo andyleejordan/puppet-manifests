@@ -23,9 +23,8 @@ FORGE
       puppetlabs/apt (>= 1.0.0)
       puppetlabs/concat (>= 1.0.0)
       puppetlabs/stdlib (>= 0.1.6)
-    maestrodev/wget (1.4.5)
+    maestrodev/wget (1.5.0)
     mjhas/amavis (0.0.2)
-    mjhas/dovecot (0.0.8)
     proletaryo/supervisor (0.4.0)
     puppetlabs/apt (1.4.2)
       puppetlabs/stdlib (>= 2.2.1)
@@ -46,15 +45,18 @@ FORGE
     thias/vsftpd (0.2.1)
 
 GIT
+  remote: git://github.com/andschwa/puppet-dovecot.git
+  ref: production
+  sha: d7d0eebf55662cf8b1026b076c0c7f4061e48149
+  specs:
+    andschwa/dovecot (0.0.7)
+
+GIT
   remote: git://github.com/andschwa/puppet-gitlab.git
   ref: production
-  sha: e3c7b21b585b9fcf747482134a9226b7dac75516
+  sha: 0a917797d4f67f09f8a4ddf386aaeb65ae220fec
   specs:
-    andschwa/gitlab (0.1.5)
-      alup/rbenv (>= 1.2.0)
-      puppetlabs/git (>= 0.0.3)
-      puppetlabs/stdlib (>= 3.1.0)
-      puppetlabs/vcsrepo (>= 0.2.0)
+    andschwa/gitlab (0.0.1)
 
 GIT
   remote: git://github.com/andschwa/puppet-latex.git
@@ -79,21 +81,17 @@ GIT
 
 GIT
   remote: git://github.com/andschwa/puppet-postfix.git
-  ref: master
-  sha: ed8e4e7a6b861ffd8d8190b85bc07c98ca67ae9c
+  ref: production
+  sha: fead26c3cedb21d06761e70659f863d545ee94f9
   specs:
-    andschwa/postfix (0.0.5)
+    andschwa/postfix (0.0.6)
 
 GIT
   remote: git://github.com/andschwa/puppet-postgresql.git
-  ref: client-package-hotfix
-  sha: f997447e288cc858f0d5e4a86156a7a46d1d37d4
+  ref: production
+  sha: 20e0a6cde749522161844ad95bb5c090fc895406
   specs:
-    andschwa/postgresql (3.3.0)
-      puppetlabs/apt (< 2.0.0, >= 1.1.0)
-      puppetlabs/concat (< 2.0.0, >= 1.0.0)
-      puppetlabs/firewall (>= 0.0.4)
-      puppetlabs/stdlib (< 5.0.0, >= 3.2.0)
+    andschwa/postgresql (0.0.1)
 
 GIT
   remote: git://github.com/andschwa/puppet-prosody.git
@@ -120,6 +118,7 @@ GIT
 DEPENDENCIES
   alup/rbenv (~> 1.2.0)
   andschwa/ghost (~> 0.2.0)
+  andschwa/dovecot (>= 0)
   andschwa/gitlab (>= 0)
   andschwa/latex (>= 0)
   andschwa/minecraft (~> 2.1.6)
@@ -137,7 +136,6 @@ DEPENDENCIES
   fsalum/redis (~> 0.0.9)
   jfryman/nginx (~> 0.0.7)
   mjhas/amavis (~> 0.0.2)
-  mjhas/dovecot (~> 0.0.8)
   puppetlabs/apt (~> 1.4.0)
   puppetlabs/concat (~> 1.1.0)
   puppetlabs/git (~> 0.0.3)
