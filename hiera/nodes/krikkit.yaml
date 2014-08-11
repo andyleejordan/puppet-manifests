@@ -21,7 +21,6 @@ classes:
   - mumble
   - nginx
   - papertrail
-  - procmail
   - postfix
   - postfix::config
   - postgresql
