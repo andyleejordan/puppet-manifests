@@ -96,10 +96,10 @@ mumble::ssl_key: *schw_key
 nginx::nginx_upstreams:
   schwartzmeyer:
     members:
-      - unix:/home/ghost/andrew/production.socket
+      - unix:/home/ghost/andrew/content/production.socket
   jackie:
     members:
-      - unix:/home/ghost/jackie/production.socket
+      - unix:/home/ghost/jackie/content/production.socket
   gitlab:
     members:
       - unix:/home/git/gitlab/tmp/sockets/gitlab.socket
