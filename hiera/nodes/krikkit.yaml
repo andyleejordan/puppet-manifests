@@ -319,6 +319,8 @@ postgresql::dbs:
 prosody::admins:
     - andrew@schwartzmeyer.com
     - andrew@suchcodemuchlove.com
+prosody::user: prosody
+prosody::group: prosody
 prosody::c2s_require_encryption: true
 prosody::s2s_require_encryption: true
 prosody::s2s_secure_auth: true
