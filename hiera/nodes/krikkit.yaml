@@ -71,6 +71,7 @@ gitlab::gitlab_dbtype: pgsql
 gitlab::gitlab_dbname: git
 gitlab::gitlab_dbuser: git
 gitlab::gitlab_dbpwd: "%{hiera('gitlab_dbpwd')}"
+gitlab::gitlab_db_ensure_client: false
 gitlab::gitlab_domain: suchcodemuchlove.com
 gitlab::gitlab_ssl: true
 gitlab::gitlab_ssl_cert: *scml_cert
