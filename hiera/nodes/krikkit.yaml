@@ -312,9 +312,10 @@ postfix::config::mastercfs:
 
 postgresql::globals::manage_package_repo: true
 postgresql::globals::version: '9.3'
-postgresql::dbs:
+postgresql::databases:
   git:
     user: git
+    plaintext: true
     password: "%{hiera('gitlab_dbpwd')}"
 
 prosody::admins:
