@@ -215,6 +215,7 @@ nodejs::manage_repo: true
 
 packages:
   - monitorix
+  - znc
 pip_packages:
   - pyzor
 
@@ -350,6 +351,8 @@ ubuntu::location: http://mirrors.digitalocean.com/ubuntu/
 ubuntu::ppas:
   ppa:chris-lea/redis-server:
     before: Package[redis]
+  ppa:teward/znc:
+    before: Package[znc]
 ubuntu::sources:
   prosody:
     location: http://packages.prosody.im/debian
