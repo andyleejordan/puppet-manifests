@@ -238,8 +238,11 @@ papertrail::extra_logs:
 person::persons:
   andrew:
     groups:
-      - git
+      - adm
+      - sudo
     password: "%{hiera('person_andrew_krikkit')}"
+  acm:
+    password: "%{hiera('person_acm_krikkit')}"
 
 postfix::config::mailbox_transport: lmtp:unix:private/dovecot-lmtp
 postfix::config::alias_maps: hash:/etc/aliases
@@ -265,6 +268,8 @@ postfix::config::smtpd_tls_session_cache_timeout: 3600s
 postfix::config::smtpd_use_tls: 'yes'
 postfix::config::strict_rfc821_envelopes: 'yes'
 postfix::config::tls_random_source: dev:/dev/urandom
+postfix::config::virtual_alias_domains: suchcodemuchlove.com, uiacm.com
+postfix::config::virtual_alias_maps: hash:/etc/postfix/virtual
 postfix::config::mastercfs:
   submission:
     type: inet
