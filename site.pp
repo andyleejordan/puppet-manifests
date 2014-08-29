@@ -6,6 +6,11 @@ node 'krikkit.schwartzmeyer.com' inherits default {}
 node 'slartibartfast.schwartzmeyer.us' inherits default {}
 
 node default {
+  # hiera sudo
+  class {
+    'sudo': sudoers => hiera_hash('sudoers', {}),
+  }
+
   # hiera ssh keys
   create_resources('ssh_authorized_key', hiera_hash('ssh_keys', {}), hiera_hash('ssh_key_defaults', {}))
 

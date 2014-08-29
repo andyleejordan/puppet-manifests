@@ -4,7 +4,6 @@ classes:
   - ntp
   - person
   - ssh::server
-  - sudo
 
 gitlab_dbpwd: password_for_ci_tests
 
@@ -26,8 +25,6 @@ person::persons:
     make_groups:
       - andrew
     groups:
-      - andrew
-      - adm
       - sudo
     packages:
       - zsh
@@ -49,12 +46,13 @@ ssh_keys:
     key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDXZrn8SQav0ZhS3gvaznUe4QNdV/LsrGbEXcHf6bT7wUao9//jBaPMY+QEq/ltRng6eZ8rU7jRAL+hCXqFORGsPsWbwpXlHIni8oldZmxx2Ujjvp/8ojaO54ZfQg2W/8BL8xTTKRs9KJaw4Rz7NVqFrGhWCcdkpuheAkDnV6TPZgkmZyXJyhqysD5JWDMxH1YGs2jF/dGLVvB+3/TfqBUZQzmeSJEJ2PkssgkIexwEU0IZYW3N0qzAvcyGTkD/xedH7ABvXdqBZ/VADfN6y2SDLrWwsi/a6CZZwBr+jWb8q9FoaSh0Ff6qPiPH99ao9PJtojZcwMHPSpb8vwWc/kIX
 
 sudo::manage_sudoersd: true
-sudo::sudoers:
+sudoers:
   nopassword:
     comment: Users without sudo password prompt
+    runas:
+      - root
     users:
       - andrew
-      - adm
       - sudo
     tags:
       - NOPASSWD
