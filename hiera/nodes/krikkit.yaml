@@ -3,6 +3,8 @@ schwartzmeyer.com_cert: &schw_cert /etc/ssl/certs/schwartzmeyer.com.crt
 schwartzmeyer.com_key: &schw_key  /etc/ssl/private/schwartzmeyer.com.key
 suchcodemuchlove.com_cert: &scml_cert /etc/ssl/certs/suchcodemuchlove.com.crt
 suchcodemuchlove.com_key: &scml_key /etc/ssl/private/suchcodemuchlove.com.key
+uiacm.com_cert: &uiacm_cert /etc/ssl/certs/uiacm.com.crt
+uiacm.com_key: &uiacm_key /etc/ssl/private/uiacm.com.key
 
 classes:
   - amavis
