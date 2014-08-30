@@ -2,10 +2,6 @@ FORGE
   remote: http://forge.puppetlabs.com
   specs:
     alup/rbenv (1.2.0)
-    andschwa/ghost (0.2.1)
-      proletaryo/supervisor (>= 0.4.0)
-      puppetlabs/nodejs (>= 0.6.1)
-      puppetlabs/stdlib (>= 4.1.0)
     andschwa/minecraft (2.1.6)
       maestrodev/wget (>= 1.1.0)
       puppetlabs/java (>= 0.1.6)
@@ -19,11 +15,11 @@ FORGE
       puppetlabs/stdlib (>= 2.2.1)
     fsalum/redis (0.0.12)
       thias/sysctl (= 0.3.0)
-    jfryman/nginx (0.0.9)
+    jfryman/nginx (0.0.10)
       puppetlabs/apt (>= 1.0.0)
-      puppetlabs/concat (>= 1.0.0)
-      puppetlabs/stdlib (>= 0.1.6)
-    maestrodev/wget (1.5.0)
+      puppetlabs/concat (>= 1.1.0)
+      puppetlabs/stdlib (>= 3.0.0)
+    maestrodev/wget (1.5.2)
     mjhas/amavis (0.0.2)
     proletaryo/supervisor (0.4.0)
     puppetlabs/apt (1.4.2)
@@ -51,6 +47,16 @@ GIT
     andschwa/dovecot (0.0.7)
 
 GIT
+  remote: git://github.com/andschwa/puppet-ghost.git
+  ref: dev
+  sha: 84867595715cf6ba5c270ab163c778dc4ed3c087
+  specs:
+    andschwa/ghost (0.2.1)
+      proletaryo/supervisor (>= 0.4.0)
+      puppetlabs/nodejs (>= 0.6.1)
+      puppetlabs/stdlib (>= 4.1.0)
+
+GIT
   remote: git://github.com/andschwa/puppet-gitlab.git
   ref: production
   sha: 0a917797d4f67f09f8a4ddf386aaeb65ae220fec
@@ -74,16 +80,16 @@ GIT
 GIT
   remote: git://github.com/andschwa/puppet-person.git
   ref: master
-  sha: 1f66efa3c33a5df15280b03f9c3f3a62409127e8
+  sha: 2f9ef151eca3db4b85007e82c969b1d285ce48d1
   specs:
     andschwa/person (0.0.1)
 
 GIT
   remote: git://github.com/andschwa/puppet-postfix.git
   ref: production
-  sha: fead26c3cedb21d06761e70659f863d545ee94f9
+  sha: 0121d0a937f39b9595ee6ed604b82000e9b63fad
   specs:
-    andschwa/postfix (0.0.6)
+    andschwa/postfix (1.0.0)
 
 GIT
   remote: git://github.com/andschwa/puppet-postgresql.git
@@ -117,7 +123,7 @@ GIT
 DEPENDENCIES
   alup/rbenv (~> 1.2.0)
   andschwa/dovecot (>= 0)
-  andschwa/ghost (~> 0.2.1)
+  andschwa/ghost (>= 0)
   andschwa/gitlab (>= 0)
   andschwa/latex (>= 0)
   andschwa/minecraft (~> 2.1.6)

@@ -32,6 +32,7 @@ end
 
 # GitHub andschwa/modules
 github 'andschwa', 'dovecot',    :ref => 'production'
+github 'andschwa', 'ghost',      :ref => 'dev'
 github 'andschwa', 'gitlab',     :ref => 'production'
 github 'andschwa', 'latex'
 github 'andschwa', 'person'
@@ -44,7 +45,6 @@ github 'andschwa', 'ubuntu'
 
 # Forge modules
 mod 'alup/rbenv',          '~> 1.2.0'
-mod 'andschwa/ghost',      '~> 0.2.1'
 mod 'andschwa/minecraft',  '~> 2.1.6'
 mod 'andschwa/mumble',     '~> 0.0.3'
 mod 'arnoudj/sudo',        '~> 1.1.1'
