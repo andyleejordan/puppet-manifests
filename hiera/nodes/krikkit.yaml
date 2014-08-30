@@ -58,6 +58,12 @@ ghost::blogs:
   jackie:
     url: https://jackie.schwartzmeyer.com
     transport: sendmail
+  acm:
+    user: acm
+    group: acm
+    home: /home/acm/ghost
+    url: https://uiacm.com
+    transport: sendmail
 
 gitlab::git_email: git@suchcodemuchlove.com
 gitlab::gitlab_branch: 7-2-stable
