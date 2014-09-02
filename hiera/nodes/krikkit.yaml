@@ -235,7 +235,6 @@ nginx::nginx_locations:
 nodejs::manage_repo: true
 
 packages:
-  - monitorix
   - znc
 pip_packages:
   - pyzor
@@ -385,13 +384,6 @@ ubuntu::sources:
     repos: main
     key: 74D9DBB5
     include_src: false
-  monitorix:
-    location: http://apt.izzysoft.de/ubuntu
-    release: generic
-    repos: universe
-    key: C9B9B62C
-    include_src: false
-    before: Package[monitorix]
 
 ufw::allow:
   allow-ftp-listen-from-all:
