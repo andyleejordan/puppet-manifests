@@ -1,15 +1,5 @@
 ---
-classes:
-  - git
-  - ntp
-  - person
-  - ssh::server
-
 gitlab_dbpwd: password_for_ci_tests
-
-pip_packages:
-  - pyrax
-  - virtualenvwrapper
 
 ntp::servers:
   - 0.north-america.pool.ntp.org

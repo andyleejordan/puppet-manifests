@@ -6,33 +6,6 @@ suchcodemuchlove.com_key: &scml_key /etc/ssl/private/suchcodemuchlove.com.key
 uiacm.com_cert: &uiacm_cert /etc/ssl/certs/uiacm.com.crt
 uiacm.com_key: &uiacm_key /etc/ssl/private/uiacm.com.key
 
-classes:
-  - amavis
-  - amavis::config
-  - dovecot
-  - dovecot::auth
-  - dovecot::base
-  - dovecot::imap
-  - dovecot::lmtp
-  - dovecot::mail
-  - dovecot::master
-  - dovecot::sieve
-  - dovecot::ssl
-  - ghost
-  - gitlab
-  - mumble
-  - nginx
-  - papertrail
-  - postfix
-  - postfix::config
-  - postgresql
-  - postgresql::globals
-  - postgresql::server
-  - prosody
-  - redis
-  - ufw
-  - vsftpd
-
 amavis::config::bypass_spam_checks_maps: (\%bypass_spam_checks, \@bypass_spam_checks_acl, \$bypass_spam_checks_re);
 amavis::config::final_banned_destiny: D_REJECT;
 amavis::config::final_spam_destiny: D_PASS;
@@ -234,11 +207,6 @@ nginx::nginx_locations:
 
 nodejs::manage_repo: true
 
-packages:
-  - znc
-pip_packages:
-  - pyzor
-
 papertrail::log_port: 54633
 papertrail::log_host: logs.papertrailapp.com
 papertrail::extra_logs:
@@ -373,11 +341,6 @@ prosody::virtualhosts:
     ssl_key: *scml_key
 
 ubuntu::location: http://mirrors.digitalocean.com/ubuntu/
-ubuntu::ppas:
-  ppa:chris-lea/redis-server:
-    before: Package[redis]
-  ppa:teward/znc:
-    before: Package[znc]
 ubuntu::sources:
   prosody:
     location: http://packages.prosody.im/debian

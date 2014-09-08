@@ -19,13 +19,3 @@ ubuntu::sources:
     location: http://apt.puppetlabs.com
     repos: main dependencies
     key: 4BD6EC30
-
-ubuntu::ppas:
-  ppa:duplicity-team/ppa:
-    before: Package[duplicity]
-  ppa:git-core/ppa:
-    before: Package[git]
-  ppa:keithw/mosh:
-    before: Package[mosh]
-  ppa:lvillani/silversearcher:
-    before: Package[silversearcher-ag]

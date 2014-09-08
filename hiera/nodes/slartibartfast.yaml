@@ -1,9 +1,4 @@
 ---
-classes:
-  - minecraft
-  - nginx
-  - ufw
-
 minecraft::source: beta
 minecraft::heap_size: 2048
 minecraft::white_list: true
@@ -43,9 +38,6 @@ nginx::nginx_vhosts:
     proxy: http://localhost:8123
     proxy_set_header:
       - Host $host
-
-packages:
-  - cifs-utils
 
 person::persons:
   andrew:

@@ -1,45 +1,32 @@
 # site.pp
-node 'vagrant' inherits default {}
-
-node 'krikkit.schwartzmeyer.com' inherits default {}
-
-node 'slartibartfast.schwartzmeyer.us' inherits default {}
-
-node default {
-  # hiera sudo
-  class {
-    'sudo': sudoers => hiera_hash('sudoers', {}),
-  }
-
-  # hiera ssh keys
-  create_resources('ssh_authorized_key', hiera_hash('ssh_keys', {}), hiera_hash('ssh_key_defaults', {}))
-
-  # hiera mounts
-  create_resources('file', hiera_hash('mount_points', {}), {ensure => directory})
-  create_resources('mount', hiera_hash('mounts', {}), hiera_hash('mount_defaults', {}))
-
-  # hiera vcsrepos
-  create_resources('vcsrepo', hiera_hash('vcsrepos', {}))
-
-  # hiera packages
-  ensure_packages(hiera_array('packages', []))
-
-  # common package dependencies
-  ensure_packages(['python', 'python-pip'])
-
-  # yum repos
-  create_resources('yumrepo', hiera_hash('yumrepos', {}), hiera_hash('yumrepo_defaults', {}))
-
-  $pip_packages = hiera_array('pip_packages')
-  package { $pip_packages:
-    ensure   => latest,
-    provider => pip,
-    require  => Package['python-pip']
-  }
-
-  Vcsrepo <| provider == git |> {
-    require => Package['git']
-  }
+node 'vagrant' inherits default {
+  include profile::backup
+  include profile::chat
+  include profile::ghost
+  include profile::ftp
+  include profile::logging
+  include profile::mail
+  include profile::web
 }
 
-hiera_include('classes')
+node 'krikkit.schwartzmeyer.com' inherits default {
+  include profile::backup
+  include profile::chat
+  include profile::firewall
+  include profile::ftp
+  include profile::ghost
+  include profile::gitlab
+  include profile::logging
+  include profile::mail
+  include profile::web
+}
+
+node 'slartibartfast.schwartzmeyer.us' inherits default {
+  include profile::backup
+  include profile::firewall
+  include profile::minecraft
+}
+
+node default {
+  include profile
+}

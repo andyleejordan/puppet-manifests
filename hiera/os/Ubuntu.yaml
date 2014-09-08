@@ -1,9 +1,4 @@
 ---
-classes:
-  - apt
-  - apt::unattended_upgrades
-  - ubuntu
-
 apt::always_apt_update: false
 apt::purge_sources_list: true
 apt::purge_sources_list_d: true
@@ -11,24 +6,6 @@ apt::purge_preferences_d: true
 apt::update_tries: 2
 apt::unattended_upgrades::mail_to: root@schwartzmeyer.com
 apt::unattended_upgrades::minimal_steps: true
-
-packages:
-  - augeas-tools
-  - aptitude
-  - curl
-  - duplicity
-  - gnupg
-  - logwatch
-  - mg
-  - mosh
-  - most
-  - silversearcher-ag
-  - sqlite
-  - sshguard
-  - tiger
-  - wget
-  - unzip
-  - zsh
 
 ufw::allow:
   allow-mosh-from-all:
