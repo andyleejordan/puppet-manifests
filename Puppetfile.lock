@@ -101,7 +101,7 @@ GIT
 GIT
   remote: git://github.com/andschwa/puppet-profile.git
   ref: master
-  sha: 38a86ee4a3340de9e54e3682ea3a1a826d2d8468
+  sha: effdfdb3fb364bb3f52614f198a0fa859b3ded21
   specs:
     andschwa/profile (0.0.1)
 
@@ -149,6 +149,7 @@ DEPENDENCIES
   fsalum/redis (~> 0.0.9)
   jfryman/nginx (~> 0.0.7)
   mjhas/amavis (~> 0.0.2)
+  proletaryo/supervisor (~> 0.4.0)
   puppetlabs/apt (~> 1.4.0)
   puppetlabs/concat (~> 1.1.0)
   puppetlabs/git (~> 0.0.3)
