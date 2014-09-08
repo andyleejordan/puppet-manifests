@@ -123,8 +123,6 @@ openssl req -new -newkey rsa:2048 -nodes -keyout domain.key -out domain.csr
 ```
 ### Certificate Bundle
 
-[Comodo](https://support.comodo.com/index.php?_a=viewarticle&_m=knowledgebase&kbarticleid=1365)
-
 ```
 cat www_yourdomain_com.crt ComodoHigh-AssuranceSecureServerCA.crt AddTrustExternalCARoot.crt >> ssl-bundle.crt
 ```
@@ -148,6 +146,8 @@ ftp: root
 abuse: root
 root: andrew
 ```
+
+Execute `newaliases -oAhash:file` to generate `file.db`; owned by root.
 
 ### Amavis
 
