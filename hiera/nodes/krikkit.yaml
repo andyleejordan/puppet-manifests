@@ -340,6 +340,20 @@ prosody::virtualhosts:
     ssl_cert: *scml_cert
     ssl_key: *scml_key
 
+sudoers:
+  supervisord:
+    comment: Users that can manage supervisorctl daemons
+    runas:
+      - root
+    users:
+      - andrew
+      - acm
+    tags:
+      - NOPASSWD
+      - SETENV
+    cmnds:
+      - /usr/local/bin/supervisorctl
+
 ubuntu::location: http://mirrors.digitalocean.com/ubuntu/
 ubuntu::sources:
   prosody:
