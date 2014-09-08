@@ -387,6 +387,8 @@ ufw::allow:
     port: 587
   allow-imaps-from-all:
     port: 993
+  allow-znc-from-all:
+    port: "%{hiera('znc_port')}"
 
 vcsrepos:
   /var/www/idahothegoodlife.com:
