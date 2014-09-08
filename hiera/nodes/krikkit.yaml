@@ -219,6 +219,7 @@ papertrail::extra_logs:
   - /var/log/redis-server.log
   - /var/log/supervisor/ghost_andrew_err.log
   - /var/log/supervisor/ghost_jackie_err.log
+  - /var/log/supervisor/ghost_acm_err.log
   - /var/log/supervisor/supervisord.log
   - /var/log/unattended-upgrades/unattended-upgrades.log
   - /var/log/vsftpd.log
