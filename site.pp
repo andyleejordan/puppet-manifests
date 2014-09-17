@@ -1,5 +1,6 @@
 # site.pp
-node 'vagrant' inherits default {
+node 'vagrant' {
+  include profile
   include profile::backup
   include profile::chat
   include profile::ghost
@@ -9,7 +10,8 @@ node 'vagrant' inherits default {
   include profile::web
 }
 
-node 'krikkit.schwartzmeyer.com' inherits default {
+node 'krikkit.schwartzmeyer.com' {
+  include profile
   include profile::backup
   include profile::chat
   include profile::firewall
@@ -22,12 +24,9 @@ node 'krikkit.schwartzmeyer.com' inherits default {
   include profile::web
 }
 
-node 'slartibartfast.schwartzmeyer.us' inherits default {
+node 'slartibartfast.schwartzmeyer.us' {
+  include profile
   include profile::backup
   include profile::firewall
   include profile::minecraft
-}
-
-node default {
-  include profile
 }
