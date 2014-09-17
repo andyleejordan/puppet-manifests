@@ -14,6 +14,7 @@ node 'krikkit.schwartzmeyer.com' inherits default {
   include profile::chat
   include profile::firewall
   include profile::ftp
+  include profile::irc_bouncer
   include profile::ghost
   include profile::gitlab
   include profile::logging
