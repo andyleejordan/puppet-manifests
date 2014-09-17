@@ -13,19 +13,19 @@ FORGE
       puppetlabs/stdlib (>= 2.2.1)
     attachmentgenie/ufw (1.4.9)
       puppetlabs/stdlib (>= 2.2.1)
-    fsalum/redis (0.0.12)
-      thias/sysctl (= 0.3.0)
-    jfryman/nginx (0.0.10)
+    fsalum/redis (1.0.1)
+      thias/sysctl (>= 0.3.0)
+    jfryman/nginx (0.0.9)
       puppetlabs/apt (>= 1.0.0)
-      puppetlabs/concat (>= 1.1.0)
-      puppetlabs/stdlib (>= 3.0.0)
-    maestrodev/wget (1.5.2)
+      puppetlabs/concat (>= 1.0.0)
+      puppetlabs/stdlib (>= 0.1.6)
+    maestrodev/wget (1.5.6)
     mjhas/amavis (0.0.2)
     proletaryo/supervisor (0.4.0)
     puppetlabs/apt (1.4.2)
       puppetlabs/stdlib (>= 2.2.1)
-    puppetlabs/concat (1.1.0)
-      puppetlabs/stdlib (>= 4.0.0)
+    puppetlabs/concat (1.1.1)
+      puppetlabs/stdlib (< 5.0.0, >= 3.2.0)
     puppetlabs/git (0.0.3)
     puppetlabs/java (1.0.1)
       puppetlabs/stdlib (>= 0.1.6)
@@ -36,13 +36,13 @@ FORGE
       puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/stdlib (4.1.0)
     puppetlabs/vcsrepo (0.2.0)
-    thias/sysctl (0.3.0)
+    thias/sysctl (1.0.0)
     thias/vsftpd (0.2.1)
 
 GIT
   remote: git://github.com/andschwa/puppet-dovecot.git
   ref: production
-  sha: d7d0eebf55662cf8b1026b076c0c7f4061e48149
+  sha: 7b7fb499334acbc581ea48a8db06c6eaa5b4cf95
   specs:
     andschwa/dovecot (0.0.7)
 
@@ -101,7 +101,7 @@ GIT
 GIT
   remote: git://github.com/andschwa/puppet-profile.git
   ref: master
-  sha: effdfdb3fb364bb3f52614f198a0fa859b3ded21
+  sha: 5ea6dc84c41f57b6cbd700fe0eb46e176c3de14b
   specs:
     andschwa/profile (0.0.1)
 
@@ -112,13 +112,6 @@ GIT
   specs:
     andschwa/prosody (0.1.3)
       puppetlabs/stdlib (>= 3.2.0)
-
-GIT
-  remote: git://github.com/andschwa/puppet-redis.git
-  ref: master
-  sha: 57a6e421589ec2e78a661c3e9a2da7761f6040c3
-  specs:
-    andschwa/redis (0.0.9)
 
 GIT
   remote: git://github.com/andschwa/puppet-ubuntu.git
@@ -141,12 +134,11 @@ DEPENDENCIES
   andschwa/postgresql (>= 0)
   andschwa/profile (>= 0)
   andschwa/prosody (>= 0)
-  andschwa/redis (>= 0)
   andschwa/ubuntu (>= 0)
   arnoudj/sudo (~> 1.1.1)
   attachmentgenie/ssh (~> 1.2.1)
   attachmentgenie/ufw (~> 1.4.9)
-  fsalum/redis (~> 0.0.9)
+  fsalum/redis (~> 1.0.1)
   jfryman/nginx (~> 0.0.7)
   mjhas/amavis (~> 0.0.2)
   proletaryo/supervisor (~> 0.4.0)
