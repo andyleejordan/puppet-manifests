@@ -42,8 +42,8 @@ ghost::blogs:
     transport: sendmail
 
 gitlab::git_email: git@suchcodemuchlove.com
-gitlab::gitlab_branch: 7-2-stable
-gitlab::gitlabshell_branch: v1.9.7
+gitlab::gitlab_branch: 7-3-stable
+gitlab::gitlabshell_branch: v2.0.0
 gitlab::gitlab_manage_nginx: false
 gitlab::gitlab_ensure_postfix: false
 gitlab::gitlab_backup: false
@@ -341,6 +341,9 @@ prosody::virtualhosts:
   suchcodemuchlove.com:
     ssl_cert: *scml_cert
     ssl_key: *scml_key
+
+redis::conf_port: 0
+redis::conf_unixsocketperm: 775
 
 sudoers:
   supervisord:
