@@ -5,6 +5,8 @@ function get_host
 	case $host in
 	    krikkit)
 		echo 'krikkit.schwartzmeyer.com:manifests';;
+	    zaphod)
+		echo 'zaphod.schwartzmeyer.com:manifests';;
 	    slartibartfast)
 		echo 'slartibartfast.schwartzmeyer.us:manifests';;
 	    *)

@@ -101,7 +101,7 @@ GIT
 GIT
   remote: git://github.com/andschwa/puppet-profile.git
   ref: master
-  sha: b68bbbad4f9325e6c5e30b2ca7001301cdd4498d
+  sha: 0752adcbea17f806793804219c3e64e96e01af5e
   specs:
     andschwa/profile (0.0.1)
 

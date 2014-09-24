@@ -24,6 +24,16 @@ node 'krikkit.schwartzmeyer.com' {
   include profile::web
 }
 
+node 'zaphod.schwartzmeyer.com' {
+  include profile
+  include profile::backup
+  include profile::firewall
+  include profile::ftp
+  include profile::gitlab
+  include profile::logging
+  include profile::web
+}
+
 node 'slartibartfast.schwartzmeyer.us' {
   include profile
   include profile::backup

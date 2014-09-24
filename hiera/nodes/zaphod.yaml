@@ -1,0 +1,162 @@
+---
+zaphod.schwartzmeyer.com_cert: &zaphod_cert /etc/ssl/certs/zaphod.schwartzmeyer.com.crt
+zaphod.schwartzmeyer.com_key: &zaphod_key  /etc/ssl/private/zaphod.schwartzmeyer.com.key
+
+gitlab::git_email: git@zaphod.schwartzmeyer.com
+gitlab::gitlab_branch: 7-3-stable
+gitlab::gitlabshell_branch: v2.0.0
+gitlab::gitlab_manage_nginx: false
+gitlab::gitlab_ensure_postfix: false
+gitlab::gitlab_backup: false
+gitlab::gitlab_backup_keep_time: 3600
+gitlab::gitlab_dbtype: pgsql
+gitlab::gitlab_dbname: git
+gitlab::gitlab_dbuser: git
+gitlab::gitlab_dbpwd: "%{hiera('gitlab_dbpwd')}"
+gitlab::gitlab_db_ensure_client: false
+gitlab::gitlab_domain: zaphod.schwartzmeyer.com
+gitlab::gitlab_ssl: true
+gitlab::gitlab_ssl_cert: *zaphod_cert
+gitlab::gitlab_ssl_key: *zaphod_key
+
+nginx::nginx_upstreams:
+  gitlab:
+    members:
+      - unix:/home/git/gitlab/tmp/sockets/gitlab.socket
+
+nginx::confd_purge: true
+nginx::vhost_purge: true
+nginx::proxy_cache_path: /var/www/cache
+nginx::proxy_cache_keys_zone: STATIC:100m
+nginx::proxy_cache_max_size: 2g
+nginx::proxy_cache_inactive: 24h
+nginx::client_max_body_size: 20m
+nginx::proxy_set_header:
+  - Host $host
+  - X-Real-IP $remote_addr
+  - X-Forwarded-For $proxy_add_x_forwarded_for
+  - X-Forwarded-Proto $scheme
+nginx::http_cfg_append:
+  proxy_cache: STATIC
+  add_header: X-Cache-Status $upstream_cache_status
+  proxy_hide_header: Etag
+nginx::server_tokens: 'off'
+nginx::nginx_vhosts:
+  zaphod.schwartzmeyer.com:
+    www_root: /home/git/gitlab/public
+    try_files:
+      - $uri
+      - $uri/index.html
+      - $uri.html
+      - '@gitlab'
+    vhost_cfg_append:
+      error_page: 502 /502.html
+      add_header: Strict-Transport-Security max-age=15768000
+    ssl: true
+    ssl_cert: *zaphod_cert
+    ssl_key: *zaphod_key
+    spdy: 'on'
+    rewrite_www_to_non_www: true
+    rewrite_to_https: true
+nginx::nginx_locations:
+  zaphod_proxy:
+    vhost: zaphod.schwartzmeyer.com
+    location: '@gitlab'
+    proxy: http://gitlab
+    proxy_read_timeout: '300'
+    proxy_connect_timeout: '300'
+    location_cfg_append:
+      proxy_redirect: 'off'
+    ssl: true
+  zaphod_assets:
+    vhost: zaphod.schwartzmeyer.com
+    location: ~ ^/(assets)/
+    www_root: /home/git/gitlab/public
+    location_cfg_append:
+      gzip_static: 'on'
+      expires: max
+      add_header: Cache-Control public
+    ssl: true
+
+nodejs::manage_repo: true
+
+papertrail::log_port: 54633
+papertrail::log_host: logs.papertrailapp.com
+papertrail::extra_logs:
+  - /var/log/nginx/error.log
+  - /var/log/nginx/gitlab_error.log
+  - /var/log/postgresql/postgresql-9.3-main.log
+  - /var/log/redis-server.log
+  - /var/log/unattended-upgrades/unattended-upgrades.log
+  - /var/log/vsftpd.log
+
+person::persons:
+  andrew:
+    groups:
+      - adm
+      - sudo
+    password: "%{hiera('person_andrew_zaphod')}"
+
+postgresql::globals::manage_package_repo: true
+postgresql::globals::version: '9.3'
+postgresql::databases:
+  git:
+    user: git
+    plaintext: true
+    password: "%{hiera('gitlab_dbpwd')}"
+
+ubuntu::location: http://mirror.fdcservers.net/ubuntu/
+
+ufw::allow:
+  allow-ftp-listen-from-all:
+    port: 21
+  allow-ftp-passive-from-all:
+    port: 42000:42256
+  allow-http-from-all:
+    port: 80
+  allow-https-from-all:
+    port: 443
+  allow-mumble-from-all:
+    port: 64738
+  allow-mumble-udp-from-all:
+    proto: udp
+    port: 64738
+  allow-prosody-client-from-all:
+    port: 5222
+  allow-prosody-server-from-all:
+    port: 5269
+  allow-smtp-from-all:
+    port: 25
+  allow-smtps-from-all:
+    port: 587
+  allow-imaps-from-all:
+    port: 993
+  allow-znc-from-all:
+    port: "%{hiera('znc_port')}"
+
+vsftpd::template: vsftpd/empty.conf.erb
+vsftpd::directives:
+  allow_anon_ssl: 'YES'
+  chroot_local_user: 'YES'
+  dual_log_enable: 'YES'
+  force_dot_files: 'YES'
+  guest_enable: 'YES'
+  hide_ids: 'YES'
+  listen: 'YES'
+  local_enable: 'YES'
+  no_anon_password: 'YES'
+  ssl_enable: 'YES'
+  use_localtime: 'YES'
+  write_enable: 'NO'
+  virtual_use_local_privs: 'YES'
+  anon_root: /var/www/download
+  max_clients: 10
+  pasv_min_port: 42000
+  pasv_max_port: 42256
+  ftpd_banner: Welcome to this awesome server, friend!
+  local_root: /home/virtual/$USER
+  nopriv_user: ftp
+  rsa_cert_file: *zaphod_cert
+  rsa_private_key_file: *zaphod_key
+  user_config_dir: /etc/vsftpd/user_conf
+  user_sub_token: $USER

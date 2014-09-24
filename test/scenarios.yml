@@ -31,6 +31,16 @@ slartibartfast:
   fqdn: slartibartfast.schwartzmeyer.us
   hostname: slartibartfast
 
+zaphod:
+  <<: *default_facts
+  concat_basedir: /tmp/concat_dir # Fix for testing concat
+  domain: schwartzmeyer.com
+  fqdn: zaphod.schwartzmeyer.com
+  hostname: zaphod
+  lsbdistrelease: 14.04
+  lsbmajdistrelease: 14
+  operatingsystemrelease: 14.04
+
 vagrant:
   <<: *default_facts
   concat_basedir: /tmp/concat_dir # Fix for testing concat
