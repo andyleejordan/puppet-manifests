@@ -105,8 +105,6 @@ postgresql::databases:
     plaintext: true
     password: "%{hiera('gitlab_dbpwd')}"
 
-ubuntu::location: http://mirror.fdcservers.net/ubuntu/
-
 ufw::allow:
   allow-ftp-listen-from-all:
     port: 21
