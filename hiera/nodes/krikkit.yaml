@@ -43,7 +43,7 @@ ghost::blogs:
 
 gitlab::git_email: git@suchcodemuchlove.com
 gitlab::gitlab_branch: 7-3-stable
-gitlab::gitlabshell_branch: v2.0.0
+gitlab::gitlabshell_branch: v2.0.1
 gitlab::gitlab_manage_nginx: false
 gitlab::gitlab_ensure_postfix: false
 gitlab::gitlab_backup: false
