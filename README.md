@@ -51,6 +51,7 @@ similarly be array), and thus gives proper merging. Example:
 6. set swappiness
     7. `echo 0 | sudo tee /proc/sys/vm/swappiness`
     8. `echo vm.swappiness = 0 | sudo tee -a /etc/sysctl.conf`
+	9. or `sysctl -w vm.swappiness=30`
 9. secure swapfile `sudo chown root:root /swapfile; sudo chmod 0600
    /swapfile`
 
@@ -60,6 +61,12 @@ similarly be array), and thus gives proper merging. Example:
 2. continue at step 2 above
 
 ## GitLab
+
+### Warning!
+
+The latest version of GitLab now uses the Redis socket, which meant
+updating a few GitLab configuration files manually which have not yet
+been updated in the module (and are templated).
 
 ### Dependencies
 
