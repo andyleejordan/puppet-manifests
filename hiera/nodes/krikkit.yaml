@@ -17,7 +17,7 @@ dovecot::auth::auth_default_realm: schwartzmeyer.com
 dovecot::base::protocols: imap lmtp
 dovecot::imap::mail_max_userip_connections: 20
 dovecot::lmtp::mail_plugins: sieve
-dovecot::manage_mailboxfile: false
+dovecot::mail::manage_mailboxfile: false
 dovecot::mail::mailstorepath: ~/mail
 dovecot::mail::first_valid_uid: 1000
 dovecot::mail::first_valid_gid: 1000
